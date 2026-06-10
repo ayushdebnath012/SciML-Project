@@ -1,0 +1,613 @@
+\documentclass[11pt, a4paper]{article}
+
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{mathtools}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[T1]{fontenc}
+
+\geometry{margin=2.5cm}
+\setlength{\parskip}{6pt}
+\setlength{\parindent}{0pt}
+
+\definecolor{codeblue}{rgb}{0.1,0.2,0.6}
+\newcommand{\fn}[1]{\texttt{\color{codeblue}#1}}
+\newcommand{\file}[1]{\texttt{#1}}
+
+\title{\textbf{Loss Pipeline: Mathematical Reference}\\[4pt]
+       \large Wave Equation PINN / KAN Experiment}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+% ==============================================================================
+\section{Problem Statement}
+% ==============================================================================
+
+We solve the \textbf{1D elastic wave equation} on a non-dimensionalised
+space--time domain $\Omega = [x_{\min}, x_{\max}] \times [0, T]$:
+
+\begin{equation}
+  \boxed{
+    \rho(x)\,\frac{\partial^2 u}{\partial t^2}
+    \;=\;
+    \frac{\partial}{\partial x}\!\left[E(x)\,\frac{\partial u}{\partial x}\right]
+  }
+  \label{eq:wave}
+\end{equation}
+
+where $u(x,t)$ is the displacement field, $\rho(x)$ is mass density, and
+$E(x)$ is Young's modulus (both normalised by their reference values
+$\rho_{\mathrm{ref}}$, $E_{\mathrm{ref}}$).
+
+\textbf{Initial conditions} (ICs):
+\begin{align}
+  u(x, 0) &= g(x) \label{eq:ic_disp} \\
+  \frac{\partial u}{\partial t}(x, 0) &= 0 \label{eq:ic_vel}
+\end{align}
+
+\textbf{Boundary conditions} (BCs) — first-order absorbing (non-reflecting):
+\begin{align}
+  \frac{\partial u}{\partial t} - c(x)\,\frac{\partial u}{\partial x} &= 0
+  \quad \text{at } x = x_{\min} \label{eq:bc_left} \\
+  \frac{\partial u}{\partial t} + c(x)\,\frac{\partial u}{\partial x} &= 0
+  \quad \text{at } x = x_{\max} \label{eq:bc_right}
+\end{align}
+
+where $c(x) = V_p(x) = \sqrt{E(x)/\rho(x)}$ is the local P-wave velocity.
+
+The network $\mathcal{N}_\theta(x,t)$ (PINN, FourierFeaturePINN, PirateNet, KAN,
+or WavKAN) approximates $u$ via a modified output $\hat{u}$ described next.
+
+
+% ==============================================================================
+\section{Material Models}
+\file{wave/materials.py}
+% ==============================================================================
+
+Three material configurations are used. All quantities are non-dimensionalised:
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+\textbf{Model} & $E(x)$ & $\rho(x)$ \\
+\midrule
+Homogeneous & $1$ & $1$ \\
+TwoLayer & $E_1(1-\alpha) + E_2\,\alpha$,\;
+          $\alpha = \tfrac{1}{2}(1 + \tanh(x/w))$ & $1$ \\
+MultiLayer & piecewise-linear via 6 $\tanh$ transitions & $1$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+where $E_1 = 80/E_\mathrm{ref}$, $E_2 = 120/E_\mathrm{ref}$ for TwoLayer,
+and $w = 0.02/L_\mathrm{ref}$ is the interface half-width.
+
+
+% ==============================================================================
+\section{Initial Condition Function}
+\fn{gaussian\_ic} in \file{wave/problem\_data.py}
+% ==============================================================================
+
+The prescribed initial displacement is a normalised first-derivative-of-Gaussian
+(a Ricker-like pulse):
+
+\begin{equation}
+  g(x) = \frac{f'(x)}{\max_x |f'(x)| + \epsilon},
+  \qquad
+  f(x) = \exp\!\left(-\frac{(x - x_0)^2}{2\sigma_g^2}\right)
+  \label{eq:ic_fn}
+\end{equation}
+
+with $f'(x) = -\dfrac{x - x_0}{\sigma_g^2}\,f(x)$, $x_0 = 0$,
+$\sigma_g = 0.1$, $\epsilon = 10^{-12}$ (numerical stability).
+
+The function is antisymmetric about $x_0$, peaks near $\pm\sigma_g$, and
+is negligibly small outside $\approx 3\sigma_g$.
+
+
+% ==============================================================================
+\section{The Ansatz: Hard Initial Condition Enforcement}
+\fn{apply\_ansatz} in \file{wave/problem\_data.py}
+% ==============================================================================
+
+\subsection{Motivation}
+
+Satisfying the IC with a soft loss term risks the network ignoring it early
+in training (when PDE gradients dominate). The \emph{ansatz} bakes the IC
+directly into the network output.
+
+\subsection{Construction}
+
+Let $\mathcal{N}_\theta(x,t)$ be the raw network output. Define:
+
+\begin{equation}
+  \hat{u}(x,t) =
+  \underbrace{g(x)\,e^{-\frac{1}{2}(15t)^2}}_{\text{IC term (decays in time)}}
+  \;+\;
+  \underbrace{\tanh^2(25t)}_{\text{growth envelope}}\;\cdot\;\mathcal{N}_\theta(x,t)
+  \label{eq:ansatz}
+\end{equation}
+
+\textbf{Verification of IC satisfaction:}
+\begin{align}
+  \hat{u}(x, 0) &= g(x)\cdot 1 + 0 \cdot \mathcal{N}_\theta = g(x) \checkmark \\
+  \frac{\partial \hat{u}}{\partial t}\bigg|_{t=0}
+    &= g(x)\cdot 0 + 2\tanh(25t)\cdot\frac{25}{\cosh^2(25t)}\cdot\mathcal{N}_\theta\bigg|_{t=0}
+    = 0 \checkmark
+\end{align}
+
+The network $\mathcal{N}_\theta$ is completely free because the envelope zeroes
+it at $t=0$.
+
+\subsection{Soft IC (use\_ansatz = False)}
+
+When the ansatz is disabled:
+\begin{equation}
+  \hat{u}(x,t) = \mathcal{N}_\theta(x,t)
+\end{equation}
+
+and the ICs are enforced via penalty terms in the loss (Section~\ref{sec:ic_loss}).
+
+
+% ==============================================================================
+\section{PDE Residual}
+\fn{compute\_pde\_residual} in \file{src/losses/wave\_loss.py}
+% ==============================================================================
+
+Given $\hat{u}$ from Section~\ref{sec:ansatz}, the PDE residual at a
+collocation point $(x_i, t_i)$ is:
+
+\begin{equation}
+  R(x_i, t_i)
+  \;=\;
+  \rho(x_i)\,\hat{u}_{tt}
+  \;-\;
+  \frac{\partial}{\partial x}\!\bigl[E(x_i)\,\hat{u}_x\bigr]
+  \label{eq:residual}
+\end{equation}
+
+All derivatives are computed exactly via \texttt{torch.autograd}:
+
+\begin{enumerate}
+  \item Forward pass: $\hat{u} = \fn{apply\_ansatz}(\mathcal{N}_\theta(x,t), x, t)$
+  \item $\hat{u}_x,\, \hat{u}_t \leftarrow \nabla_{x,t}\,\hat{u}$
+        \quad (first-order autograd, \texttt{create\_graph=True})
+  \item Stress: $\sigma = E(x)\,\hat{u}_x$
+  \item $\hat{u}_{tt} \leftarrow \partial_t\,\hat{u}_t$
+  \item $\sigma_x \leftarrow \partial_x\,\sigma$
+  \item $R = \rho(x)\,\hat{u}_{tt} - \sigma_x$
+\end{enumerate}
+
+
+% ==============================================================================
+\section{Causal PDE Loss}
+\fn{causal\_pde\_loss} in \file{src/losses/wave\_loss.py}
+% ==============================================================================
+
+\subsection{Motivation}
+
+The plain mean-squared PDE loss
+$\mathcal{L}_{\mathrm{pde}} = \frac{1}{N}\sum_i R_i^2$
+treats all time steps equally. But the wave equation is \emph{causal}: the
+solution at large $t$ depends on the solution at small $t$. Penalising
+late-time residuals before early-time is learned gives the optimizer
+contradictory gradients, helping $\hat{u}\equiv 0$ survive as a spurious
+minimum.
+
+\subsection{Time-Slab Decomposition}
+
+Partition $[0, T]$ into $M = 32$ equal slabs:
+\begin{equation}
+  0 = \tau_0 < \tau_1 < \cdots < \tau_M = T,
+  \qquad
+  \tau_m = \frac{m}{M}\,T
+\end{equation}
+
+Let the PDE loss in slab $m$ be:
+\begin{equation}
+  \mathcal{L}_m
+  = \frac{1}{|\mathcal{S}_m|}
+    \sum_{i\,:\,t_i \in [\tau_m,\,\tau_{m+1})} R(x_i, t_i)^2
+  \label{eq:chunk_loss}
+\end{equation}
+
+\subsection{Causal Weights}
+
+Define weights that depend on how well all earlier slabs are solved:
+\begin{equation}
+  \boxed{
+    w_m = \exp\!\left(-\varepsilon \sum_{k=0}^{m-1} \mathcal{L}_k\right)
+  }
+  \label{eq:causal_weights}
+\end{equation}
+
+with $\varepsilon = 0.5$ (the \texttt{tolerance} parameter) and $w_0 = 1$
+by convention ($\text{empty sum} = 0$).
+
+\textbf{Properties:}
+\begin{itemize}
+  \item $w_0 = 1$ always — the first slab (near IC) is always fully weighted.
+  \item If $\mathcal{L}_{m-1}$ is large (slab $m{-}1$ unsolved),
+        $w_m \approx 0$ — slab $m$ contributes almost no gradient.
+  \item As training progresses and $\mathcal{L}_k \to 0$ for $k < m$,
+        $w_m \to 1$ — the frontier propagates forward in time.
+\end{itemize}
+
+The weights are computed from \texttt{.detach()}ed losses, so they are
+treated as constants in backprop (no gradient flows through $w_m$).
+
+\subsection{Causal Loss}
+
+\begin{equation}
+  \mathcal{L}_{\mathrm{pde}}
+  = \frac{1}{M}\sum_{m=0}^{M-1} w_m\,\mathcal{L}_m
+  \label{eq:causal_loss}
+\end{equation}
+
+
+% ==============================================================================
+\section{Boundary Condition Loss}
+\fn{losses\_gradnorm} in \file{src/losses/wave\_loss.py}
+% ==============================================================================
+
+The absorbing BCs \eqref{eq:bc_left}--\eqref{eq:bc_right} are enforced
+via a squared residual over $N_{\mathrm{bc}}$ boundary collocation points
+with random $t \in [0,T]$:
+
+\begin{equation}
+  \mathcal{L}_{\mathrm{bc}}
+  = \frac{1}{N_{\mathrm{bc}}} \sum_{i}
+    \left[
+      \underbrace{
+        \bigl(\hat{u}_t - c\,\hat{u}_x\bigr)^2\big|_{x=x_{\min}}
+      }_{\text{left ABC}}
+      +
+      \underbrace{
+        \bigl(\hat{u}_t + c\,\hat{u}_x\bigr)^2\big|_{x=x_{\max}}
+      }_{\text{right ABC}}
+    \right]_{t_i}
+  \label{eq:bc_loss}
+\end{equation}
+
+The sign flip between left and right encodes the direction of wave travel:
+leftward waves exit at $x_{\min}$, rightward waves exit at $x_{\max}$.
+
+
+% ==============================================================================
+\section{Initial Condition Loss (Soft)}
+\label{sec:ic_loss}
+\fn{ic\_loss} in \file{src/losses/wave\_loss.py}
+% ==============================================================================
+
+Used only when \texttt{use\_ansatz = False}. Penalises violations of both
+ICs~\eqref{eq:ic_disp}--\eqref{eq:ic_vel} at $N_{\mathrm{ic}}$ random
+$x$ points with $t = 0$:
+
+\begin{align}
+  \mathcal{L}_{\mathrm{ic}}^{\mathrm{disp}}
+  &= \frac{1}{N_{\mathrm{ic}}} \sum_i
+     \bigl[\hat{u}(x_i, 0) - g(x_i)\bigr]^2 \\[4pt]
+  \mathcal{L}_{\mathrm{ic}}^{\mathrm{vel}}
+  &= \frac{1}{N_{\mathrm{ic}}} \sum_i
+     \left[\frac{\partial \hat{u}}{\partial t}(x_i, 0)\right]^2 \\[4pt]
+  \mathcal{L}_{\mathrm{ic}}
+  &= \mathcal{L}_{\mathrm{ic}}^{\mathrm{disp}}
+   + \mathcal{L}_{\mathrm{ic}}^{\mathrm{vel}}
+  \label{eq:ic_loss}
+\end{align}
+
+$\hat{u}_t$ at $t=0$ is computed via autograd with \texttt{requires\_grad=True}
+on the $t$-input tensor.
+
+\textbf{IC pre-scaling.} Before returning from \fn{losses\_gradnorm}, the IC
+loss is multiplied by a fixed constant $s = 10$:
+\begin{equation}
+  \tilde{\mathcal{L}}_{\mathrm{ic}} = s\,\mathcal{L}_{\mathrm{ic}},
+  \qquad s = 10
+  \label{eq:ic_scale}
+\end{equation}
+
+This ensures GradNorm (Section~\ref{sec:gradnorm}) sees a non-negligible
+IC gradient from the first iteration, preventing the trivial solution
+$\hat{u} \equiv 0$ from being entrenched before the IC loss is weighted up.
+
+
+% ==============================================================================
+\section{Gradient-Norm Adaptive Weighting}
+\label{sec:gradnorm}
+\fn{GradNormWeighter.compute\_weights} in \file{src/losses/wave\_loss.py}
+% ==============================================================================
+
+Following Wang et al.\ (2023), the total loss is a weighted sum:
+\begin{equation}
+  \mathcal{L}_{\mathrm{total}}
+  = \lambda_{\mathrm{pde}}\,\mathcal{L}_{\mathrm{pde}}
+  + \lambda_{\mathrm{bc}}\,\mathcal{L}_{\mathrm{bc}}
+  + \lambda_{\mathrm{ic}}\,\tilde{\mathcal{L}}_{\mathrm{ic}}
+  \label{eq:total_loss}
+\end{equation}
+
+where the weights $\lambda$ are updated every $\Delta = 100$ Adam steps.
+
+\subsection{Gradient Norms}
+
+For each loss term $\mathcal{L}_k \in \{\mathcal{L}_{\mathrm{pde}},
+\mathcal{L}_{\mathrm{bc}}, \tilde{\mathcal{L}}_{\mathrm{ic}}\}$, compute
+the $\ell^2$ norm of gradients with respect to all network parameters $\theta$:
+
+\begin{equation}
+  \|\nabla_\theta \mathcal{L}_k\|_2
+  = \left(\sum_{j} \left(\frac{\partial \mathcal{L}_k}{\partial \theta_j}\right)^2
+    \right)^{1/2}
+  \label{eq:grad_norm}
+\end{equation}
+
+\subsection{Raw Weights}
+
+The raw (un-smoothed) weight for term $k$ is:
+\begin{equation}
+  \hat{\lambda}_k
+  = \frac{\displaystyle\sum_{k'} \|\nabla_\theta \mathcal{L}_{k'}\|_2}
+         {\|\nabla_\theta \mathcal{L}_k\|_2}
+  \label{eq:raw_weights}
+\end{equation}
+
+Intuitively: a loss term whose gradients are small gets a larger weight so
+that it contributes comparably to the total gradient signal.
+
+\subsection{Exponential Moving Average}
+
+To avoid rapid oscillations, weights are smoothed:
+\begin{equation}
+  \lambda_k^{(n)} =
+  \begin{cases}
+    \hat{\lambda}_k^{(n)} & n = 0 \\
+    \alpha\,\lambda_k^{(n-1)} + (1 - \alpha)\,\hat{\lambda}_k^{(n)} & n > 0
+  \end{cases}
+  \label{eq:ema}
+\end{equation}
+
+with $\alpha = 0.9$. Between update steps ($n \not\equiv 0 \pmod{\Delta}$),
+the previous $\lambda_k$ is reused unchanged.
+
+\subsection{Ansatz mode}
+
+When \texttt{use\_ansatz = True}, the IC is satisfied by construction, so:
+\begin{equation}
+  \lambda_{\mathrm{ic}} = 0,
+  \qquad
+  \hat{\lambda}_k = \frac{\|\nabla_\theta \mathcal{L}_{\mathrm{pde}}\|_2
+                         + \|\nabla_\theta \mathcal{L}_{\mathrm{bc}}\|_2}
+                        {\|\nabla_\theta \mathcal{L}_k\|_2},
+  \quad k \in \{\mathrm{pde}, \mathrm{bc}\}
+\end{equation}
+
+
+% ==============================================================================
+\section{Full Loss Pipeline Summary}
+% ==============================================================================
+
+\begin{equation*}
+\boxed{
+\begin{aligned}
+&\textbf{Forward:}\\
+&\quad \hat{u}(x,t) = g(x)\,e^{-\frac{1}{2}(15t)^2}
+      + \tanh^2(25t)\cdot\mathcal{N}_\theta(x,t)
+      \quad[\text{or just } \mathcal{N}_\theta \text{ if no ansatz}]\\[6pt]
+&\textbf{PDE residual at each }(x_i, t_i)\text{:}\\
+&\quad R_i = \rho(x_i)\,\hat{u}_{tt}(x_i,t_i)
+           - \partial_x\bigl[E(x_i)\,\hat{u}_x(x_i,t_i)\bigr]\\[6pt]
+&\textbf{Causal slab loss } m = 0,\ldots,M{-}1\text{:}\\
+&\quad \mathcal{L}_m = \mathrm{mean}_{i\in\mathrm{slab}_m}\,R_i^2 \\
+&\quad w_m = \exp\!\Bigl(-\varepsilon\sum_{k<m}\mathcal{L}_k^{\det}\Bigr) \\
+&\quad \mathcal{L}_{\mathrm{pde}} = \tfrac{1}{M}\textstyle\sum_m w_m\,\mathcal{L}_m \\[6pt]
+&\textbf{BC loss:}\\
+&\quad \mathcal{L}_{\mathrm{bc}} = \mathrm{mean}\bigl[
+      (\hat{u}_t - c\,\hat{u}_x)^2|_{x_{\min}} +
+      (\hat{u}_t + c\,\hat{u}_x)^2|_{x_{\max}}\bigr]\\[6pt]
+&\textbf{IC loss (soft mode only):}\\
+&\quad \mathcal{L}_{\mathrm{ic}} = \mathrm{mean}\bigl[(\hat{u}(x,0)-g(x))^2\bigr]
+      + \mathrm{mean}\bigl[(\hat{u}_t(x,0))^2\bigr],
+      \quad \tilde{\mathcal{L}}_{\mathrm{ic}} = 10\,\mathcal{L}_{\mathrm{ic}}\\[6pt]
+&\textbf{GradNorm weights} (every 100 steps):\\
+&\quad \|\nabla_\theta \mathcal{L}_k\|_2 \;\text{computed for each term}\\
+&\quad \hat{\lambda}_k = \frac{\sum_{k'}\|\nabla_\theta \mathcal{L}_{k'}\|_2}
+                              {\|\nabla_\theta \mathcal{L}_k\|_2},
+      \quad \lambda_k \leftarrow 0.9\,\lambda_k + 0.1\,\hat{\lambda}_k\\[6pt]
+&\textbf{Total loss (Adam step):}\\
+&\quad \mathcal{L}_{\mathrm{total}} =
+      \lambda_{\mathrm{pde}}\,\mathcal{L}_{\mathrm{pde}}
+    + \lambda_{\mathrm{bc}}\,\mathcal{L}_{\mathrm{bc}}
+    + \lambda_{\mathrm{ic}}\,\tilde{\mathcal{L}}_{\mathrm{ic}}\\[6pt]
+&\textbf{After Adam:  L-BFGS fine-tuning}\\
+&\quad \text{Fixed }\lambda_k\text{ (inherited from end of Adam phase)}
+\end{aligned}
+}
+\end{equation*}
+
+
+% ==============================================================================
+\section{Causal Convergence Monitoring}
+\fn{get\_causal\_frontier} $\cdot$ \file{src/losses/wave\_loss.py},
+\file{src/train.py}, \file{wave/run\_experiment.py}
+% ==============================================================================
+
+\subsection{In-training diagnostic (printed every \texttt{print\_every} steps)}
+
+After each forward pass through \fn{causal\_pde\_loss}, the weight vector
+$\mathbf{w} = (w_0, w_1, \ldots, w_{M-1})$ is stored in the module-level
+\texttt{\_causal\_state} dict.
+
+\fn{get\_causal\_frontier} reads this vector and reports two quantities:
+
+\begin{enumerate}
+  \item \textbf{Frontier count} (coarse indicator):
+  \begin{equation}
+    F(\delta) = \#\{m : w_m \geq \delta\}, \qquad \delta = 0.1
+  \end{equation}
+  A chunk is ``reached'' when its causal weight exceeds 10\%.
+  The bar in the log shows $F/M$ visually.
+
+  \item \textbf{$w_{\min}$} (paper's convergence criterion):
+  \begin{equation}
+    w_{\min} = \min_{m} w_m
+  \end{equation}
+  When $w_{\min} \geq 0.99$, the output changes to \texttt{CONVERGED},
+  meaning:
+  \begin{equation}
+    \sum_{k=0}^{M-2} \mathcal{L}_k \;\approx\; 0
+    \quad \Longleftrightarrow \quad
+    \text{PDE residual is near-zero in \emph{all} time slabs}
+  \end{equation}
+\end{enumerate}
+
+\subsection{Saved outputs (per experiment run)}
+
+\fn{train\_adam} tracks causal data at every iteration and saves to disk:
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+\textbf{File} & \textbf{Contents} & \textbf{Frequency} \\
+\midrule
+\file{causal\_convergence.json} & \texttt{converged}, \texttt{final\_w\_min},
+  \texttt{w\_min\_history}, \texttt{chunk\_snapshots} & end of Adam phase \\
+\file{causal\_wmin.png} & $w_{\min}$ vs.\ Adam iteration & plot \\
+\file{causal\_heatmap.png} & $w_m$ per chunk vs.\ iteration (heatmap) & plot \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{\file{causal\_wmin.png}} plots $w_{\min}(n)$ over Adam steps.
+The paper's convergence criterion is $w_{\min} \to 1$; a horizontal dashed
+line marks the threshold $0.99$.
+
+\textbf{\file{causal\_heatmap.png}} shows $w_m$ as a 2D image with
+Adam iteration on the $x$-axis and chunk index $m$ on the $y$-axis.
+Colour encodes weight (yellow $\approx 1$, purple $\approx 0$). Healthy
+causal training produces a ``yellow wavefront'' that sweeps upward (from
+chunk 0 to chunk $M-1$) as training progresses.
+
+\subsection{Interpretation}
+
+\begin{itemize}
+  \item $w_{\min}$ stays near $0$ throughout $\Rightarrow$
+        15{,}000 Adam iterations is not enough; increase
+        \texttt{adam\_iterations} or decrease $\varepsilon$.
+  \item $w_{\min}$ rises then plateaus below $0.99$ $\Rightarrow$
+        partial convergence; L-BFGS may push it over the threshold.
+  \item $w_{\min} \geq 0.99$ at end of training $\Rightarrow$
+        full causal convergence achieved; paper criterion satisfied.
+  \item Heatmap has a sharp diagonal boundary $\Rightarrow$
+        clean causal propagation (ideal).
+  \item Heatmap has a fuzzy or non-monotone boundary $\Rightarrow$
+        consider increasing $\varepsilon$ or \texttt{n\_chunks}.
+\end{itemize}
+
+
+% ==============================================================================
+\section{Optimizer Sequence}
+\file{src/train.py}
+% ==============================================================================
+
+\begin{enumerate}
+  \item \textbf{Adam phase} (15,000 iterations, lr = 0.001):
+    \begin{itemize}
+      \item GradNorm weights updated every 100 steps.
+      \item Best checkpoint saved whenever total loss improves.
+      \item Final weights $\lambda_k^*$ passed to L-BFGS.
+    \end{itemize}
+  \item \textbf{L-BFGS phase} (2,000 iterations, Strong Wolfe line search):
+    \begin{itemize}
+      \item Weights $\lambda_k$ fixed at $\lambda_k^*$ from Adam.
+      \item Same loss function; provides second-order curvature information.
+      \item Best checkpoint saved independently.
+    \end{itemize}
+  \item \textbf{L-BFGS only} (5,000 iterations, alternative mode):
+    \begin{itemize}
+      \item Adam phase skipped entirely; weights initialised to $(1,1,1)$.
+    \end{itemize}
+\end{enumerate}
+
+% ==============================================================================
+\section{Systematic Parameter Sweep Experiments}
+\file{wave/run\_experiment.py}
+% ==============================================================================
+
+To compare model capacities, optimization trajectories, and training behaviors under varying conditions, a multi-dimensional parameter sweep is executed. The total grid consists of 360 unique experiment runs.
+
+\subsection{Experimental Grid Dimensions}
+
+The sweep parameters are categorized along four main dimensions:
+
+\begin{enumerate}
+  \item \textbf{Material Models (3 profiles)}:
+    \begin{itemize}
+      \item \textbf{Homogeneous}: Constant wave speed ($E(x) = 1, \rho(x) = 1$).
+      \item \textbf{Two-Layer}: Single interface with a smooth density/modulus transition.
+      \item \textbf{Multi-Layer}: Heavily stratified medium with 6 smooth transitions.
+    \end{itemize}
+  \item \textbf{Model Architectures (5 architectures, 30 configurations)}:
+    \begin{itemize}
+      \item \textbf{PINN (4 configurations)}: Vanilla Multi-Layer Perceptrons.
+      \item \textbf{FourierFeaturePINN (8 configurations)}: Random Fourier mapping combined with an MLP.
+      \item \textbf{PirateNet (6 configurations)}: Custom residual skips with Fourier features.
+      \item \textbf{KAN (4 configurations)}: Kolmogorov-Arnold Networks built with B-splines.
+      \item \textbf{WavKAN (8 configurations)}: Kolmogorov-Arnold Networks built with wavelets.
+    \end{itemize}
+  \item \textbf{Ansatz Initial Condition Enforcement (2 modes)}:
+    \begin{itemize}
+      \item \textbf{Hard Enforcement (\texttt{use\_ansatz = True})}: Satisfies IC by construction.
+      \item \textbf{Soft Enforcement (\texttt{use\_ansatz = False})}: Enforced via GradNorm-penalized boundary loss terms.
+    \end{itemize}
+  \item \textbf{Optimization Strategy (2 sequences)}:
+    \begin{itemize}
+      \item \textbf{Adam + L-BFGS}: 15,000 steps of Adam with dynamic GradNorm scaling followed by 2,000 steps of L-BFGS.
+      \item \textbf{L-BFGS Only}: 5,000 steps of L-BFGS directly from random initialization.
+    \end{itemize}
+\end{enumerate}
+
+The full combinatorial sweep corresponds to:
+\begin{equation}
+  \text{Total Runs} = 3 \text{ Materials} \times 30 \text{ Configs} \times 2 \text{ Ansatz Modes} \times 2 \text{ Optimizers} = 360 \text{ Runs}
+\end{equation}
+
+\subsection{Detailed Architectural Sweep Configurations}
+
+The 30 specific configurations are defined as follows:
+
+\begin{center}
+\begin{tabular}{lcccl}
+\toprule
+\textbf{Architecture} & \textbf{Slabs/Layers} & \textbf{Width} & \textbf{Fourier Features ($N_f$)} & \textbf{Hyperparameters / Settings} \\
+\midrule
+PINN & 2, 3, 4, 5 & 32, 64, 128, 128 & -- & -- \\
+FourierFeaturePINN & 2, 3, 4, 5 & 32, 64, 128, 128 & 64, 128, 128, 256 & $\sigma \in \{3.0, 7.0\}$ \\
+PirateNet & 2, 3, 4 & 32, 64, 128 & 64, 128, 128 & $\sigma \in \{3.0, 7.0\}$ \\
+KAN & 1, 2, 3, 4 & 16 & -- & Grid $G \in \{3, 5\}$, Spline Degree $k \in \{2, 3\}$ \\
+WavKAN & 1, 2, 3, 4 & 16 & -- & Wavelet $\in \{\text{Morlet, Mexican Hat}\}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Evaluation Metrics}
+
+For each run, the metrics evaluated are:
+\begin{enumerate}
+  \item \textbf{Relative $\mathcal{L}^2$ Error (\%)}: Evaluated against a reference solution $u_{\mathrm{ref}}$ generated via an explicit finite-difference solver:
+  \begin{equation}
+    \text{Rel } \mathcal{L}^2 \text{ Error (\%)} = \frac{\| u_{\mathrm{pred}} - u_{\mathrm{ref}} \|_2}{\| u_{\mathrm{ref}} \|_2} \times 100
+  \end{equation}
+  This is computed independently for the Adam checkpoint and the final L-BFGS checkpoint.
+  \item \textbf{Causal Convergence}: Stored in \file{causal\_convergence.json}, verifying whether the minimum causal weight reached the convergence threshold ($w_{\min} \geq 0.99$).
+\end{enumerate}
+
+\end{document}

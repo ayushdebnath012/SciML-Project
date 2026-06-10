@@ -1,0 +1,20 @@
+# ── Core deep learning ────────────────────────────────────────────────────────
+# NOTE: For GPU (CUDA 12.1), install PyTorch separately with:
+#   pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 --index-url https://download.pytorch.org/whl/cu121
+# Then run: pip install -r requirements.txt (for everything else)
+torch==2.5.1
+torchvision==0.20.1
+torchaudio==2.5.1
+
+# ── Numerics & plotting ────────────────────────────────────────────────────────
+numpy==1.26.4
+matplotlib==3.10.8
+scipy
+
+# ── KAN architectures (pykan + ALL transitive deps found via source scan) ─────
+pykan==0.2.8
+scikit-learn        # kan/utils.py, kan/MultKAN.py -> sklearn
+PyYAML              # kan/utils.py -> yaml
+tqdm                # kan/MultKAN.py -> tqdm
+sympy               # kan/utils.py, kan/MultKAN.py -> sympy
+pandas              # kan/MultKAN.py -> pandas

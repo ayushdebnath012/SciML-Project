@@ -1,0 +1,25 @@
+# PINN vs. PIKAN Hyperparameter Tuning Configuration
+
+general:
+  iterations: 10000
+  lr: 0.001
+  repetitions: 10
+  device: "cuda"
+
+collocation_points:
+  num_points_x: 100
+  num_points_t: 100
+
+models:
+  pinn:
+    sweep_configs:
+      - [1, 175] # [n_hidden, hidden_width]
+      - [2, 24]
+      - [3, 17]
+  pikan:
+    G: 5
+    k: 3
+    sweep_configs:
+      - [1, 23]  # [n_hidden, hidden_width]
+      - [2, 7]
+      - [3, 5]
