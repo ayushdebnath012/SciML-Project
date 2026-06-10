@@ -407,10 +407,15 @@ def losses(model, x, t, use_ansatz=False, material=None, x_ic=None):
 _IC_SCALE = 15000.0
 
 
-def losses_gradnorm(model, x, t, use_ansatz=False, material=None, x_ic=None):
+def losses_gradnorm(model, x, t, use_ansatz=False, material=None, x_ic=None,
+                    causal_tolerance=1.0, n_chunks=16):
     """
     Like `losses()` but returns (loss_pde, loss_bc, loss_ic) as THREE separate
     tensors for grad-norm adaptive weighting.
+
+    causal_tolerance: ε for the causal weighting.  train_adam injects a linearly
+        scheduled value each step when causal_tolerance=(start, end) is passed.
+    n_chunks: number of causal time slabs (default 16; fewer = faster propagation).
     x_ic: optional dense spatial grid for IC evaluation (see losses()).
     """
     if material is None:
@@ -419,13 +424,9 @@ def losses_gradnorm(model, x, t, use_ansatz=False, material=None, x_ic=None):
 
     import problem_data as wave_problem
 
-    # ── PDE loss: causal (consistent with physics_loss / paper) ───────────────
-    # Previously this called compute_pde_residual directly (non-causal), which
-    # meant GradNorm weights were computed against a *different* loss than what
-    # physics_loss used — leading to mis-calibrated weights.
     loss_pde = causal_pde_loss(
         model, x, t, material, sigma_g=0.1,
-        n_chunks=32, tolerance=1.0, use_ansatz=use_ansatz
+        n_chunks=n_chunks, tolerance=causal_tolerance, use_ansatz=use_ansatz
     )
 
     # ── BC loss: Absorbing Boundary Conditions ────────────────────────────────

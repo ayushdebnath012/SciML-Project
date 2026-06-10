@@ -97,6 +97,12 @@ CONFIG = {
     "ic_warmup_iterations": 2000,    # IC-only Adam steps before joint training (use_ansatz=False only)
     "ic_gradnorm_delay": 3000,       # Adam steps with fixed IC-heavy weights before GradNorm activates
 
+    # ── Causal training ───────────────────────────────────────────────────────
+    "causal_n_chunks": 16,           # Time slabs for causal loss (16 vs 32: each slab thicker, propagates faster)
+    "causal_tol_start": 0.1,         # ε at iter=0: loose weighting, all chunks see gradients
+    "causal_tol_end": 1.0,           # ε at iter=adam_iterations: strict causal enforcement
+    "causal_continuation_budget": 9000,  # Extra Adam steps if w_min < 0.9 after main phase (0 to disable)
+
     # ── Reproducibility ───────────────────────────────────────────────────────
     "seed": 42,                      # Global random seed for full reproducibility
 
@@ -364,13 +370,51 @@ def run_single_experiment(cfg, use_ansatz, material, device, idx, total_runs,
         use_gradnorm=True,
         gradnorm_update_freq=CONFIG.get("gradnorm_update_freq", 100),
         ic_gradnorm_delay=(CONFIG["ic_gradnorm_delay"] if not use_ansatz else 0),
+        causal_tolerance=(CONFIG["causal_tol_start"], CONFIG["causal_tol_end"]),
         use_ansatz=use_ansatz,
         material=material,
         x_ic=x_ic_dense if not use_ansatz else None,
+        n_chunks=CONFIG["causal_n_chunks"],
     )
 
     # Load best checkpoint from Adam phase
     model.load_state_dict(torch.load(adam_outdir, map_location=device, weights_only=True))
+
+    # 3b. Causal continuation — keep running Adam until w_min >= 0.9 or budget exhausted
+    continuation_budget = CONFIG.get("causal_continuation_budget", 0)
+    continuation_block  = 3000
+    total_continuation  = 0
+    while w_min_hist[-1] < 0.9 and total_continuation < continuation_budget:
+        steps_left = min(continuation_block, continuation_budget - total_continuation)
+        print(f"\n--- Causal continuation [{total_continuation}/{continuation_budget}] "
+              f"w_min={w_min_hist[-1]:.4f} — running {steps_left} more Adam steps ---")
+        cont = train_adam(
+            model=model,
+            inputs=[x_train, t_train],
+            losses_func=losses_gradnorm,
+            iterations=steps_left,
+            lr=CONFIG["lr"] * 0.3,          # lower LR for fine-grained continuation
+            print_every=1000,
+            outdir=adam_outdir,              # keep updating best checkpoint
+            use_gradnorm=True,
+            gradnorm_update_freq=CONFIG.get("gradnorm_update_freq", 100),
+            ic_gradnorm_delay=0,             # GradNorm already warmed up
+            causal_tolerance=(0.5, 1.0),     # short ramp: medium → strict
+            use_ansatz=use_ansatz,
+            material=material,
+            x_ic=x_ic_dense if not use_ansatz else None,
+            n_chunks=CONFIG["causal_n_chunks"],
+        )
+        adam_total   += cont[0];  adam_phys  += cont[1];  adam_cond  += cont[2]
+        final_w_pde, final_w_bc, final_w_ic = cont[3], cont[4], cont[5]
+        w_pde_hist   += cont[6];  w_bc_hist  += cont[7];  w_ic_hist  += cont[8]
+        w_min_hist   += cont[9];  w_chunks_snaps += cont[10]
+        total_continuation += steps_left
+        model.load_state_dict(torch.load(adam_outdir, map_location=device, weights_only=True))
+
+    if total_continuation > 0:
+        print(f"\n    Causal continuation done: {total_continuation} extra steps, "
+              f"final w_min={w_min_hist[-1]:.4f}", flush=True)
 
     # 4. Phase 2: L-BFGS Training
     print(f"\n--- [2/2] L-BFGS Optimizer: {CONFIG['lbfgs_iterations']} Max Iterations ---")
@@ -390,6 +434,8 @@ def run_single_experiment(cfg, use_ansatz, material, device, idx, total_runs,
         use_ansatz=use_ansatz,
         material=material,
         x_ic=x_ic_dense if not use_ansatz else None,
+        causal_tolerance=CONFIG["causal_tol_end"],
+        n_chunks=CONFIG["causal_n_chunks"],
     )
 
     # Load best overall checkpoint from L-BFGS phase
@@ -630,12 +676,13 @@ def main():
             {"model_type": "KAN",                "n_hidden": 1, "hidden_width": 16, "extra_params": {"G": 3, "k": 2}},
             {"model_type": "WavKAN",             "n_hidden": 1, "hidden_width": 16, "extra_params": {"wavelet_type": "morlet"}},
         ]
-        CONFIG["adam_iterations"]       = 5
-        CONFIG["lbfgs_iterations"]      = 5
-        CONFIG["lbfgs_only_iterations"] = 5
-        CONFIG["ic_warmup_iterations"]  = 5
-        CONFIG["ic_gradnorm_delay"]     = 0
-        CONFIG["output_base_dir"]       = "./experiment_results_test/"
+        CONFIG["adam_iterations"]            = 5
+        CONFIG["lbfgs_iterations"]           = 5
+        CONFIG["lbfgs_only_iterations"]      = 5
+        CONFIG["ic_warmup_iterations"]       = 5
+        CONFIG["ic_gradnorm_delay"]          = 0
+        CONFIG["causal_continuation_budget"] = 0   # disabled in test mode
+        CONFIG["output_base_dir"]            = "./experiment_results_test/"
         configs_to_run = test_configs
     else:
         configs_to_run = MODEL_CONFIGS

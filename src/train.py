@@ -33,6 +33,7 @@ def train_adam(model, inputs, losses_func, iterations, lr=None,
                print_every=500, outdir=None, reuse_optimizer=None,
                use_gradnorm=False, gradnorm_update_freq=100,
                ic_gradnorm_delay=0,
+               causal_tolerance=1.0,
                **kwargs):
     """
     Adam training loop.
@@ -43,6 +44,10 @@ def train_adam(model, inputs, losses_func, iterations, lr=None,
         gradnorm_update_freq: How often to recompute grad-norm weights (default: 100).
         ic_gradnorm_delay: Steps to use fixed IC-heavy weights (1.0/0.5/20.0) before
                            handing off to GradNorm.  Helps when use_ansatz=False.
+        causal_tolerance: ε for causal weighting.  Pass a (start, end) tuple to
+                          linearly ramp from start at iter=0 to end at iter=iterations-1.
+                          E.g. (0.1, 1.0) starts loose (all chunks see gradients) and
+                          tightens to strict causal enforcement by the end of Adam.
     """
     model.train(True)
 
@@ -70,9 +75,17 @@ def train_adam(model, inputs, losses_func, iterations, lr=None,
     for iter in range(iterations):
         optimizer.zero_grad()
 
+        # Compute scheduled causal tolerance for this step
+        if isinstance(causal_tolerance, (list, tuple)):
+            t_lo, t_hi = causal_tolerance
+            tol = t_lo + (t_hi - t_lo) * (iter / max(iterations - 1, 1))
+        else:
+            tol = causal_tolerance
+
         if use_gradnorm:
             # losses_func returns (loss_pde, loss_bc, loss_ic) separately
-            loss_pde, loss_bc, loss_ic = losses_func(model, *inputs, **kwargs)
+            step_kwargs = {**kwargs, 'causal_tolerance': tol}
+            loss_pde, loss_bc, loss_ic = losses_func(model, *inputs, **step_kwargs)
 
             if iter >= ic_gradnorm_delay:
                 w_pde, w_bc, w_ic = weighter.compute_weights(
@@ -87,7 +100,8 @@ def train_adam(model, inputs, losses_func, iterations, lr=None,
             physics_loss_val = loss_pde.item()
             conds_loss_val   = (loss_bc + loss_ic).item()
         else:
-            physics_loss, conds_loss = losses_func(model, *inputs, **kwargs)
+            step_kwargs = {**kwargs, 'causal_tolerance': tol}
+            physics_loss, conds_loss = losses_func(model, *inputs, **step_kwargs)
             total_loss = physics_loss * physics_loss_weight + conds_loss * conds_loss_weight
             physics_loss_val = physics_loss.item()
             conds_loss_val   = conds_loss.item()
