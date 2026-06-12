@@ -26,11 +26,7 @@ Exp/
 │   ├── materials.py           # Homogeneous / TwoLayer / MultiLayer + JAX methods
 │   ├── fd_solver.py           # Leapfrog FD reference solver (conservative form)
 │   ├── run_experiment.py      # Main runner — argparse, SLURM, backend switch
-│   ├── setup_sherlock.sh      # One-time Sherlock env setup (PyTorch CUDA)
-│   ├── setup_sherlock_jax.sh  # One-time Sherlock env setup (JAX CUDA12 + CPU torch)
-│   ├── sherlock_jax.sh        # SLURM array job, JAX backend (528 runs × 30 GPUs) ← send this to collaborators
-│   ├── slurm_array.sh         # SLURM array job, PyTorch backend
-│   └── slurm_h100.sh          # Single H100 sequential sweep (~12–18 h)
+│   └── sherlock.sh            # THE Sherlock script: bash wave/sherlock.sh [NUM_GPUS] [WORKERS_PER_GPU]
 ├── requirements.txt           # All pip deps (PyTorch + JAX + KAN libraries)
 └── experiment_results/        # Output: checkpoints, loss curves, JSON metrics
 ```
@@ -96,12 +92,9 @@ python wave/run_experiment.py --list-runs
 # Single run by ID (SLURM array)
 python wave/run_experiment.py --run-id 42 --output-dir $SCRATCH/wave_results_jax
 
-# Sherlock JAX sweep (recommended): one-time setup, then the array job
-bash wave/setup_sherlock_jax.sh
-sbatch wave/sherlock_jax.sh
-
-# Legacy PyTorch array (note: run-id ordering differs from the JAX 528-run list)
-sbatch wave/slurm_array.sh
+# Sherlock sweep — single self-bootstrapping script (env built on first task):
+bash wave/sherlock.sh                 # 30 GPUs, 1 run per GPU
+bash wave/sherlock.sh 10 2            # 10 GPUs, 2 runs sharing each GPU
 ```
 
 Key CLI flags: `--adam-iterations`, `--lbfgs-iterations`, `--output-dir`, `--backend {jax,pytorch}` (default jax), `--list-runs`.
@@ -119,11 +112,10 @@ pip install -r requirements.txt
 pip install "jax[cpu]" equinox optax jaxopt jaxkan
 
 # JAX GPU (Linux / Sherlock, CUDA 12):
-pip install "jax[cuda12_pip]" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
-pip install equinox optax jaxopt jaxkan
+pip install "jax[cuda12]" equinox optax jaxopt jaxkan
 
-# Sherlock HPC one-time setup:
-bash wave/setup_sherlock.sh
+# Sherlock: no manual setup — wave/sherlock.sh builds $SCRATCH/wave_jax_env
+# automatically on first run (flock-guarded across array tasks).
 ```
 
 Python 3.10 (`.venv` present). Key deps: `torch 2.5.1`, `pykan 0.2.8`, `numpy 1.26.4`, `equinox>=0.11`, `optax>=0.2`, `jaxopt>=0.8`, `jaxkan`.
