@@ -98,7 +98,7 @@ OUTPUT_DIR="$SCRATCH/wave_results"
 mkdir -p "$OUTPUT_DIR"
 
 echo "[INFO] Executing full sweep sequentially..."
-python3 wave/run_experiment.py --output-dir "$OUTPUT_DIR"
+python3 wave/run_experiment.py --backend pytorch --output-dir "$OUTPUT_DIR"
 
 echo "=============================================================="
 echo "  Sweep Job finished at $(date)"

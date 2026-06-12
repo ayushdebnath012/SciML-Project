@@ -4,7 +4,6 @@ import torch
 # Relative package imports
 from src import physics as utils
 
-INTERVAL_X = (0.0, 1.0)
 INTERVAL_T = (0.0, 1.0)
 
 def gaussian_ic(x: torch.Tensor, sigma_g: float = 0.1, x0: float = 0.0) -> torch.Tensor:
@@ -42,14 +41,26 @@ def apply_ansatz(nn_out: torch.Tensor,
 
 
 # Finite Difference reference solution generator
-def solve_reference_fd(f, g, c_speed, Nx=200, CFL=0.9):
+def solve_reference_fd(f, g, material, Nx=200, CFL=0.9, t_max=None):
+    """
+    Conservative-form FD reference on the material's own nondimensional domain
+    [material.x_min, material.x_max] (NOT the legacy INTERVAL_X, which only
+    covered [0, 1] while all materials nondimensionalize to [-1, 1]).
+    """
     import fd_solver
+    t_hi = INTERVAL_T[1] if t_max is None else t_max
+
+    def E_fn(x_arr):
+        return material.E(torch.tensor(x_arr, dtype=torch.float64).reshape(-1, 1)).flatten().numpy()
+
+    def rho_fn(x_arr):
+        return material.rho(torch.tensor(x_arr, dtype=torch.float64).reshape(-1, 1)).flatten().numpy()
+
     return fd_solver.solve_wave_1d(
-        f, g, c_speed, x_limits=INTERVAL_X, t_limits=INTERVAL_T, Nx=Nx, CFL=CFL
+        f, g, E_fn, rho_fn,
+        x_limits=(material.x_min, material.x_max),
+        t_limits=(INTERVAL_T[0], t_hi), Nx=Nx, CFL=CFL
     )
 
 NUM_INPUTS = 2
 NUM_OUTPUTS = 1
-
-# Losses function imported from dedicated losses package
-from src.losses.wave_loss import losses

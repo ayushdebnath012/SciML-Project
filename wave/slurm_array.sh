@@ -6,17 +6,18 @@
 #
 #   sbatch wave/slurm_array.sh
 #
-# This script runs a parameter sweep of 360 configurations across the GPU cluster.
+# This script runs a parameter sweep of 528 configurations across the GPU cluster.
 # Each array task runs a single (material, model_config, ansatz, lbfgs_only) run.
+# Verify the range with: python wave/run_experiment.py --list-runs
 #
 # ── CONFIGURING GPU CONCURRENCY (HOW MANY GPUS TO USE) ────────────────────────
 # By default, this script uses at most 30 GPUs concurrently to avoid queue hogging.
 # You can change the limit in two ways:
 #
-#   1. Edit the limit in the '#SBATCH --array=0-359%30' line below (change %30 to %10, etc.)
+#   1. Edit the limit in the '#SBATCH --array=0-527%30' line below (change %30 to %10, etc.)
 #   2. Override it directly at submission time without editing the script:
 #
-#         sbatch --array=0-359%10 wave/slurm_array.sh
+#         sbatch --array=0-527%10 wave/slurm_array.sh
 #
 #      (The above command will run at most 10 tasks in parallel, using 10 GPUs).
 # =============================================================================
@@ -28,7 +29,7 @@
 #SBATCH -c 2
 #SBATCH --mem=16G
 #SBATCH --time=02:00:00
-#SBATCH --array=0-359%30
+#SBATCH --array=0-527%30
 
 set -euo pipefail
 
@@ -101,7 +102,7 @@ OUTPUT_DIR="$SCRATCH/wave_results"
 mkdir -p "$OUTPUT_DIR"
 
 echo "[INFO] Executing experiment configuration $SLURM_ARRAY_TASK_ID..."
-python3 wave/run_experiment.py --run-id "$SLURM_ARRAY_TASK_ID" --output-dir "$OUTPUT_DIR"
+python3 wave/run_experiment.py --backend pytorch --run-id "$SLURM_ARRAY_TASK_ID" --output-dir "$OUTPUT_DIR"
 
 echo "=============================================================="
 echo "  Task $SLURM_ARRAY_TASK_ID finished at $(date)"

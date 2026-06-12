@@ -9,7 +9,7 @@ torchaudio==2.5.1
 # ── Numerics & plotting ────────────────────────────────────────────────────────
 numpy==1.26.4
 matplotlib==3.10.8
-scipy
+scipy<1.13            # jax<=0.4.x (Windows CPU wheels) needs scipy.linalg.tril, removed in scipy 1.13
 
 # ── KAN architectures (pykan + ALL transitive deps found via source scan) ─────
 pykan==0.2.8
@@ -18,3 +18,12 @@ PyYAML              # kan/utils.py -> yaml
 tqdm                # kan/MultKAN.py -> tqdm
 sympy               # kan/utils.py, kan/MultKAN.py -> sympy
 pandas              # kan/MultKAN.py -> pandas
+
+# ── JAX backend (optional) ─────────────────────────────────────────────────────
+# CPU-only:  pip install "jax[cpu]" equinox optax jaxopt jaxkan
+# GPU CUDA12: pip install "jax[cuda12_pip]" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
+# Then: pip install equinox optax jaxopt jaxkan
+equinox>=0.11.0
+optax>=0.2.0
+jaxopt>=0.8.0
+jaxkan

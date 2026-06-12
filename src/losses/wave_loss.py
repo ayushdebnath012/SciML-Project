@@ -13,8 +13,8 @@ def _call_model(model: nn.Module, x: torch.Tensor, t: torch.Tensor) -> torch.Ten
     and standard PINN (separate x and t inputs) correctly.
     """
     from kan import KAN
-    from src.models import WavKAN
-    if isinstance(model, KAN) or isinstance(model, WavKAN):
+    from src.models import WavKAN, ChebyshevKAN, FourierWavKAN
+    if isinstance(model, (KAN, WavKAN, ChebyshevKAN, FourierWavKAN)):
         return model(torch.cat([x, t], dim=-1))
     return model(x, t)
 
@@ -112,7 +112,8 @@ def causal_pde_loss(model:     nn.Module,
                     sigma_g:   float = 0.1,
                     n_chunks:  int   = 32,
                     tolerance: float = 1.0,
-                    use_ansatz: bool = True) -> torch.Tensor:
+                    use_ansatz: bool = True,
+                    x_ic:      torch.Tensor = None) -> torch.Tensor:
     """
     Causal PDE residual loss (paper ref [30], Wang et al. 2022).
     Splits collocation points into n_chunks time slabs and weights each
@@ -124,19 +125,15 @@ def causal_pde_loss(model:     nn.Module,
     t_max = t.max().item()
     boundaries = torch.linspace(0.0, t_max, n_chunks + 1, device=t.device)
 
-    chunk_losses = []
-    for i in range(n_chunks):
-        if i < n_chunks - 1:
-            mask = (t.squeeze() >= boundaries[i]) & (t.squeeze() < boundaries[i + 1])
-        else:
-            mask = (t.squeeze() >= boundaries[i]) & (t.squeeze() <= boundaries[i + 1])
-        if mask.sum() == 0:
-            chunk_losses.append(torch.zeros(1, device=t.device))
-            continue
-        R = compute_pde_residual(model, x[mask], t[mask], material, sigma_g, use_ansatz=use_ansatz)
-        chunk_losses.append((R ** 2).mean().unsqueeze(0))
-
-    chunk_losses = torch.cat(chunk_losses)                      # (n_chunks,)
+    # Single residual pass over ALL collocation points (one autograd graph,
+    # vs. one graph per chunk), then per-chunk mean-square aggregation.
+    R  = compute_pde_residual(model, x, t, material, sigma_g, use_ansatz=use_ansatz)
+    R2 = (R ** 2).reshape(-1)
+    # Chunk index per point: t in [b_i, b_{i+1}) -> i, with t = t_max in the last chunk.
+    idx = torch.bucketize(t.detach().reshape(-1), boundaries[1:-1].contiguous(), right=True)
+    sums   = torch.zeros(n_chunks, device=t.device, dtype=R2.dtype).index_add(0, idx, R2)
+    counts = torch.zeros(n_chunks, device=t.device, dtype=R2.dtype).index_add(0, idx, torch.ones_like(R2))
+    chunk_losses = sums / counts.clamp(min=1.0)                 # (n_chunks,); empty chunk -> 0
 
     # w_m = exp(-epsilon * sum_{k<m} L_k)  (Eq from ref [30])
     cumsum       = torch.zeros_like(chunk_losses)
@@ -145,7 +142,7 @@ def causal_pde_loss(model:     nn.Module,
     if not use_ansatz:
         # Treat the IC at t=0 as the "0-th chunk" in the causal chain.
         # If the model has not learned the IC, suppress all subsequent chunks (m >= 1).
-        loss_ic_val = ic_loss(model, x, use_ansatz=False, sigma_g=sigma_g).detach()
+        loss_ic_val = ic_loss(model, x_ic if x_ic is not None else x, use_ansatz=False, sigma_g=sigma_g).detach()
         cumsum[1:] += 1000.0 * loss_ic_val
 
     weights      = torch.exp(-tolerance * cumsum)
@@ -242,87 +239,8 @@ class GradNormWeighter:
         return tuple(self.ema_weights.tolist())
 
 
-def physics_loss(model:        nn.Module,
-                 x_int:        torch.Tensor,
-                 t_int:        torch.Tensor,
-                 x_bc:         torch.Tensor,
-                 t_bc:         torch.Tensor,
-                 x_ic:         torch.Tensor,
-                 material:     'MaterialModel',
-                 sigma_g:      float = 0.1,
-                 n_chunks:     int   = 32,
-                 tolerance:    float = 1.0,
-                 use_causal:   bool  = True,
-                 w_pde:        float = 1.0,
-                 w_bc:         float = 1.0,
-                 w_ic:         float = 1.0,
-                 use_ansatz:   bool  = True
-                 ) -> tuple:
-    """
-    Returns (total_loss, loss_pde, loss_bc, loss_ic).
-    Weights w_* come from the grad-norm scheme (updated externally).
-    """
-    # Interior / PDE loss
-    if use_causal:
-        loss_pde = causal_pde_loss(model, x_int, t_int, material,
-                                   sigma_g, n_chunks, tolerance, use_ansatz=use_ansatz)
-    else:
-        R        = compute_pde_residual(model, x_int, t_int, material, sigma_g, use_ansatz=use_ansatz)
-        loss_pde = (R ** 2).mean()
-
-    # Boundary loss: Absorbing Boundary Conditions (ABCs)
-    import problem_data as wave_problem
-    x_bc = x_bc.clone().detach().requires_grad_(True)
-    t_bc = t_bc.clone().detach().requires_grad_(True)
-    u_bc = wave_problem.apply_ansatz(_call_model(model, x_bc, t_bc), x_bc, t_bc, sigma_g, use_ansatz=use_ansatz)
-    grads_bc = torch.autograd.grad(u_bc, [x_bc, t_bc], grad_outputs=torch.ones_like(u_bc), create_graph=True)
-    u_bc_x, u_bc_t = grads_bc
-    c_bc = material.Vp(x_bc)
-    midpoint = (material.x_min + material.x_max) / 2.0
-    is_left = x_bc < midpoint
-    abc_residual = torch.where(is_left, u_bc_t - c_bc * u_bc_x, u_bc_t + c_bc * u_bc_x)
-    loss_bc = (abc_residual ** 2).mean()
-
-    # IC loss  (hard-constraint ansatz makes this ~0, kept for completeness)
-    t_zero  = torch.zeros_like(x_ic).requires_grad_(True)
-    u_ic    = wave_problem.apply_ansatz(_call_model(model, x_ic, t_zero), x_ic, t_zero, sigma_g, use_ansatz=use_ansatz)
-    ic_ref  = wave_problem.gaussian_ic(x_ic, sigma_g)
-    loss_ic_disp = ((u_ic - ic_ref) ** 2).mean()
-    # Velocity IC: u_t(x, 0) = 0 (was missing — a key source of trivial solutions)
-    u_t_ic = torch.autograd.grad(u_ic, t_zero, grad_outputs=torch.ones_like(u_ic), create_graph=True)[0]
-    loss_ic_vel = (u_t_ic ** 2).mean()
-    loss_ic = loss_ic_disp + loss_ic_vel
-
-    total = w_pde * loss_pde + w_bc * loss_bc + w_ic * loss_ic
-    return total, loss_pde, loss_bc, loss_ic
-
-
-def sample_batch(n_int:  int,
-                 n_bc:   int,
-                 n_ic:   int,
-                 x_min:  float,
-                 x_max:  float,
-                 t_max:  float,
-                 device: torch.device) -> tuple:
-    """Fresh random collocation points every step (paper Sec 5)."""
-    # Interior points
-    x_int = torch.rand(n_int, 1, device=device) * (x_max - x_min) + x_min
-    t_int = torch.rand(n_int, 1, device=device) * t_max
-
-    # Boundary points  (x=x_min and x=x_max, random t)
-    t_bc  = torch.rand(n_bc, 1, device=device) * t_max
-    x_bc  = torch.where(torch.rand(n_bc, 1, device=device) < 0.5,
-                        torch.full((n_bc, 1), x_min, device=device),
-                        torch.full((n_bc, 1), x_max, device=device))
-
-    # Initial condition points  (random x, t=0 handled in loss)
-    x_ic  = torch.rand(n_ic, 1, device=device) * (x_max - x_min) + x_min
-
-    return x_int, t_int, x_bc, t_bc, x_ic
-
-
 # ─────────────────────────────────────────────
-# 3. Backwards-compatible standard losses function
+# 3. Standard losses functions
 # ─────────────────────────────────────────────
 
 # Relative weight of displacement vs. velocity IC terms.
@@ -407,8 +325,23 @@ def losses(model, x, t, use_ansatz=False, material=None, x_ic=None):
 _IC_SCALE = 15000.0
 
 
+# ── Residual-Based Attention (RBA) state ──────────────────────────────────────
+# Pointwise multipliers λ_i on the PDE residuals (Anagnostopoulos et al. 2023,
+# arXiv:2307.00379):  λ ← γ λ + η |r_i| / max|r|,  loss = mean((λ r)²).
+# Bounded by η/(1-γ); replaces causal weighting when use_rba=True.
+_rba_state: dict = {"weights": None}
+_RBA_GAMMA = 0.999
+_RBA_ETA   = 0.01
+
+
+def reset_rba_state():
+    """Call at the start of every run so λ never leaks across experiments."""
+    _rba_state["weights"] = None
+
+
 def losses_gradnorm(model, x, t, use_ansatz=False, material=None, x_ic=None,
-                    causal_tolerance=1.0, n_chunks=16):
+                    causal_tolerance=1.0, n_chunks=16, use_causal=True,
+                    use_rba=False, rba_update=True):
     """
     Like `losses()` but returns (loss_pde, loss_bc, loss_ic) as THREE separate
     tensors for grad-norm adaptive weighting.
@@ -416,6 +349,13 @@ def losses_gradnorm(model, x, t, use_ansatz=False, material=None, x_ic=None,
     causal_tolerance: ε for the causal weighting.  train_adam injects a linearly
         scheduled value each step when causal_tolerance=(start, end) is passed.
     n_chunks: number of causal time slabs (default 16; fewer = faster propagation).
+    use_causal: if False, loss_pde is the plain (unweighted) mean-square residual.
+        Use this for the L-BFGS phase — the causal weights are recomputed on every
+        closure call, so leaving them on makes the objective change *during* line
+        searches, violating L-BFGS's deterministic-objective assumption.
+    use_rba: Residual-Based Attention pointwise weighting (replaces causal
+        weighting; takes precedence over use_causal).  rba_update=False freezes
+        the λ multipliers (needed inside L-BFGS line searches).
     x_ic: optional dense spatial grid for IC evaluation (see losses()).
     """
     if material is None:
@@ -424,10 +364,31 @@ def losses_gradnorm(model, x, t, use_ansatz=False, material=None, x_ic=None,
 
     import problem_data as wave_problem
 
-    loss_pde = causal_pde_loss(
-        model, x, t, material, sigma_g=0.1,
-        n_chunks=n_chunks, tolerance=causal_tolerance, use_ansatz=use_ansatz
-    )
+    if use_rba:
+        R    = compute_pde_residual(model, x, t, material, sigma_g=0.1, use_ansatz=use_ansatz)
+        absR = R.detach().abs().reshape(-1)
+        lam  = _rba_state["weights"]
+        if lam is None or lam.shape[0] != absR.shape[0]:
+            lam = torch.ones_like(absR)
+        if rba_update:
+            lam = _RBA_GAMMA * lam + _RBA_ETA * absR / (absR.max() + 1e-12)
+            _rba_state["weights"] = lam
+        loss_pde = ((lam.reshape(-1, 1) * R) ** 2).mean()
+        # Sidecar for the stationary checkpoint metric + causal bookkeeping:
+        # report the UNWEIGHTED residual, and weights=1 so the training loop
+        # sees w_min=1 (no causal continuation needed in RBA mode).
+        _causal_state["weights"]      = torch.ones(1)
+        _causal_state["chunk_losses"] = (R.detach() ** 2).mean().reshape(1).cpu()
+        _causal_state["n_chunks"]     = 1
+    elif use_causal:
+        loss_pde = causal_pde_loss(
+            model, x, t, material, sigma_g=0.1,
+            n_chunks=n_chunks, tolerance=causal_tolerance, use_ansatz=use_ansatz,
+            x_ic=x_ic,
+        )
+    else:
+        R = compute_pde_residual(model, x, t, material, sigma_g=0.1, use_ansatz=use_ansatz)
+        loss_pde = (R ** 2).mean()
 
     # ── BC loss: Absorbing Boundary Conditions ────────────────────────────────
     # Use unique time values to avoid repeating BC evaluations from the meshgrid.
@@ -448,7 +409,7 @@ def losses_gradnorm(model, x, t, use_ansatz=False, material=None, x_ic=None,
 
     # ── IC loss ───────────────────────────────────────────────────────────────
     if use_ansatz:
-        loss_ic = torch.zeros(1, device=x.device)
+        loss_ic = torch.zeros((), device=x.device)
     else:
         x_for_ic = x_ic if x_ic is not None else x
         loss_ic = _IC_SCALE * ic_loss(model, x_for_ic, use_ansatz=False, sigma_g=0.1)

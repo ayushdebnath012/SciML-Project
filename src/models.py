@@ -302,9 +302,6 @@ class WavKANLinear(nn.Module):
         nn.init.kaiming_uniform_(self.wavelet_weights, a=math.sqrt(5))
         nn.init.kaiming_uniform_(self.weight1, a=math.sqrt(5))
 
-        # Base activation function #not used for this experiment
-        self.base_activation = nn.SiLU()
-
         # Batch normalization REMOVED
 
     def wavelet_transform(self, x):
@@ -384,6 +381,72 @@ class WavKAN(nn.Module):
         for layer in self.layers:
             x = layer(x)
         return x
+
+
+class ChebyshevKANLinear(nn.Module):
+    """
+    Chebyshev-polynomial KAN layer (cPIKAN basis, Shukla et al. 2024,
+    arXiv:2406.02917).  Each edge (i -> o) carries a degree-D Chebyshev
+    expansion; inputs are squashed to [-1, 1] with tanh before evaluating
+    the recurrence T_{d+1}(x) = 2x T_d(x) - T_{d-1}(x).
+    """
+
+    def __init__(self, in_features, out_features, degree=5):
+        super().__init__()
+        self.in_features  = in_features
+        self.out_features = out_features
+        self.degree       = degree
+        self.coeffs = nn.Parameter(torch.empty(out_features, in_features, degree + 1))
+        # Variance-preserving init recommended for Chebyshev KANs
+        nn.init.normal_(self.coeffs, mean=0.0,
+                        std=1.0 / math.sqrt(in_features * (degree + 1)))
+
+    def forward(self, x):                       # x: (N, in)
+        x = torch.tanh(x)                       # map to Chebyshev domain [-1, 1]
+        T = [torch.ones_like(x), x]
+        for _ in range(2, self.degree + 1):
+            T.append(2.0 * x * T[-1] - T[-2])
+        T = torch.stack(T[: self.degree + 1], dim=-1)   # (N, in, D+1)
+        return torch.einsum('nid,oid->no', T, self.coeffs)
+
+
+class ChebyshevKAN(nn.Module):
+    """Stack of ChebyshevKANLinear layers; input is concatenated (N, 2) [x, t]."""
+
+    def __init__(self, layers_hidden, degree=5):
+        super().__init__()
+        self.layers = nn.ModuleList([
+            ChebyshevKANLinear(i, o, degree=degree)
+            for i, o in zip(layers_hidden[:-1], layers_hidden[1:])
+        ])
+
+    def forward(self, x):
+        for layer in self.layers:
+            x = layer(x)
+        return x
+
+
+class FourierWavKAN(nn.Module):
+    """
+    Random Fourier Feature embedding -> WavKAN trunk.
+
+    Combines the spectral-bias fix that makes MLPs work on sharp velocity
+    models (FF-PINNs, arXiv:2409.03536) with the wavelet KAN representation.
+    Input is concatenated (N, 2) [x, t], like WavKAN.
+    """
+
+    def __init__(self, hidden_layers=2, hidden_units=16,
+                 n_fourier=32, sigma=3.0,
+                 wavelet_type='mexican_hat', use_base=True):
+        super().__init__()
+        self.B = nn.Parameter(torch.randn(n_fourier, 2) * sigma)
+        width = [2 * n_fourier] + [hidden_units] * hidden_layers + [1]
+        self.kan = WavKAN(width, wavelet_type=wavelet_type, use_base=use_base)
+
+    def forward(self, x):                       # x: (N, 2)
+        proj = x @ self.B.T
+        phi  = torch.cat([torch.cos(proj), torch.sin(proj)], dim=-1)
+        return self.kan(phi)
 
 
 def build_kan(n_inputs, n_outputs, n_hidden, hidden_width, G, k):
