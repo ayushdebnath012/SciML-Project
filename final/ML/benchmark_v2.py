@@ -19,6 +19,7 @@ from training_code import (
     VanillaPINN, FourierFeaturePINN, PirateNet,
     apply_ansatz, compute_pde_residual, fd_reference, evaluate
 )
+from src.models import FNOWrapper
 
 try:
     from kan import KAN
@@ -37,18 +38,19 @@ FPS            = 30
 
 # Which architectures to benchmark
 RUN_ARCHS = [#"vanilla",
-             #"fourier", 
+             #"fourier",
              #"pirate",
              #"piann_fd",
              #"piann_ad",
-             "pikan",
+             #"pikan",
+             "fno",
             ]
 
 
 
 EXPERIMENTS = {
-    #"exp1_homogeneous": HomogeneousModel(),
-    "exp2_twolayer":    TwoLayerModel(),
+    "exp1_homogeneous": HomogeneousModel(),
+    #"exp2_twolayer":    TwoLayerModel(),
     #"exp3_multilayer":  MultiLayerModel(),
 }
 
@@ -62,7 +64,8 @@ ARCH_LABELS = {
     "pirate":  "PirateNet",
     "piann_fd": "PIANN (FD)",
     "piann_ad": "PIANN (AD)",
-    "pikan": "PIKAN"
+    "pikan": "PIKAN",
+    "fno": "FNO"
 }
 T_MAX_DICT = {
     "exp1_homogeneous": 0.75,
@@ -75,7 +78,8 @@ ARCH_COLORS = {
     "pirate":  "#27AE60",
     "piann_fd": "#C0392B",
     "piann_ad": "#8E44AD",
-    "pikan": "#1ABC9C"
+    "pikan": "#1ABC9C",
+    "fno": "#F1C40F"
 }
 def load_models(prefix):
     """
@@ -180,6 +184,15 @@ def load_models(prefix):
                 print(f"  [OK] Loaded {arch} model (pykan 2-5-5-5-1)")
                 continue
             
+            elif arch == "fno":
+                width = sd['fno.fc0.weight'].shape[0]
+                modes = sd['fno.spectral_layers.0.weight_real'].shape[-1]
+                layer_ids = [int(k.split('.')[2]) for k in sd.keys()
+                             if k.startswith('fno.spectral_layers.') and k.endswith('.weight_real')]
+                n_layers = max(layer_ids) + 1
+                nx = sd['x_grid'].shape[0]
+                model = FNOWrapper(nx=nx, modes=modes, width=width, n_layers=n_layers).to(DEVICE)
+
             elif arch.startswith("piann"):
                 # We assume standard 128 hidden size for PIANN benchmarks unless specified
                 model = PIANN(x_min=-1.0, x_max=1.0, N=128, hidden_size=128).to(DEVICE)
@@ -354,8 +367,9 @@ def plot_residual_map(models, material, sigma_g_nd, prefix, save_dir):
     fig.suptitle(f"{material.name} - PDE Residual |R(x,t)|", fontsize=14)
 
     for col, (arch, model) in enumerate(models.items()):
-        if arch.startswith("piann"):
-            # PIANN's pointwise forward uses torch.unique which breaks autograd
+        if arch.startswith("piann") or arch == "fno":
+            # PIANN's pointwise forward uses torch.unique which breaks autograd;
+            # FNO's grid-interpolating forward is not smoothly differentiable in x either.
             res = np.zeros((nt_r, nx_r))
         else:
             with torch.enable_grad():

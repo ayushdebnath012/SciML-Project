@@ -343,3 +343,100 @@ def build_kan(n_inputs, n_outputs, n_hidden, hidden_width, G, k):
 
 def num_parameters_kan(n_inputs, n_outputs, n_hidden, hidden_width, G, k):
     return (n_inputs * hidden_width + (n_hidden-1) * hidden_width**2 + n_outputs * hidden_width) * (2 + G + k)
+
+
+# ─────────────────────────────────────────────
+# 5. Fourier Neural Operator (FNO)
+# ─────────────────────────────────────────────
+
+class SpectralConv1d(nn.Module):
+    """1D spectral convolution: truncated-mode complex multiply in Fourier space."""
+    def __init__(self, in_channels: int, out_channels: int, modes: int):
+        super().__init__()
+        self.in_channels = in_channels
+        self.out_channels = out_channels
+        self.modes = modes
+        scale = 1.0 / (in_channels * out_channels)
+        self.weight_real = nn.Parameter(scale * torch.randn(in_channels, out_channels, modes))
+        self.weight_imag = nn.Parameter(scale * torch.randn(in_channels, out_channels, modes))
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        # x: (B, in_channels, Nx)
+        nx = x.shape[-1]
+        x_ft = torch.fft.rfft(x, dim=-1)
+        m = min(self.modes, x_ft.shape[-1])
+        weight = torch.complex(self.weight_real[..., :m], self.weight_imag[..., :m])
+        out_ft = torch.zeros(x.shape[0], self.out_channels, x_ft.shape[-1], dtype=torch.cfloat, device=x.device)
+        out_ft[:, :, :m] = torch.einsum("bix,iox->box", x_ft[:, :, :m], weight)
+        return torch.fft.irfft(out_ft, n=nx, dim=-1)
+
+
+class FNO1d(nn.Module):
+    """Fourier Neural Operator mapping a gridded (x, E, g, t) field to u(x, t)."""
+    def __init__(self, modes: int = 32, width: int = 64, n_layers: int = 4, in_channels: int = 4):
+        super().__init__()
+        self.fc0 = nn.Linear(in_channels, width)
+        self.spectral_layers = nn.ModuleList([SpectralConv1d(width, width, modes) for _ in range(n_layers)])
+        self.w_layers = nn.ModuleList([nn.Conv1d(width, width, 1) for _ in range(n_layers)])
+        self.fc1 = nn.Linear(width, 128)
+        self.fc2 = nn.Linear(128, 1)
+
+    def forward(self, a: torch.Tensor) -> torch.Tensor:
+        # a: (B, Nx, in_channels)
+        x = self.fc0(a).permute(0, 2, 1)                 # (B, width, Nx)
+        for spectral, w in zip(self.spectral_layers, self.w_layers):
+            x = F.gelu(spectral(x) + w(x))
+        x = x.permute(0, 2, 1)                            # (B, Nx, width)
+        return self.fc2(F.gelu(self.fc1(x)))              # (B, Nx, 1)
+
+
+def _fno_gaussian_ic(x: torch.Tensor, sigma_g, x0: float = 0.0) -> torch.Tensor:
+    """Same Gaussian-derivative IC as ansatz_losses.gaussian_ic, kept local to avoid a physics<->models import cycle."""
+    f = torch.exp(-0.5 * ((x - x0) / sigma_g) ** 2)
+    dfdx = -(x - x0) / sigma_g**2 * f
+    return dfdx / (dfdx.abs().max() + 1e-12)
+
+
+def _interp1d(xp: torch.Tensor, fp: torch.Tensor, x: torch.Tensor) -> torch.Tensor:
+    """Linear interpolation of (xp, fp) onto query points x. xp must be sorted ascending."""
+    idx = torch.searchsorted(xp, x, right=True).clamp(1, xp.shape[0] - 1)
+    x0, x1 = xp[idx - 1], xp[idx]
+    f0, f1 = fp[idx - 1], fp[idx]
+    w = ((x - x0) / (x1 - x0).clamp_min(1e-12)).clamp(0.0, 1.0)
+    return f0 + w * (f1 - f0)
+
+
+class FNOWrapper(nn.Module):
+    """Wraps FNO1d to match the model(x, t) -> (N,1) pointwise interface used by evaluate()/benchmark_v2.py."""
+    def __init__(self, nx: int = 512, modes: int = 32, width: int = 64, n_layers: int = 4, sigma_g: float = 0.1):
+        super().__init__()
+        self.fno = FNO1d(modes=modes, width=width, n_layers=n_layers, in_channels=4)
+        self.sigma_g = sigma_g
+        self.register_buffer("x_grid", torch.linspace(-1.0, 1.0, nx))
+        self.register_buffer("E_grid", torch.ones(nx))
+
+    def set_material(self, material, sigma_g: float = None) -> None:
+        if sigma_g is not None:
+            self.sigma_g = sigma_g
+        with torch.no_grad():
+            x = torch.linspace(material.x_min, material.x_max, self.x_grid.shape[0])
+            self.x_grid.copy_(x)
+            self.E_grid.copy_(material.E(x))
+
+    def grid_solution(self, t_scalar: float, sigma_g: float = None) -> torch.Tensor:
+        """Full-grid raw network output at a single time t_scalar (pre-ansatz)."""
+        sg = self.sigma_g if sigma_g is None else sigma_g
+        x = self.x_grid
+        g = _fno_gaussian_ic(x, sg)
+        t_col = torch.full_like(x, float(t_scalar))
+        inp = torch.stack([x, self.E_grid, g, t_col], dim=-1).unsqueeze(0)  # (1, Nx, 4)
+        return self.fno(inp).squeeze(0).squeeze(-1)  # (Nx,)
+
+    def forward(self, x: torch.Tensor, t: torch.Tensor) -> torch.Tensor:
+        x_flat, t_flat = x.reshape(-1), t.reshape(-1)
+        out = torch.empty_like(x_flat)
+        for tu in torch.unique(t_flat):
+            sol = self.grid_solution(tu.item())
+            mask = t_flat == tu
+            out[mask] = _interp1d(self.x_grid, sol, x_flat[mask])
+        return out.unsqueeze(1)

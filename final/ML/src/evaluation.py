@@ -24,6 +24,7 @@ ARCH_LABELS = {
     "piann_fd": "PIANN (FD)",
     "piann_ad": "PIANN (AD)",
     "pikan": "PIKAN",
+    "fno": "FNO",
     "WaveKAN_3-10": "WaveKAN (3 layers)",
     "WaveKAN_5-10": "WaveKAN (5 layers)",
     "WaveKAN_7-10": "WaveKAN (7 layers)"
@@ -36,6 +37,7 @@ ARCH_COLORS = {
     "piann_fd": "#C0392B",
     "piann_ad": "#8E44AD",
     "pikan": "#1ABC9C",
+    "fno": "#F1C40F",
     "WaveKAN_3-10": "#D35400",
     "WaveKAN_5-10": "#C0392B",
     "WaveKAN_7-10": "#9B59B6"
@@ -488,8 +490,9 @@ def plot_residual_map(models, material, sigma_g_nd, prefix, save_dir):
     fig.suptitle(f"{material.name} - PDE Residual |R(x,t)|", fontsize=14)
 
     for col, (arch, model) in enumerate(models.items()):
-        if arch.startswith("piann"):
-            # PIANN's pointwise forward uses torch.unique which breaks autograd
+        if arch.startswith("piann") or arch == "fno":
+            # PIANN's pointwise forward uses torch.unique which breaks autograd;
+            # FNO's grid-interpolating forward is not smoothly differentiable in x either.
             res = np.zeros((nt_r, nx_r))
         else:
             with torch.enable_grad():

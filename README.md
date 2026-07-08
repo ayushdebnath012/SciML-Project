@@ -79,6 +79,46 @@ python wave/run_experiment.py
 
 Useful flags: `--backend {jax,pytorch}` (default `jax`), `--adam-iterations N`, `--lbfgs-iterations N`, `--output-dir DIR`, `--list-runs`.
 
+## FNO / Neural-Operator Baselines
+
+The PINN/KAN sweep learns a coordinate map `(x, t) -> u(x,t)` with PDE losses.
+The FNO baseline is separate because it is a supervised grid-to-grid operator:
+
+```text
+[E(x), rho(x), g(x), x, t] -> u(x,t)
+```
+
+Run a quick smoke test:
+
+```bash
+python wave/run_fno_baseline.py --test --model all
+```
+
+Run a fuller FNO baseline:
+
+```bash
+python wave/run_fno_baseline.py --model fno --num-samples 64 --nx 128 --nt 128 --epochs 200
+```
+
+Run a small CPU-friendly pilot against the CNN comparator:
+
+```bash
+python wave/run_fno_baseline.py --model all --num-samples 16 --nx 48 --nt 48 --epochs 20 --width 16 --modes-x 8 --modes-t 8
+```
+
+For Kaggle T4 GPU runs, use the preset launcher:
+
+```bash
+python kaggle/run_fno_t4.py --preset smoke
+python kaggle/run_fno_t4.py --preset medium
+python kaggle/run_fno_t4.py --preset full
+```
+
+The script generates finite-difference training data, caches it under
+`operator_data/`, trains `fno` and/or `cnn` baselines, and writes validation
+metrics plus Homogeneous/TwoLayer/MultiLayer benchmark plots to
+`operator_results/`.
+
 ## Configuring the sweep
 
 Edit `wave/run_experiment.py`:
