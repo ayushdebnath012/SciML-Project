@@ -132,45 +132,34 @@ MODEL_CONFIGS = [
     {"model_type": "WavKAN", "n_hidden": 4, "hidden_width": 16, "extra_params": {"wavelet_type": "morlet"}},
     {"model_type": "WavKAN", "n_hidden": 4, "hidden_width": 16, "extra_params": {"wavelet_type": "mexican_hat"}},
 
-    # ── NEW EXPERIMENT ARMS ───────────────────────────────────────────────────
-    # Optional per-config keys (default values shown):
-    #   "optimizer": "adam"            -> "soap"  (rotated-Adam quasi-2nd-order,
-    #                                              arXiv:2409.11321 / 2502.00604)
-    #   "weighting": "causal_gradnorm" -> "rba"   (residual-based attention
-    #                                              pointwise weights, arXiv:2307.00379;
-    #                                              replaces causal weighting)
-    # Variant configs are excluded from the L-BFGS-only sweep (no Adam phase
-    # there, so optimizer/weighting variants would be duplicates).
 
-    # 6. ChebyshevKAN sweeps (cPIKAN basis — the KAN variant that is actually
-    #    competitive on PDEs per Shukla et al. 2024, arXiv:2406.02917)
+    # 6. ChebyshevKAN sweeps
     {"model_type": "ChebyshevKAN", "n_hidden": 2, "hidden_width": 16, "extra_params": {"degree": 3}},
     {"model_type": "ChebyshevKAN", "n_hidden": 2, "hidden_width": 16, "extra_params": {"degree": 5}},
     {"model_type": "ChebyshevKAN", "n_hidden": 3, "hidden_width": 16, "extra_params": {"degree": 5}},
     {"model_type": "ChebyshevKAN", "n_hidden": 4, "hidden_width": 16, "extra_params": {"degree": 5}},
 
     # 7. FourierWavKAN: random Fourier embedding -> WavKAN trunk
-    #    (spectral-bias fix for sharp material interfaces, arXiv:2409.03536)
     {"model_type": "FourierWavKAN", "n_hidden": 2, "hidden_width": 16, "extra_params": {"n_fourier": 32, "sigma": 3.0, "wavelet_type": "mexican_hat"}},
     {"model_type": "FourierWavKAN", "n_hidden": 2, "hidden_width": 16, "extra_params": {"n_fourier": 32, "sigma": 3.0, "wavelet_type": "morlet"}},
     {"model_type": "FourierWavKAN", "n_hidden": 3, "hidden_width": 16, "extra_params": {"n_fourier": 32, "sigma": 3.0, "wavelet_type": "mexican_hat"}},
     {"model_type": "FourierWavKAN", "n_hidden": 3, "hidden_width": 16, "extra_params": {"n_fourier": 32, "sigma": 3.0, "wavelet_type": "morlet"}},
 
-    # 8. SOAP optimizer arms (representative arch from each family)
+    # 8. SOAP optimizer arms
     {"model_type": "PINN",               "n_hidden": 3, "hidden_width": 64, "extra_params": {},                                                          "optimizer": "soap"},
     {"model_type": "FourierFeaturePINN", "n_hidden": 3, "hidden_width": 64, "extra_params": {"n_fourier": 128, "sigma": 3.0},                            "optimizer": "soap"},
     {"model_type": "PirateNet",          "n_hidden": 3, "hidden_width": 64, "extra_params": {"n_fourier": 128, "sigma": 3.0},                            "optimizer": "soap"},
     {"model_type": "WavKAN",             "n_hidden": 2, "hidden_width": 16, "extra_params": {"wavelet_type": "mexican_hat"},                             "optimizer": "soap"},
     {"model_type": "ChebyshevKAN",       "n_hidden": 2, "hidden_width": 16, "extra_params": {"degree": 5},                                               "optimizer": "soap"},
 
-    # 9. RBA weighting arms (same representative archs)
+    # 9. RBA weighting arms
     {"model_type": "PINN",               "n_hidden": 3, "hidden_width": 64, "extra_params": {},                                                          "weighting": "rba"},
     {"model_type": "FourierFeaturePINN", "n_hidden": 3, "hidden_width": 64, "extra_params": {"n_fourier": 128, "sigma": 3.0},                            "weighting": "rba"},
     {"model_type": "PirateNet",          "n_hidden": 3, "hidden_width": 64, "extra_params": {"n_fourier": 128, "sigma": 3.0},                            "weighting": "rba"},
     {"model_type": "WavKAN",             "n_hidden": 2, "hidden_width": 16, "extra_params": {"wavelet_type": "mexican_hat"},                             "weighting": "rba"},
     {"model_type": "ChebyshevKAN",       "n_hidden": 2, "hidden_width": 16, "extra_params": {"degree": 5},                                               "weighting": "rba"},
 
-    # 10. SOAP + RBA combined (best MLP-family + best KAN-family candidates)
+    # 10. SOAP + RBA combined
     {"model_type": "FourierFeaturePINN", "n_hidden": 3, "hidden_width": 64, "extra_params": {"n_fourier": 128, "sigma": 3.0},                            "optimizer": "soap", "weighting": "rba"},
     {"model_type": "ChebyshevKAN",       "n_hidden": 2, "hidden_width": 16, "extra_params": {"degree": 5},                                               "optimizer": "soap", "weighting": "rba"},
 ]

@@ -20,6 +20,11 @@ experiment_results_test/
 model/
 wave/hyperparam_tuning/model/
 wave/hyperparam_tuning/hpt_results/
+CLAUDE.md
+
+# Graphify output
+graphify-out/
+papers/graphify-out/
 
 # Jupyter
 .ipynb_checkpoints/
