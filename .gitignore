@@ -1,1 +1,29 @@
-__pycache__/ 
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+*.pyi
+
+# Virtual environments
+venv/
+.venv/
+env/
+ML/venv/
+
+# Cloned third-party repo (not our code)
+ML/pinn-vs-pikan/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Large data / model artifacts
+*.npz
+*.npy
+*.mat
+*.pkl
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
