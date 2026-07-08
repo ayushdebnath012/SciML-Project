@@ -454,7 +454,7 @@ def animate_results(models, material, x_fd, t_fd_nd, u_fd, sigma_g_nd, prefix, s
     
     out_path = os.path.join(save_dir, f"{prefix}_animation.gif")
     anim.save(out_path, writer='pillow', fps=FPS)
-    print(f"  ✓ Saved animation: {out_path}")
+    print(f"  [OK] Saved animation: {out_path}")
     plt.close()
 
 def animate_error(models, material, x_fd, t_fd_nd, u_fd, sigma_g_nd, prefix, save_dir):
@@ -511,7 +511,7 @@ def animate_error(models, material, x_fd, t_fd_nd, u_fd, sigma_g_nd, prefix, sav
 
     out_path = os.path.join(save_dir, f"{prefix}_error_animation.gif")
     anim.save(out_path, writer='pillow', fps=FPS)
-    print(f"  ✓ Saved error animation: {out_path}")
+    print(f"  [OK] Saved error animation: {out_path}")
     plt.close()
 
 # ===============================================================================
