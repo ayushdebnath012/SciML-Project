@@ -15,7 +15,7 @@ except ImportError:
     PIANN = None
 
 from src.models import (
-    VanillaPINN, FourierFeaturePINN, PirateNet, KANWrapper
+    VanillaPINN, FourierFeaturePINN, PirateNet, KANWrapper, FNOWrapper
 )
 
 # ─────────────────────────────────────────────
@@ -119,6 +119,15 @@ def load_models(prefix, model_dir="Models", run_archs=None, device=None):
                 print(f"  [OK] Loaded {arch} model (pykan 2-5-5-5-1)")
                 continue
             
+            elif arch == "fno":
+                width = sd['fno.fc0.weight'].shape[0]
+                modes = sd['fno.spectral_layers.0.weight_real'].shape[-1]
+                layer_ids = [int(k.split('.')[2]) for k in sd.keys()
+                             if k.startswith('fno.spectral_layers.') and k.endswith('.weight_real')]
+                n_layers = max(layer_ids) + 1
+                nx = sd['x_grid'].shape[0]
+                model = FNOWrapper(nx=nx, modes=modes, width=width, n_layers=n_layers).to(device)
+
             elif "wavekan" in arch.lower():
                 from src.models import WavKAN
                 # Demention reconstruction from state dict

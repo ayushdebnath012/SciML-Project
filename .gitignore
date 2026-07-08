@@ -13,8 +13,14 @@ env/
 # Experiment outputs (large binary files)
 experiment_results/
 experiment_results_test/
+operator_data/
+operator_results/
+operator_results*/
+operator_results_test/
+kaggle_outputs/
 *.pkl
 *.npz
+*.pt
 
 # KAN model cache
 model/
