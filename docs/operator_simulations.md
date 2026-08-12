@@ -94,6 +94,17 @@ changes) and sheds a fainter secondary line travelling the other way
 (reflection). The `layered` GIF shows this most clearly; `homogeneous` is a
 clean, straight V with no reflections at all.
 
+![Homogeneous medium](figures/frame_homogeneous.png)
+
+*Homogeneous medium, `c` constant. A clean straight V with no reflections; FNO
+and PFNO are visually indistinguishable from the reference (0.13 % and 0.55 %).*
+
+![Layered medium](figures/frame_layered.png)
+
+*Layered medium, the hardest family. Every interface splits the wave, producing
+the secondary lines visible in the space–time panels. DeepONet's amplitude
+deficit against the grey reference is clearly visible in the top row.*
+
 ---
 
 ## 3. The physics being learned
@@ -448,6 +459,13 @@ For context, FNO at 2.07 % on 512 samples beats this repository's own
 > 24.57 %. The validation split here is also random rather than spatial, which
 > is harmless for synthetic samples drawn i.i.d. but not for real geology.
 
+![Training curves](figures/fig_training_curves.png)
+
+*Convergence of the three operators. All three begin at ≈100 % — the score of
+predicting zero — and the dotted line marks that level. FNO's visible
+oscillation is the one-cycle schedule at high learning rate; the best checkpoint
+by validation MSE is retained, not the final state.*
+
 **Per material family** (mean relative `L2`, 102 validation samples):
 
 | family | n | FNO | DeepONet | PFNO |
@@ -457,6 +475,13 @@ For context, FNO at 2.07 % on 512 samples beats this repository's own
 | two-layer | 26 | 1.86 % | 16.22 % | 3.96 % |
 | layered (3–7) | 25 | 5.28 % | 23.78 % | 9.55 % |
 | **all** | **102** | **2.07 %** | **14.43 %** | **4.26 %** |
+
+![Error by material family](figures/fig_error_by_material.png)
+
+*Validation error by material family. The ordering is identical for all three
+models and matches physical intuition: error grows with the number of
+interfaces, since each interface adds a reflected and a transmitted wave the
+operator must place correctly.*
 
 The ordering is identical for all three models and matches physical intuition:
 error grows with the number of interfaces, because each interface adds a
@@ -507,6 +532,13 @@ source position `x_s`, and the peak frequency `f`.
 | PFNO | **31.89 %** | 4.26 % |
 | DeepONet | **91.82 %** | 14.43 % |
 
+![Forced arm](figures/fig_source_arm.png)
+
+*Forced arm, a two-layer sample. The source position (dashed red) and the Ricker
+wavelet are now inputs. FNO tracks the reference; PFNO reproduces the arrival but
+fills the quiet region with speckle; DeepONet produces a smeared blob where the
+reference has sharp arrivals.*
+
 ### The residuals
 
 Diagnostics, not training objectives — the loss is still plain supervised MSE.
@@ -553,6 +585,12 @@ interpretable alongside the field error.**
 
 Among models producing a wave of the right amplitude, the residuals rank as the
 field error does: FNO ~2x the reference floor, PFNO ~4x.
+
+![IC/BC residuals](figures/fig_ic_bc_residuals.png)
+
+*The same three models, three ways. DeepONet is worst on field error (a) yet best
+on boundary residual (b); panel (c) is the explanation — the wave amplitude
+reaching its boundary is a sixth of the reference's.*
 
 ### PFNO's initial-velocity residual
 
@@ -607,6 +645,12 @@ supervised baseline. The model is *more* faithful in amplitude, so the gain is
 real rather than the degenerate solution returning. Likely cause: regularisation
 — with 410 training samples on a hard problem, the constraints supply true
 information the data alone does not pin down.
+
+![Physics-informed training](figures/fig_physics_informed.png)
+
+*(a) Every metric, normalised by its own supervised baseline; below the dashed
+line is an improvement. (b) The same weight applied to all three architectures
+gives three different outcomes.*
 
 ### Three architectures, three outcomes (all at `lambda = 1`)
 
@@ -676,6 +720,17 @@ per-model reference values (`Vp_ref`, `rho_ref`, the medians) gives
 `c~ = sqrt(E~/rho~) = Vp / Vp_ref`, so genuine sample-to-sample speed variation
 survives instead of being normalized away.
 
+![Marmousi operator dataset](figures/marmousi_dataset.png)
+
+*The Marmousi arm. Top: one profile per contrast band, with the trace it was
+drawn from and the depth of the window centre; right, the distribution of
+within-sample heterogeneity against the synthetic sampler — real geology varies
+4.1× more violently along a column. Bottom: the FD reference fields, with a
+synthetic sample for comparison. The clean V of the synthetic case fills with
+reflections once the medium is real. Regenerate with
+[`wave/operator_sim/figure_marmousi_dataset.py`](../wave/operator_sim/figure_marmousi_dataset.py),
+which recomputes every number in the figure, including the caption's separation.*
+
 ### 12.1 Three methodological changes the real data forces
 
 **Density varies (Marmousi only).** Marmousi ships a density model, so channel 1
@@ -690,7 +745,7 @@ traces apart the difference is only 3.7 %. Drawing 512 samples at random from
 resulting "generalization" error is really an interpolation error. Validation
 instead takes four contiguous trace blocks spread across the model, with 320 m
 buffers discarded on each side; the realized minimum train-to-validation
-separation is 328 m (Marmousi), 400 m (Overthrust), 420 m (Salt). The split
+separation is 324 m (Marmousi), 400 m (Overthrust), 420 m (Salt). The split
 ships inside the dataset as a `split` array, and `train_operators.py` honours it
 when present, falling back to its random split otherwise.
 
@@ -1085,6 +1140,16 @@ Stated plainly, so the numbers are not over-read:
   here has been trained or evaluated that way.
 - **Fixed 64 × 64 grid.** FNO and PFNO are in principle discretization-invariant,
   but zero-shot super-resolution has not been tested here.
+- **The forced arm's target is not grid-converged.** §12.2 measures 9.72 % mean
+  target error at `refine=1`, and the synthetic arm was rebuilt at `refine=8` in
+  response — but the forced arm (§10, §11) was not.
+  [`fd_source.py`](../wave/operator_sim/fd_source.py) steps directly on the
+  64-point output grid and has no refinement path, and
+  `generate_dataset_source.py` has no `--refine` flag. Fixing it means adding
+  refinement to the forced solver — interpolate `E`, `rho` and `s(x)` up to a
+  fine grid, solve, subsample — not a flag change. Every number in §10 and §11
+  therefore carries the caveat §12.2 raises for the original synthetic arm, and
+  §12.2's DeepONet result suggests the ranking there could move.
 - **In-distribution evaluation only.** Within each arm, validation materials
   come from the same distribution as training. §12 widens this to real
   geological sections, and its splits are spatially disjoint, but no arm is

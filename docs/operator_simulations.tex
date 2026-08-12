@@ -965,6 +965,19 @@ $\rho^{\mathrm{ref}}$) gives $\tilde c=\sqrt{\tilde E/\tilde\rho}=V_p/V_p^{\math
 so genuine sample-to-sample speed variation survives instead of being normalised
 away.
 
+\begin{figure}[htbp]
+\centering
+\makebox[\textwidth][c]{\includegraphics[width=1.18\textwidth]{figures/marmousi_dataset.png}}
+\caption{The Marmousi arm. Top: one profile per contrast band, with the trace it
+was drawn from and the depth of the window centre; right, the distribution of
+within-sample heterogeneity against the synthetic sampler --- real geology varies
+$4.1\times$ more violently along a column. Bottom: the FD reference fields, with
+a synthetic sample for comparison; the clean V of the synthetic case fills with
+reflections once the medium is real. Regenerate with
+\texttt{wave/operator\_sim/figure\_marmousi\_dataset.py}, which recomputes every
+number in the figure, including the caption's separation.}
+\end{figure}
+
 \subsection{Three methodological changes the real data forces}
 
 \textbf{Density varies (Marmousi only).} Marmousi ships a density model, so
@@ -979,7 +992,7 @@ samples at random from 2301 traces puts near-duplicates of training profiles
 into validation, and the resulting ``generalisation'' error is really an
 interpolation error. Validation instead takes four contiguous trace blocks
 spread across the model, with 320\,m buffers discarded on each side; the
-realised minimum train-to-validation separation is 328\,m (Marmousi), 400\,m
+realised minimum train-to-validation separation is 324\,m (Marmousi), 400\,m
 (Overthrust), 420\,m (Salt). The split ships inside the dataset as a
 \texttt{split} array, and \texttt{train\_operators.py} honours it when present,
 falling back to its random split otherwise.
@@ -1404,6 +1417,16 @@ nothing here has been trained or evaluated that way.
 \item \textbf{Fixed $64\times64$ grid.} FNO and PFNO are in principle
 discretization-invariant, but zero-shot super-resolution has not been tested
 here.
+\item \textbf{The forced arm's target is not grid-converged.} \S12.2 measures
+9.72\,\% mean target error at \texttt{refine=1}, and the synthetic arm was
+rebuilt at \texttt{refine=8} in response --- but the forced arm (\S10, \S11) was
+not. \texttt{fd\_source.py} steps directly on the 64-point output grid and has
+no refinement path, and \texttt{generate\_dataset\_source.py} has no
+\texttt{-{}-refine} flag. Fixing it means adding refinement to the forced solver
+--- interpolate $E$, $\rho$ and $s(x)$ up to a fine grid, solve, subsample ---
+not a flag change. Every number in \S10 and \S11 therefore carries the caveat
+\S12.2 raises for the original synthetic arm, and \S12.2's DeepONet result
+suggests the ranking there could move.
 \item \textbf{In-distribution evaluation only.} Validation materials come from
 the same four families as training. Nothing tests transfer to the project's
 canonical \texttt{Homogeneous} / \texttt{TwoLayer} / \texttt{MultiLayer} classes
