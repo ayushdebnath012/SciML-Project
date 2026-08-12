@@ -1,0 +1,117 @@
+{
+  "problem": "1D conservative elastic wave equation",
+  "operator_input_channels": [
+    "E(x)",
+    "rho(x)",
+    "g(x)",
+    "x",
+    "t"
+  ],
+  "operator_output": "u(x,t)",
+  "dataset_shape": {
+    "inputs": [
+      768,
+      5,
+      128,
+      128
+    ],
+    "outputs": [
+      768,
+      1,
+      128,
+      128
+    ]
+  },
+  "evaluation_grid": [
+    256,
+    256
+  ],
+  "training_args": {
+    "model": "fno",
+    "num_samples": 768,
+    "nx": 128,
+    "nt": 128,
+    "eval_nx": 256,
+    "eval_nt": 256,
+    "t_max": 1.0,
+    "sigma_g": 0.1,
+    "random_ic": true,
+    "cfl": 0.9,
+    "epochs": 350,
+    "batch_size": 8,
+    "lr": 0.0008,
+    "min_lr": 1e-05,
+    "weight_decay": 0.0001,
+    "val_fraction": 0.2,
+    "width": 64,
+    "modes_x": 20,
+    "modes_t": 20,
+    "layers": 4,
+    "padding": 4,
+    "seed": 42,
+    "device": "cuda",
+    "output_dir": "/kaggle/working/fno_t4_full",
+    "dataset_cache": "/kaggle/working/operator_data/wave_operator_full_seed42.npz",
+    "rebuild_dataset": false,
+    "num_workers": 2,
+    "pin_memory": true,
+    "amp": false,
+    "compile": false,
+    "scheduler": "cosine",
+    "resume": null,
+    "save_every": 10,
+    "print_every": 5,
+    "test": false
+  },
+  "models": {
+    "fno": {
+      "val_mse": 0.0001310237128138822,
+      "val_relative_l2_percent": 3.2077607444741507,
+      "epochs": 350,
+      "parameter_count": 13132673,
+      "output_dir": "/kaggle/working/fno_t4_full/fno",
+      "material_benchmarks": {
+        "Homogeneous": {
+          "relative_l2_error_percent": 28.353118896484375,
+          "material_domain": [
+            -1.0,
+            1.0
+          ],
+          "evaluation_grid": [
+            256,
+            256
+          ]
+        },
+        "TwoLayer": {
+          "relative_l2_error_percent": 31.184101104736328,
+          "material_domain": [
+            -1.0,
+            1.0
+          ],
+          "evaluation_grid": [
+            256,
+            256
+          ]
+        },
+        "MultiLayer": {
+          "relative_l2_error_percent": 36.442604064941406,
+          "material_domain": [
+            -1.0,
+            1.0
+          ],
+          "evaluation_grid": [
+            256,
+            256
+          ]
+        }
+      },
+      "last_history_row": {
+        "epoch": 350,
+        "train_mse": 1.0113918700294606e-06,
+        "val_mse": 0.0001313958101644704,
+        "val_relative_l2_percent": 3.2113284192882574,
+        "lr": 1e-05
+      }
+    }
+  }
+}

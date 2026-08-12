@@ -1,0 +1,40 @@
+{
+  "device": "cuda",
+  "gpu": "NVIDIA H100 NVL",
+  "torch_version": "2.11.0+cu128",
+  "dataset": {
+    "path": "operator_data/wave_operator_salt_n512_nx64_nt64_t1_seed42.npz",
+    "samples": 512,
+    "nx": 64,
+    "nt": 64,
+    "train": 410,
+    "val": 102
+  },
+  "args": {
+    "data": "operator_data/wave_operator_salt_n512_nx64_nt64_t1_seed42.npz",
+    "epochs": 400,
+    "batch_size": 16,
+    "lr": 0.003,
+    "weight_decay": 0.0001,
+    "fno_width": 48,
+    "fno_modes": 20,
+    "fno_layers": 4,
+    "don_latent": 256,
+    "don_hidden": 512,
+    "pfno_width": 24,
+    "pfno_modes": 20,
+    "pfno_layers": 3,
+    "models": "DeepONet",
+    "seed": 42,
+    "outdir": "don_salt"
+  },
+  "training_results": [
+    {
+      "model": "DeepONet",
+      "parameters": 888321,
+      "training time (s)": 76.41857856791466,
+      "validation MSE": 0.0035400466774316397,
+      "validation rel L2 (%)": 18.54633653865141
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "device": "cuda",
+  "gpu": "NVIDIA H100 NVL",
+  "torch_version": "2.11.0+cu128",
+  "arm": "forced (Ricker point source, quiescent IC, absorbing BC)",
+  "lambda_physics": 1.0,
+  "physics_scales": [
+    0.18232358992099762,
+    3.3447093963623047,
+    7.558686256408691
+  ],
+  "dataset": {
+    "path": "operator_data/wave_operator_source_n512_nx64_nt80_t2_seed42.npz",
+    "samples": 512,
+    "nx": 64,
+    "nt": 80,
+    "train": 410,
+    "val": 102
+  },
+  "args": {
+    "data": "operator_data/wave_operator_source_n512_nx64_nt80_t2_seed42.npz",
+    "epochs": 500,
+    "batch_size": 16,
+    "lr": 0.003,
+    "weight_decay": 0.0001,
+    "fno_width": 48,
+    "fno_modes": 20,
+    "fno_layers": 4,
+    "don_latent": 256,
+    "don_hidden": 512,
+    "pfno_width": 24,
+    "pfno_modes": 20,
+    "pfno_layers": 3,
+    "models": "FNO,DeepONet,PFNO",
+    "seed": 42,
+    "outdir": "server_outputs_pinn",
+    "lambda_physics": 1.0
+  },
+  "training_results": [
+    {
+      "model": "FNO",
+      "parameters": 7387345,
+      "training time (s)": 302.86764742294326,
+      "validation MSE": 0.0007314967137633585,
+      "validation rel L2 (%)": 14.844177173633202
+    },
+    {
+      "model": "DeepONet",
+      "parameters": 929281,
+      "training time (s)": 218.58199565508403,
+      "validation MSE": 0.026830187965841853,
+      "validation rel L2 (%)": 93.54768865248737
+    },
+    {
+      "model": "PFNO",
+      "parameters": 1524298,
+      "training time (s)": 1492.375656885095,
+      "validation MSE": 0.002857480022837134,
+      "validation rel L2 (%)": 31.42848170972338
+    }
+  ],
+  "physics_residuals": {
+    "FNO": {
+      "ic_displacement_rms": 0.0005151211259224596,
+      "ic_velocity_rms": 0.0171449503219398,
+      "bc_left_rms": 0.3367705689580096,
+      "bc_right_rms": 0.34285928149837575,
+      "bc_left_rel": 0.0649069832006039,
+      "bc_right_rel": 0.06642359636024119,
+      "bc_rms": 0.3398149252281925,
+      "bc_rel": 0.06566528978042256
+    },
+    "DeepONet": {
+      "ic_displacement_rms": 0.01838544873734198,
+      "ic_velocity_rms": 0.14798542564473682,
+      "bc_left_rms": 0.10073587374017727,
+      "bc_right_rms": 0.09999811754806608,
+      "bc_left_rel": 0.11786732210113669,
+      "bc_right_rel": 0.17044218610318615,
+      "bc_rms": 0.10036699564412163,
+      "bc_rel": 0.1441547541021615
+    },
+    "PFNO": {
+      "ic_displacement_rms": 0.027138120914195502,
+      "ic_velocity_rms": 0.833341683430055,
+      "bc_left_rms": 2.1816899286626215,
+      "bc_right_rms": 2.2724546391833327,
+      "bc_left_rel": 0.37074018568909234,
+      "bc_right_rel": 0.4005948483262043,
+      "bc_rms": 2.2270722839229764,
+      "bc_rel": 0.38566751700764845
+    },
+    "FD_reference": {
+      "ic_displacement_rms": 0.0,
+      "ic_velocity_rms": 0.00038741612218579216,
+      "bc_left_rms": 0.9017479009885279,
+      "bc_right_rms": 0.8697429153588135,
+      "bc_left_rel": 0.1270816168062034,
+      "bc_right_rel": 0.12495500487289302,
+      "bc_rms": 0.8857454081736711,
+      "bc_rel": 0.12601831083954823
+    }
+  }
+}

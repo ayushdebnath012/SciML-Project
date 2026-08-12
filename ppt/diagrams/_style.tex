@@ -1,0 +1,20 @@
+% Shared style for all project diagrams
+\usepackage{amsmath,amssymb}
+\usetikzlibrary{positioning,arrows.meta,calc,fit,decorations.pathreplacing}
+\renewcommand{\familydefault}{\sfdefault}
+\definecolor{accent}{RGB}{42,120,214}
+\definecolor{lblue}{RGB}{234,242,252}
+\definecolor{card}{RGB}{247,247,245}
+\definecolor{ink}{RGB}{17,17,17}
+\definecolor{gray52}{RGB}{82,81,78}
+\definecolor{dblue}{RGB}{13,54,107}
+\tikzset{
+  box/.style={draw=accent, thick, rounded corners=3pt, fill=lblue, align=center,
+              minimum height=1.05cm, inner sep=6pt, text=ink},
+  plain/.style={draw=gray52!60, thick, rounded corners=3pt, fill=card, align=center,
+              minimum height=1.05cm, inner sep=6pt, text=ink},
+  ghost/.style={align=center, text=gray52, font=\footnotesize},
+  arr/.style={-{Stealth[length=2.6mm]}, very thick, draw=accent},
+  garr/.style={-{Stealth[length=2.6mm]}, thick, draw=gray52},
+  lbl/.style={font=\footnotesize, text=gray52, align=center},
+}

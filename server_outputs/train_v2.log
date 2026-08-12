@@ -1,0 +1,62 @@
+device: cuda  (NVIDIA H100 NVL)
+train/val = 410/102   grid 64x64   samples 512
+  FNO       ep    1/400 train_nMSE=9.998e-01 val_L2= 99.920%
+  FNO       ep   40/400 train_nMSE=3.502e-03 val_L2=  5.688%
+  FNO       ep   80/400 train_nMSE=4.665e-04 val_L2=  4.159%
+  FNO       ep  120/400 train_nMSE=2.673e-04 val_L2=  2.985%
+  FNO       ep  160/400 train_nMSE=9.308e-05 val_L2=  2.513%
+  FNO       ep  200/400 train_nMSE=7.713e-05 val_L2=  2.472%
+  FNO       ep  240/400 train_nMSE=4.312e-05 val_L2=  2.319%
+  FNO       ep  280/400 train_nMSE=1.297e-05 val_L2=  2.171%
+  FNO       ep  320/400 train_nMSE=7.727e-06 val_L2=  2.101%
+  FNO       ep  360/400 train_nMSE=5.278e-06 val_L2=  2.075%
+  FNO       ep  400/400 train_nMSE=4.863e-06 val_L2=  2.069%
+  -> FNO: 7,387,297 params, 73.2s, rel L2 = 2.070%
+
+  DeepONet  ep    1/400 train_nMSE=9.797e-01 val_L2= 98.402%
+  DeepONet  ep   40/400 train_nMSE=7.517e-01 val_L2= 84.823%
+  DeepONet  ep   80/400 train_nMSE=1.893e-01 val_L2= 39.844%
+  DeepONet  ep  120/400 train_nMSE=1.574e-01 val_L2= 51.942%
+  DeepONet  ep  160/400 train_nMSE=7.540e-02 val_L2= 24.197%
+  DeepONet  ep  200/400 train_nMSE=5.047e-02 val_L2= 20.433%
+  DeepONet  ep  240/400 train_nMSE=4.552e-02 val_L2= 19.016%
+  DeepONet  ep  280/400 train_nMSE=3.622e-02 val_L2= 19.034%
+  DeepONet  ep  320/400 train_nMSE=2.597e-02 val_L2= 15.227%
+  DeepONet  ep  360/400 train_nMSE=2.316e-02 val_L2= 14.556%
+  DeepONet  ep  400/400 train_nMSE=2.264e-02 val_L2= 14.429%
+  -> DeepONet: 888,321 params, 24.5s, rel L2 = 14.431%
+
+  PFNO      ep    1/400 train_nMSE=1.000e+00 val_L2= 99.993%
+  PFNO      ep   40/400 train_nMSE=1.288e-02 val_L2=  9.931%
+  PFNO      ep   80/400 train_nMSE=3.701e-03 val_L2=  6.917%
+  PFNO      ep  120/400 train_nMSE=2.000e-03 val_L2=  5.878%
+  PFNO      ep  160/400 train_nMSE=2.065e-03 val_L2=  5.879%
+  PFNO      ep  200/400 train_nMSE=8.602e-04 val_L2=  5.104%
+  PFNO      ep  240/400 train_nMSE=6.435e-04 val_L2=  4.750%
+  PFNO      ep  280/400 train_nMSE=4.366e-04 val_L2=  4.533%
+  PFNO      ep  320/400 train_nMSE=3.484e-04 val_L2=  4.371%
+  PFNO      ep  360/400 train_nMSE=3.007e-04 val_L2=  4.292%
+  PFNO      ep  400/400 train_nMSE=2.857e-04 val_L2=  4.264%
+  -> PFNO: 1,225,290 params, 818.5s, rel L2 = 4.265%
+
+{
+  "FNO": {
+    "parameters": 7387297,
+    "training time (s)": 73.15560730290599,
+    "validation MSE": 5.869173550950911e-05,
+    "validation rel L2 (%)": 2.0700761648077592
+  },
+  "DeepONet": {
+    "parameters": 888321,
+    "training time (s)": 24.525354061974213,
+    "validation MSE": 0.0014769901685854968,
+    "validation rel L2 (%)": 14.430828054745993
+  },
+  "PFNO": {
+    "parameters": 1225290,
+    "training time (s)": 818.455921004992,
+    "validation MSE": 0.00017941715115882165,
+    "validation rel L2 (%)": 4.26487994018723
+  }
+}
+wrote server_outputs_v2

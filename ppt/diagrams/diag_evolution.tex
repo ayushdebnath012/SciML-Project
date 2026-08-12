@@ -1,0 +1,28 @@
+\documentclass[tikz,border=10pt]{standalone}
+\input{_style.tex}
+\begin{document}
+\begin{tikzpicture}[node distance=0.7cm and 1.5cm]
+  \node[plain, minimum width=4.3cm, align=left] (fd)
+    {\textbf{1. Classical: FD solver}\\[2pt]
+     {\footnotesize exact (convergent) per case}\\
+     {\footnotesize no learning, no data}\\
+     {\footnotesize cost paid on \emph{every} solve}};
+  \node[plain, right=of fd, minimum width=4.3cm, align=left] (pinn)
+    {\textbf{2. PINN (7 architectures)}\\[2pt]
+     {\footnotesize learns $(x,t)\mapsto u$, one case}\\
+     {\footnotesize physics loss, mesh-free, no data}\\
+     {\footnotesize hours of training per material}};
+  \node[box, right=of pinn, minimum width=4.3cm, align=left] (fno)
+    {\textbf{3. FNO (operator learning)}\\[2pt]
+     {\footnotesize learns material $\mapsto$ wavefield}\\
+     {\footnotesize supervised on FD data}\\
+     {\footnotesize new material $=$ one forward pass}};
+
+  \draw[arr] (fd) -- (pinn) node[midway, lbl, above=2pt] {learn the\\ \emph{solution}};
+  \draw[arr] (pinn) -- (fno) node[midway, lbl, above=2pt] {learn the\\ \emph{solver}};
+
+  \draw[garr] ($(fd.south west)+(0,-0.5)$) -- ($(fno.south east)+(0,-0.5)$)
+    node[midway, lbl, below=3pt]
+    {per-case cost decreases $\longrightarrow$ \qquad up-front cost (data, training) increases $\longrightarrow$};
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,96 @@
+{
+  "device": "cuda",
+  "gpu": "NVIDIA H100 NVL",
+  "torch_version": "2.11.0+cu128",
+  "validation_ids": [
+    1,
+    2,
+    9
+  ],
+  "validation_kinds": [
+    "smooth",
+    "smooth",
+    "layered"
+  ],
+  "prediction_shape_per_model": [
+    3,
+    48,
+    48
+  ],
+  "training_results": [
+    {
+      "model": "FNO",
+      "parameters": 9569,
+      "training time (s)": 1.3067074620630592,
+      "validation MSE": 0.03472820034733525,
+      "validation rel L2 (%)": 81.94494883219402
+    },
+    {
+      "model": "DeepONet",
+      "parameters": 21953,
+      "training time (s)": 0.17740803211927414,
+      "validation MSE": 0.04902848932478163,
+      "validation rel L2 (%)": 97.33348846435547
+    },
+    {
+      "model": "PFNO",
+      "parameters": 32450,
+      "training time (s)": 2.3207223990466446,
+      "validation MSE": 0.04647644360860189,
+      "validation rel L2 (%)": 94.76772562662761
+    }
+  ],
+  "pairwise_prediction_disagreement_percent": {
+    "1": {
+      "FNO": {
+        "FNO": 0.0,
+        "DeepONet": 113.49541674203812,
+        "PFNO": 139.87800547238191
+      },
+      "DeepONet": {
+        "FNO": 113.49541674203812,
+        "DeepONet": 0.0,
+        "PFNO": 121.94844526524169
+      },
+      "PFNO": {
+        "FNO": 139.87800547238191,
+        "DeepONet": 121.94844526524169,
+        "PFNO": 0.0
+      }
+    },
+    "2": {
+      "FNO": {
+        "FNO": 0.0,
+        "DeepONet": 118.36183327817388,
+        "PFNO": 141.72055947348107
+      },
+      "DeepONet": {
+        "FNO": 118.36183327817388,
+        "DeepONet": 0.0,
+        "PFNO": 120.864840180359
+      },
+      "PFNO": {
+        "FNO": 141.72055947348107,
+        "DeepONet": 120.864840180359,
+        "PFNO": 0.0
+      }
+    },
+    "9": {
+      "FNO": {
+        "FNO": 0.0,
+        "DeepONet": 125.30997366239912,
+        "PFNO": 140.21553888575764
+      },
+      "DeepONet": {
+        "FNO": 125.30997366239912,
+        "DeepONet": 0.0,
+        "PFNO": 118.90623834821302
+      },
+      "PFNO": {
+        "FNO": 140.21553888575764,
+        "DeepONet": 118.90623834821302,
+        "PFNO": 0.0
+      }
+    }
+  }
+}

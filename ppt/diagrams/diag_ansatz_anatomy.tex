@@ -1,0 +1,33 @@
+\documentclass[tikz,border=10pt]{standalone}
+\input{_style.tex}
+\begin{document}
+\begin{tikzpicture}
+  % formula pieces as nodes on one baseline
+  \node[text=ink]              (u)    at (0,0)     {\Large $\hat u(x,t) \;=\;$};
+  \node[text=accent]           (ict)  at (3.3,0)   {\Large $g(x)\, e^{-\frac{1}{2}(15t)^2}$};
+  \node[text=ink]              (plus) at (5.8,0)   {\Large $+$};
+  \node[text=dblue]            (gate) at (7.7,0)   {\Large $\tanh^2(25t)$};
+  \node[text=ink]              (dot)  at (9.45,0)  {\Large $\cdot$};
+  \node[text=gray52]           (nn)   at (11.2,0)  {\Large $N_\theta(x,t)$};
+
+  % braces + labels
+  \draw[decorate,decoration={brace,mirror,amplitude=5pt},accent]
+    ($(ict.south west)+(0.1,-0.12)$) -- ($(ict.south east)+(-0.1,-0.12)$)
+    node[midway, below=8pt, lbl, text=accent, text width=3.7cm]
+    {\textbf{known IC, fading out}\\ $=g(x)$ at $t{=}0$;\\ gone by $t\approx0.2$};
+
+  \draw[decorate,decoration={brace,mirror,amplitude=5pt},dblue]
+    ($(gate.south west)+(0.1,-0.12)$) -- ($(gate.south east)+(-0.1,-0.12)$)
+    node[midway, below=8pt, lbl, text=dblue, text width=3.1cm]
+    {\textbf{gate}\\ $0$ at $t{=}0$ \emph{with zero slope} (the square kills the slope); open by $t\approx0.1$};
+
+  \draw[decorate,decoration={brace,mirror,amplitude=5pt},gray52]
+    ($(nn.south west)+(0.1,-0.12)$) -- ($(nn.south east)+(-0.1,-0.12)$)
+    node[midway, below=8pt, lbl, text width=3.4cm]
+    {\textbf{learned ``NN term''}\\ the blank in the template (PINNs and \texttt{final/ML} FNO both fill it)};
+
+  \node[lbl, text=ink] at (5.6,-3.2)
+    {\textbf{Both initial conditions hold exactly, by construction:} \quad
+     $\hat u(x,0)=g(x)$ \quad and \quad $\hat u_t(x,0)=0$};
+\end{tikzpicture}
+\end{document}

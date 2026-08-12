@@ -1,0 +1,55 @@
+{
+  "device": "cuda",
+  "gpu": "NVIDIA H100 NVL",
+  "torch_version": "2.11.0+cu128",
+  "dataset": {
+    "path": "operator_data/wave_operator_overthrust_n512_nx64_nt64_t1_seed42.npz",
+    "samples": 512,
+    "nx": 64,
+    "nt": 64,
+    "train": 410,
+    "val": 102
+  },
+  "args": {
+    "data": "operator_data/wave_operator_overthrust_n512_nx64_nt64_t1_seed42.npz",
+    "epochs": 400,
+    "batch_size": 16,
+    "lr": 0.003,
+    "weight_decay": 0.0001,
+    "fno_width": 48,
+    "fno_modes": 20,
+    "fno_layers": 4,
+    "don_latent": 256,
+    "don_hidden": 512,
+    "pfno_width": 24,
+    "pfno_modes": 20,
+    "pfno_layers": 3,
+    "models": "FNO,DeepONet,PFNO",
+    "seed": 42,
+    "outdir": "out_overthrust"
+  },
+  "training_results": [
+    {
+      "model": "FNO",
+      "parameters": 7387297,
+      "training time (s)": 77.48187534906901,
+      "validation MSE": 0.00011055072879090029,
+      "validation rel L2 (%)": 3.590903061862085
+    },
+    {
+      "model": "DeepONet",
+      "parameters": 888321,
+      "training time (s)": 77.9215030928608,
+      "validation MSE": 0.004639312880588513,
+      "validation rel L2 (%)": 26.106120941685695
+    },
+    {
+      "model": "PFNO",
+      "parameters": 1225290,
+      "training time (s)": 711.9415319459513,
+      "validation MSE": 0.00023343483917415142,
+      "validation rel L2 (%)": 5.648762251816544
+    }
+  ],
+  "deeponet_note": "DeepONet retrained separately at the published latent=256/hidden=512 (train_operators.py defaults are 192/384); predictions merged in."
+}

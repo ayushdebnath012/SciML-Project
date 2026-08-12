@@ -1,0 +1,70 @@
+device: cuda (NVIDIA H100 NVL)
+train/val = 410/102   grid 64x80
+  FNO       ep    1/500 train_nMSE=1.007e+00 val_L2=100.036%
+  FNO       ep   50/500 train_nMSE=9.079e-03 val_L2= 19.389%
+  FNO       ep  100/500 train_nMSE=1.881e-03 val_L2= 17.368%
+  FNO       ep  150/500 train_nMSE=1.334e-03 val_L2= 17.439%
+  FNO       ep  200/500 train_nMSE=8.266e-04 val_L2= 17.790%
+  FNO       ep  250/500 train_nMSE=1.127e-03 val_L2= 18.269%
+  FNO       ep  300/500 train_nMSE=3.899e-04 val_L2= 17.828%
+  FNO       ep  350/500 train_nMSE=3.272e-05 val_L2= 17.679%
+  FNO       ep  400/500 train_nMSE=2.228e-05 val_L2= 17.660%
+  FNO       ep  450/500 train_nMSE=1.877e-05 val_L2= 17.651%
+  FNO       ep  500/500 train_nMSE=1.798e-05 val_L2= 17.649%
+  -> FNO: 7,387,345 params, 109.1s, rel L2 = 17.127%
+
+  DeepONet  ep    1/500 train_nMSE=1.000e+00 val_L2= 99.854%
+  DeepONet  ep   50/500 train_nMSE=1.160e+00 val_L2=111.556%
+  DeepONet  ep  100/500 train_nMSE=9.744e-01 val_L2=103.585%
+  DeepONet  ep  150/500 train_nMSE=9.283e-01 val_L2=103.171%
+  DeepONet  ep  200/500 train_nMSE=8.824e-01 val_L2=103.615%
+  DeepONet  ep  250/500 train_nMSE=8.040e-01 val_L2=102.214%
+  DeepONet  ep  300/500 train_nMSE=7.391e-01 val_L2=100.803%
+  DeepONet  ep  350/500 train_nMSE=6.647e-01 val_L2= 99.080%
+  DeepONet  ep  400/500 train_nMSE=6.205e-01 val_L2= 97.661%
+  DeepONet  ep  450/500 train_nMSE=5.842e-01 val_L2= 96.537%
+  DeepONet  ep  500/500 train_nMSE=5.783e-01 val_L2= 96.298%
+  -> DeepONet: 929,281 params, 39.5s, rel L2 = 91.821%
+
+  PFNO      ep    1/500 train_nMSE=1.002e+00 val_L2= 99.986%
+  PFNO      ep   50/500 train_nMSE=7.022e-02 val_L2= 38.382%
+  PFNO      ep  100/500 train_nMSE=1.644e-02 val_L2= 33.354%
+  PFNO      ep  150/500 train_nMSE=9.982e-03 val_L2= 32.761%
+  PFNO      ep  200/500 train_nMSE=5.772e-03 val_L2= 32.058%
+  PFNO      ep  250/500 train_nMSE=4.406e-03 val_L2= 32.010%
+  PFNO      ep  300/500 train_nMSE=2.795e-03 val_L2= 31.973%
+  PFNO      ep  350/500 train_nMSE=1.822e-03 val_L2= 31.987%
+  PFNO      ep  400/500 train_nMSE=1.421e-03 val_L2= 32.075%
+  PFNO      ep  450/500 train_nMSE=1.252e-03 val_L2= 32.121%
+  PFNO      ep  500/500 train_nMSE=1.213e-03 val_L2= 32.130%
+  -> PFNO: 1,524,298 params, 1273.1s, rel L2 = 31.893%
+
+
+=== IC / BC residuals (validation mean) ===
+model            ic_displacement_rms       ic_velocity_rms                bc_rms                bc_rel
+FNO                     4.029194e-03          1.834526e-01          1.499955e+00          2.493501e-01
+DeepONet                3.329692e-02          2.686904e-01          1.232286e-01          1.439660e-01
+PFNO                    3.234475e-02          1.184935e+00          3.690970e+00          5.147007e-01
+FD_reference            0.000000e+00          3.874161e-04          8.857454e-01          1.260183e-01
+
+{
+  "FNO": {
+    "parameters": 7387345,
+    "training time (s)": 109.09305907203816,
+    "validation MSE": 0.000943301976019261,
+    "validation rel L2 (%)": 17.126631748442556
+  },
+  "DeepONet": {
+    "parameters": 929281,
+    "training time (s)": 39.51937495311722,
+    "validation MSE": 0.02529983684128406,
+    "validation rel L2 (%)": 91.82062807270125
+  },
+  "PFNO": {
+    "parameters": 1524298,
+    "training time (s)": 1273.1484602200799,
+    "validation MSE": 0.0030306609530074925,
+    "validation rel L2 (%)": 31.892600377400715
+  }
+}
+wrote server_outputs_source

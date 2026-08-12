@@ -1,0 +1,97 @@
+{
+  "device": "cuda",
+  "gpu": "NVIDIA H100 NVL",
+  "torch_version": "2.11.0+cu128",
+  "arm": "forced (Ricker point source, quiescent IC, absorbing BC)",
+  "dataset": {
+    "path": "operator_data/wave_operator_source_n512_nx64_nt80_t2_seed42.npz",
+    "samples": 512,
+    "nx": 64,
+    "nt": 80,
+    "train": 410,
+    "val": 102
+  },
+  "args": {
+    "data": "operator_data/wave_operator_source_n512_nx64_nt80_t2_seed42.npz",
+    "epochs": 500,
+    "batch_size": 16,
+    "lr": 0.003,
+    "weight_decay": 0.0001,
+    "fno_width": 48,
+    "fno_modes": 20,
+    "fno_layers": 4,
+    "don_latent": 256,
+    "don_hidden": 512,
+    "pfno_width": 24,
+    "pfno_modes": 20,
+    "pfno_layers": 3,
+    "models": "FNO,DeepONet,PFNO",
+    "seed": 42,
+    "outdir": "server_outputs_source"
+  },
+  "training_results": [
+    {
+      "model": "FNO",
+      "parameters": 7387345,
+      "training time (s)": 109.09305907203816,
+      "validation MSE": 0.000943301976019261,
+      "validation rel L2 (%)": 17.126631748442556
+    },
+    {
+      "model": "DeepONet",
+      "parameters": 929281,
+      "training time (s)": 39.51937495311722,
+      "validation MSE": 0.02529983684128406,
+      "validation rel L2 (%)": 91.82062807270125
+    },
+    {
+      "model": "PFNO",
+      "parameters": 1524298,
+      "training time (s)": 1273.1484602200799,
+      "validation MSE": 0.0030306609530074925,
+      "validation rel L2 (%)": 31.892600377400715
+    }
+  ],
+  "physics_residuals": {
+    "FNO": {
+      "ic_displacement_rms": 0.004029193614330691,
+      "ic_velocity_rms": 0.1834525921517728,
+      "bc_left_rms": 1.5242801281674287,
+      "bc_right_rms": 1.4756305799492133,
+      "bc_left_rel": 0.24385756478500611,
+      "bc_right_rel": 0.25484253623214675,
+      "bc_rms": 1.4999553540583208,
+      "bc_rel": 0.24935005050857662
+    },
+    "DeepONet": {
+      "ic_displacement_rms": 0.033296917148873104,
+      "ic_velocity_rms": 0.26869038594950895,
+      "bc_left_rms": 0.1272338716404561,
+      "bc_right_rms": 0.11922336437514391,
+      "bc_left_rel": 0.13266675559528168,
+      "bc_right_rel": 0.15526515927161735,
+      "bc_rms": 0.12322861800779993,
+      "bc_rel": 0.14396595743344956
+    },
+    "PFNO": {
+      "ic_displacement_rms": 0.03234474789326737,
+      "ic_velocity_rms": 1.1849350168239008,
+      "bc_left_rms": 3.602521027687072,
+      "bc_right_rms": 3.7794198825222747,
+      "bc_left_rel": 0.4986724269278182,
+      "bc_right_rel": 0.5307289533271154,
+      "bc_rms": 3.6909704551046705,
+      "bc_rel": 0.5147006901274667
+    },
+    "FD_reference": {
+      "ic_displacement_rms": 0.0,
+      "ic_velocity_rms": 0.00038741612218579216,
+      "bc_left_rms": 0.9017479009885279,
+      "bc_right_rms": 0.8697429153588135,
+      "bc_left_rel": 0.1270816168062034,
+      "bc_right_rel": 0.12495500487289302,
+      "bc_rms": 0.8857454081736711,
+      "bc_rel": 0.12601831083954823
+    }
+  }
+}

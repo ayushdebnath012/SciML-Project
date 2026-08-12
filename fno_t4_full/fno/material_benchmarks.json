@@ -1,0 +1,35 @@
+{
+  "Homogeneous": {
+    "relative_l2_error_percent": 28.353118896484375,
+    "material_domain": [
+      -1.0,
+      1.0
+    ],
+    "evaluation_grid": [
+      256,
+      256
+    ]
+  },
+  "TwoLayer": {
+    "relative_l2_error_percent": 31.184101104736328,
+    "material_domain": [
+      -1.0,
+      1.0
+    ],
+    "evaluation_grid": [
+      256,
+      256
+    ]
+  },
+  "MultiLayer": {
+    "relative_l2_error_percent": 36.442604064941406,
+    "material_domain": [
+      -1.0,
+      1.0
+    ],
+    "evaluation_grid": [
+      256,
+      256
+    ]
+  }
+}

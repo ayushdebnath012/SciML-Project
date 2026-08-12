@@ -1,0 +1,72 @@
+device: cuda (NVIDIA H100 NVL)
+train/val = 410/102   grid 64x80
+physics scales: s_u=0.1823 s_ut=3.3447 s_bc=7.5587
+lambda_physics = 1.0
+  FNO       ep    1/500 train_loss=1.010e+00 val_L2=100.052% phys=2.956e-03
+  FNO       ep   50/500 train_loss=1.510e-02 val_L2= 19.537% phys=2.508e-03
+  FNO       ep  100/500 train_loss=3.637e-03 val_L2= 15.051% phys=7.961e-04
+  FNO       ep  150/500 train_loss=1.481e-03 val_L2= 14.938% phys=3.410e-04
+  FNO       ep  200/500 train_loss=1.301e-03 val_L2= 15.308% phys=2.121e-04
+  FNO       ep  250/500 train_loss=1.272e-03 val_L2= 15.603% phys=2.229e-04
+  FNO       ep  300/500 train_loss=1.433e-03 val_L2= 15.364% phys=1.703e-04
+  FNO       ep  350/500 train_loss=2.528e-04 val_L2= 14.981% phys=3.085e-05
+  FNO       ep  400/500 train_loss=1.644e-04 val_L2= 14.995% phys=2.916e-06
+  FNO       ep  450/500 train_loss=1.509e-04 val_L2= 14.996% phys=2.201e-06
+  FNO       ep  500/500 train_loss=1.467e-04 val_L2= 14.996% phys=2.065e-06
+  -> FNO: 7,387,345 params, 302.9s, rel L2 = 14.844%
+
+  DeepONet  ep    1/500 train_loss=1.002e+00 val_L2= 99.947% phys=7.057e-04
+  DeepONet  ep   50/500 train_loss=9.941e-01 val_L2=100.363% phys=4.998e-03
+  DeepONet  ep  100/500 train_loss=9.222e-01 val_L2= 99.164% phys=3.614e-03
+  DeepONet  ep  150/500 train_loss=8.675e-01 val_L2= 97.427% phys=9.052e-03
+  DeepONet  ep  200/500 train_loss=1.176e+00 val_L2=109.271% phys=7.893e-02
+  DeepONet  ep  250/500 train_loss=1.019e+00 val_L2=103.046% phys=1.753e-02
+  DeepONet  ep  300/500 train_loss=9.892e-01 val_L2=101.602% phys=9.068e-03
+  DeepONet  ep  350/500 train_loss=9.768e-01 val_L2=100.987% phys=6.120e-03
+  DeepONet  ep  400/500 train_loss=9.740e-01 val_L2=100.636% phys=4.950e-03
+  DeepONet  ep  450/500 train_loss=9.602e-01 val_L2=100.428% phys=4.291e-03
+  DeepONet  ep  500/500 train_loss=9.584e-01 val_L2=100.381% phys=4.153e-03
+  -> DeepONet: 929,281 params, 218.6s, rel L2 = 93.548%
+
+  PFNO      ep    1/500 train_loss=1.002e+00 val_L2= 99.993% phys=4.437e-04
+  PFNO      ep   50/500 train_loss=1.643e-01 val_L2= 45.213% phys=2.526e-02
+  PFNO      ep  100/500 train_loss=1.033e-01 val_L2= 37.208% phys=3.807e-02
+  PFNO      ep  150/500 train_loss=5.704e-02 val_L2= 34.521% phys=2.008e-02
+  PFNO      ep  200/500 train_loss=3.893e-02 val_L2= 32.834% phys=1.388e-02
+  PFNO      ep  250/500 train_loss=2.595e-02 val_L2= 32.131% phys=7.700e-03
+  PFNO      ep  300/500 train_loss=2.098e-02 val_L2= 31.770% phys=6.777e-03
+  PFNO      ep  350/500 train_loss=1.328e-02 val_L2= 31.506% phys=2.367e-03
+  PFNO      ep  400/500 train_loss=9.322e-03 val_L2= 31.459% phys=2.534e-04
+  PFNO      ep  450/500 train_loss=8.379e-03 val_L2= 31.434% phys=1.221e-04
+  PFNO      ep  500/500 train_loss=8.150e-03 val_L2= 31.429% phys=1.061e-04
+  -> PFNO: 1,524,298 params, 1492.4s, rel L2 = 31.428%
+
+
+=== IC / BC residuals (validation mean) ===
+model            ic_displacement_rms       ic_velocity_rms                bc_rms                bc_rel
+FNO                     5.151211e-04          1.714495e-02          3.398149e-01          6.566529e-02
+DeepONet                1.838545e-02          1.479854e-01          1.003670e-01          1.441548e-01
+PFNO                    2.713812e-02          8.333417e-01          2.227072e+00          3.856675e-01
+FD_reference            0.000000e+00          3.874161e-04          8.857454e-01          1.260183e-01
+
+{
+  "FNO": {
+    "parameters": 7387345,
+    "training time (s)": 302.86764742294326,
+    "validation MSE": 0.0007314967137633585,
+    "validation rel L2 (%)": 14.844177173633202
+  },
+  "DeepONet": {
+    "parameters": 929281,
+    "training time (s)": 218.58199565508403,
+    "validation MSE": 0.026830187965841853,
+    "validation rel L2 (%)": 93.54768865248737
+  },
+  "PFNO": {
+    "parameters": 1524298,
+    "training time (s)": 1492.375656885095,
+    "validation MSE": 0.002857480022837134,
+    "validation rel L2 (%)": 31.42848170972338
+  }
+}
+wrote server_outputs_pinn

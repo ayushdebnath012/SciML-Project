@@ -43,3 +43,21 @@ Thumbs.db
 .vscode/
 .idea/
 *.swp
+
+# Large media and third-party material (not source; regenerate or fetch)
+videos/
+presentations/
+outputs/
+*.pptx
+papers/FNO_reading_order/
+fno paper/
+
+# LaTeX build artifacts
+*.aux
+*.fdb_latexmk
+*.fls
+*.out
+*.synctex.gz
+*.toc
+docs/*.log
+ppt/*.log

@@ -1,0 +1,30 @@
+{
+  "description": "FNO-only sweep of the physics-loss weight on the forced arm. 500 epochs each, 512 samples, 64x80 grid, one H100. lambda=0 is the plain supervised baseline.",
+  "model": "FNO",
+  "epochs": 500,
+  "metrics": {
+    "rel_l2_percent": "validation relative L2 (%)",
+    "ic_displacement_rms": "RMS of u_hat(x,0), target 0",
+    "ic_velocity_rms": "RMS of u_hat_t(x,0), target 0",
+    "bc_rel": "relative absorbing-boundary residual"
+  },
+  "fd_reference": {
+    "ic_displacement_rms": 0.0,
+    "ic_velocity_rms": 3.874161e-04,
+    "bc_rel": 0.1260183
+  },
+  "sweep": [
+    {"lambda": 0.0,   "rel_l2_percent": 17.13, "ic_displacement_rms": 4.029e-03, "ic_velocity_rms": 0.1835, "bc_rel": 0.2494},
+    {"lambda": 0.003, "rel_l2_percent": 17.02, "ic_displacement_rms": 3.467e-03, "ic_velocity_rms": 0.1507, "bc_rel": 0.2380},
+    {"lambda": 0.03,  "rel_l2_percent": 16.92, "ic_displacement_rms": 2.037e-03, "ic_velocity_rms": 0.0884, "bc_rel": 0.1928},
+    {"lambda": 0.3,   "rel_l2_percent": 15.89, "ic_displacement_rms": 1.364e-03, "ic_velocity_rms": 0.0461, "bc_rel": 0.1205},
+    {"lambda": 1.0,   "rel_l2_percent": 14.84, "ic_displacement_rms": 5.151e-04, "ic_velocity_rms": 0.0171, "bc_rel": 0.0657},
+    {"lambda": 3.0,   "rel_l2_percent": 14.20, "ic_displacement_rms": 7.562e-04, "ic_velocity_rms": 0.0151, "bc_rel": 0.0426},
+    {"lambda": 10.0,  "rel_l2_percent": 12.70, "ic_displacement_rms": 1.950e-04, "ic_velocity_rms": 0.0058, "bc_rel": 0.0291}
+  ],
+  "three_models_at_lambda_1": {
+    "FNO":      {"rel_l2_lambda0": 17.13, "rel_l2_lambda1": 14.844, "amplitude_ratio_lambda0": 0.969, "amplitude_ratio_lambda1": 0.982},
+    "PFNO":     {"rel_l2_lambda0": 31.89, "rel_l2_lambda1": 31.428, "amplitude_ratio_lambda0": 0.973, "amplitude_ratio_lambda1": 0.970},
+    "DeepONet": {"rel_l2_lambda0": 91.82, "rel_l2_lambda1": 93.548, "amplitude_ratio_lambda0": 0.409, "amplitude_ratio_lambda1": 0.374}
+  }
+}

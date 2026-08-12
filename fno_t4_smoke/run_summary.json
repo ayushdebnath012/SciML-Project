@@ -1,0 +1,166 @@
+{
+  "problem": "1D conservative elastic wave equation",
+  "operator_input_channels": [
+    "E(x)",
+    "rho(x)",
+    "g(x)",
+    "x",
+    "t"
+  ],
+  "operator_output": "u(x,t)",
+  "dataset_shape": {
+    "inputs": [
+      32,
+      5,
+      64,
+      64
+    ],
+    "outputs": [
+      32,
+      1,
+      64,
+      64
+    ]
+  },
+  "evaluation_grid": [
+    96,
+    96
+  ],
+  "training_args": {
+    "model": "all",
+    "num_samples": 32,
+    "nx": 64,
+    "nt": 64,
+    "eval_nx": 96,
+    "eval_nt": 96,
+    "t_max": 1.0,
+    "sigma_g": 0.1,
+    "random_ic": true,
+    "cfl": 0.9,
+    "epochs": 10,
+    "batch_size": 4,
+    "lr": 0.001,
+    "min_lr": 2e-05,
+    "weight_decay": 0.0001,
+    "val_fraction": 0.2,
+    "width": 16,
+    "modes_x": 8,
+    "modes_t": 8,
+    "layers": 3,
+    "padding": 4,
+    "seed": 42,
+    "device": "cuda",
+    "output_dir": "/kaggle/working/fno_t4_smoke",
+    "dataset_cache": "/kaggle/working/operator_data/wave_operator_smoke_seed42.npz",
+    "rebuild_dataset": false,
+    "num_workers": 2,
+    "pin_memory": true,
+    "amp": false,
+    "compile": false,
+    "scheduler": "cosine",
+    "resume": null,
+    "save_every": 5,
+    "print_every": 1,
+    "test": false
+  },
+  "models": {
+    "fno": {
+      "val_mse": 0.048411079992850624,
+      "val_relative_l2_percent": 94.79100163777669,
+      "epochs": 10,
+      "parameter_count": 99793,
+      "output_dir": "/kaggle/working/fno_t4_smoke/fno",
+      "material_benchmarks": {
+        "Homogeneous": {
+          "relative_l2_error_percent": 95.31233978271484,
+          "material_domain": [
+            -1.0,
+            1.0
+          ],
+          "evaluation_grid": [
+            96,
+            96
+          ]
+        },
+        "TwoLayer": {
+          "relative_l2_error_percent": 95.8912353515625,
+          "material_domain": [
+            -1.0,
+            1.0
+          ],
+          "evaluation_grid": [
+            96,
+            96
+          ]
+        },
+        "MultiLayer": {
+          "relative_l2_error_percent": 96.58971405029297,
+          "material_domain": [
+            -1.0,
+            1.0
+          ],
+          "evaluation_grid": [
+            96,
+            96
+          ]
+        }
+      },
+      "last_history_row": {
+        "epoch": 10,
+        "train_mse": 0.05107288578381905,
+        "val_mse": 0.048411079992850624,
+        "val_relative_l2_percent": 94.79100163777669,
+        "lr": 2e-05
+      }
+    },
+    "cnn": {
+      "val_mse": 0.05074970672527949,
+      "val_relative_l2_percent": 97.15640258789062,
+      "epochs": 10,
+      "parameter_count": 3201,
+      "output_dir": "/kaggle/working/fno_t4_smoke/cnn",
+      "material_benchmarks": {
+        "Homogeneous": {
+          "relative_l2_error_percent": 97.60257720947266,
+          "material_domain": [
+            -1.0,
+            1.0
+          ],
+          "evaluation_grid": [
+            96,
+            96
+          ]
+        },
+        "TwoLayer": {
+          "relative_l2_error_percent": 97.5513916015625,
+          "material_domain": [
+            -1.0,
+            1.0
+          ],
+          "evaluation_grid": [
+            96,
+            96
+          ]
+        },
+        "MultiLayer": {
+          "relative_l2_error_percent": 97.61974334716797,
+          "material_domain": [
+            -1.0,
+            1.0
+          ],
+          "evaluation_grid": [
+            96,
+            96
+          ]
+        }
+      },
+      "last_history_row": {
+        "epoch": 10,
+        "train_mse": 0.05332670074242812,
+        "val_mse": 0.05074970672527949,
+        "val_relative_l2_percent": 97.15640258789062,
+        "lr": 2e-05
+      }
+    }
+  }
+}
