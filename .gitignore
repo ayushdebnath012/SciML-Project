@@ -61,3 +61,13 @@ fno paper/
 *.toc
 docs/*.log
 ppt/*.log
+
+# Experiment artifacts and scratch (large; regenerate or fetch from server)
+results/
+tmp/
+dataset/
+output/
+
+# LaTeX build logs
+*.log
+*.blg

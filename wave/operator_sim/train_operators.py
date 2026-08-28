@@ -12,6 +12,14 @@ from torch.utils.data import DataLoader, TensorDataset
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from operator_models import SimpleFNO2d, SimpleDeepONet, SimplePFNO, count_parameters
 
+
+def count_parameters_real(model):
+    """Trainable *real* scalars. `count_parameters` counts a complex weight as
+    one entry, which undercounts every spectral layer by 2x and makes FNO/PFNO
+    look smaller than they are next to the all-real DeepONet."""
+    return sum(p.numel() * (2 if p.is_complex() else 1)
+               for p in model.parameters() if p.requires_grad)
+
 p = argparse.ArgumentParser()
 p.add_argument("--data", required=True)
 p.add_argument("--epochs", type=int, default=300)
@@ -28,10 +36,18 @@ p.add_argument("--pfno-modes", type=int, default=20)
 p.add_argument("--pfno-layers", type=int, default=3)
 p.add_argument("--models", default="FNO,DeepONet,PFNO")
 p.add_argument("--seed", type=int, default=42)
+p.add_argument("--split-seed", type=int, default=None,
+               help="seed for the random train/val split; defaults to --seed. "
+                    "Hold it fixed and vary --init-seed to measure run-to-run "
+                    "variation with the held-out set held constant.")
+p.add_argument("--init-seed", type=int, default=None,
+               help="seed for weight init and batch order; defaults to --seed")
 p.add_argument("--outdir", default="server_outputs_v2")
 a = p.parse_args()
+if a.split_seed is None: a.split_seed = a.seed
+if a.init_seed is None: a.init_seed = a.seed
 
-torch.manual_seed(a.seed); np.random.seed(a.seed)
+torch.manual_seed(a.init_seed); np.random.seed(a.init_seed)
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 outdir = Path(a.outdir); outdir.mkdir(parents=True, exist_ok=True)
 print(f"device: {DEVICE}  ({torch.cuda.get_device_name(0) if DEVICE.type=='cuda' else 'cpu'})")
@@ -55,7 +71,7 @@ if split is not None:
         raise SystemExit(f"dataset `split` leaves an empty pool: {np.unique(split)}")
     print(f"using dataset-provided split (disjoint trace blocks)")
 else:
-    g = torch.Generator().manual_seed(a.seed + 17)
+    g = torch.Generator().manual_seed(a.split_seed + 17)
     perm = torch.randperm(n_samples, generator=g)
     n_val = max(1, min(n_samples - 1, int(round(0.2 * n_samples))))
     val_idx, train_idx = perm[:n_val], perm[n_val:]
@@ -66,7 +82,7 @@ y_mean = Y[train_idx].mean(); y_std = Y[train_idx].std().clamp_min(1e-6)
 Xn = (X - x_mean) / x_std; Yn = (Y - y_mean) / y_std
 
 train_loader = DataLoader(TensorDataset(Xn[train_idx], Yn[train_idx]), batch_size=a.batch_size,
-                          shuffle=True, generator=torch.Generator().manual_seed(a.seed + 23))
+                          shuffle=True, generator=torch.Generator().manual_seed(a.init_seed + 23))
 val_loader = DataLoader(TensorDataset(Xn[val_idx], Yn[val_idx]), batch_size=a.batch_size)
 print(f"train/val = {len(train_idx)}/{len(val_idx)}   grid {nx}x{nt}   samples {n_samples}")
 
@@ -93,11 +109,11 @@ def evaluate(model):
         pf, tf = pred.flatten(1), tgt.flatten(1)
         rel = torch.linalg.vector_norm(pf - tf, dim=1) / torch.linalg.vector_norm(tf, dim=1).clamp_min(1e-12)
         rels.extend((100.0 * rel).cpu().tolist())
-    return se / n, float(np.mean(rels))
+    return se / n, float(np.mean(rels)), rels
 
 results = {}; histories = {}; trained = {}
 for mid, name in enumerate(a.models.split(",")):
-    torch.manual_seed(a.seed + 100 * mid)
+    torch.manual_seed(a.init_seed + 100 * mid)
     model = builders[name]().to(DEVICE)
     opt = torch.optim.AdamW(model.parameters(), lr=a.lr, weight_decay=a.weight_decay)
     sched = torch.optim.lr_scheduler.OneCycleLR(
@@ -112,7 +128,7 @@ for mid, name in enumerate(a.models.split(",")):
             loss = F.mse_loss(model(xb), yb)
             loss.backward(); opt.step(); sched.step()
             ls += loss.item(); nb += 1
-        vmse, vrel = evaluate(model)
+        vmse, vrel, _ = evaluate(model)
         hist.append({"epoch": epoch, "train_nmse": ls / max(1, nb),
                      "val_mse": vmse, "val_rel_l2": vrel})
         if vmse < best_val:
@@ -121,12 +137,17 @@ for mid, name in enumerate(a.models.split(",")):
             print(f"  {name:9s} ep {epoch:4d}/{a.epochs} train_nMSE={ls/max(1,nb):.3e} val_L2={vrel:7.3f}%", flush=True)
     secs = time.perf_counter() - t0
     model.load_state_dict(best_state)
-    vmse, vrel = evaluate(model)
+    vmse, vrel, per_sample = evaluate(model)
     trained[name] = model
     histories[name] = hist
-    results[name] = {"parameters": count_parameters(model), "training time (s)": secs,
-                     "validation MSE": vmse, "validation rel L2 (%)": vrel}
-    print(f"  -> {name}: {count_parameters(model):,} params, {secs:.1f}s, rel L2 = {vrel:.3f}%\n", flush=True)
+    results[name] = {"parameters": count_parameters(model),
+                     "parameters_real": count_parameters_real(model),
+                     "training time (s)": secs,
+                     "validation MSE": vmse, "validation rel L2 (%)": vrel,
+                     "per_sample_rel_l2": per_sample}
+    print(f"  -> {name}: {count_parameters(model):,} params "
+          f"({count_parameters_real(model):,} real), {secs:.1f}s, "
+          f"rel L2 = {vrel:.3f}%\n", flush=True)
     torch.save(best_state, outdir / f"{name}_state.pt")
 
 # ---- export predictions for every validation sample -------------------------
@@ -162,5 +183,7 @@ summary = {
 }
 (outdir / "operator_wave_summary_v2.json").write_text(json.dumps(summary, indent=2))
 (outdir / "histories_v2.json").write_text(json.dumps(histories))
-print(json.dumps(results, indent=2))
+print(json.dumps({k: {kk: vv for kk, vv in v.items()
+                      if kk != "per_sample_rel_l2"}
+                  for k, v in results.items()}, indent=2))
 print("wrote", outdir)

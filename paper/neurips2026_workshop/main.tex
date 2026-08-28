@@ -1,0 +1,109 @@
+\documentclass{article}
+
+% if you need to pass options to natbib, use, e.g.:
+%     \PassOptionsToPackage{numbers, compress}{natbib}
+% before loading neurips_2026
+
+% Track selection. This is a WORKSHOP submission with double-blind reviewing,
+% so both \title{} and \workshoptitle{} below are required. Switch the option
+% if the target workshop is single-blind, and add "final" after acceptance:
+%   \usepackage[sglblindworkshop]{neurips_2026}
+%   \usepackage[dblblindworkshop, final]{neurips_2026}
+% Other tracks: main, position, eandd, creativeai, education; preprint for arXiv.
+\usepackage[dblblindworkshop]{neurips_2026}
+
+% REQUIRED for the workshop options: the workshop's own name, which the style
+% file prints in the proceedings footnote.
+\workshoptitle{PLACEHOLDER: Workshop Name}
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\hypersetup{hidelinks}      % keep links active without colored PDF borders
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{amsmath}
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{xcolor}         % colors
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{siunitx}
+
+% Aggregate result numbers quoted in the prose are generated directly from the
+% result files, so the headline claims cannot drift away from the tables.
+\input{tables/numbers}
+
+\title{Adaptive Loss Weighting Is Costing You an Order of Magnitude:\\
+       Physics-Informed Networks and Classical Solvers\\
+       on the Heterogeneous Elastic Wave Equation}
+
+% The \author macro works with any number of authors. Use \And between authors
+% to let LaTeX break the lines, or \AND to force a break.
+\author{%
+  Anonymous Author(s) \\
+  Affiliation \\
+  Address \\
+  \texttt{email} \\
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Causal time weighting and GradNorm loss balancing are standard equipment in
+modern physics-informed neural network (PINN) training. On the 1D elastic wave
+equation in heterogeneous media we find that, run exactly as specified,
+\textbf{both hurt}: switching them off beats the full recipe in every one of
+the $\AblPairCount$ architecture--material cells we measured, by
+$\AblMinGain$--$\AblMaxGain\times$ (median $\AblMedianGain\times$), and takes
+the best network from $\PinnRecipeBestErr\%$ to $\AblBestErr\%$. Under the
+recipe, $\PinnRecipeAboveHundred$ of $\PinnRecipeCount$ runs score at or above
+the $100\%$ that predicting zero earns; without it, none do. The mechanism is
+measurable rather than mysterious: in $\FrontierStalled$ of $\FrontierTotal$
+causal runs the schedule's frontier stalls, leaving part of the time domain
+weighted at exactly zero for the whole of training, and GradNorm independently
+settles at a weighting that puts the PDE residual three orders of magnitude
+below the boundary term. Only $\FrontierComplete$ of those runs open all
+sixteen slabs: causal weighting is conditional on the optimiser reaching the
+early slabs, and when that fails it is much worse than not weighting at all. We
+reach this by way of a control the PINN literature rarely runs: a characterised
+classical
+baseline on the same problem, same grid, same metric. Building one turns up a
+second result --- second-order finite differences and linear finite elements
+both stall at $\FDFloor\%$ on all three materials, a floor set by the
+first-order absorbing boundary rather than the interior stencil, which any PINN
+scored against such a reference silently inherits. Even after the ablation, the
+best network's error is $\AblVsFDRatio\times$ that of a finite-difference solve
+costing \SI{\FDRefSecs}{\second} on one CPU core, so the headline is not that
+PINNs have been fixed. It is that a widely used training recipe is being
+credited for accuracy it is in fact removing, and that the diagnostic which
+reveals this ($w_{\min}$, already computed by every causal implementation)
+costs nothing to report.
+\end{abstract}
+
+\input{sections}
+
+\begin{ack}
+Omitted for anonymous review. The \texttt{ack} environment is hidden by the
+style file at submission and must be filled in for the camera-ready version,
+including funding sources and competing interests.
+\end{ack}
+
+\bibliographystyle{plainnat}
+\bibliography{refs}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\appendix
+
+\input{appendix}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\input{checklist.tex}
+
+\end{document}

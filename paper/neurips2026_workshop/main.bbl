@@ -1,0 +1,134 @@
+\begin{thebibliography}{18}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Anagnostopoulos et~al.(2023)Anagnostopoulos, Toscano, Stergiopulos,
+  and Karniadakis]{anagnostopoulos2024rba}
+Sokratis~J. Anagnostopoulos, Juan~Diego Toscano, Nikolaos Stergiopulos, and
+  George~Em Karniadakis.
+\newblock Residual-based attention and connection to information bottleneck
+  theory in pinns.
+\newblock \emph{arXiv preprint arXiv:2307.00379}, 2023.
+
+\bibitem[Bozorgasl and Chen(2024)]{bozorgasl2024wavkan}
+Zavareh Bozorgasl and Hao Chen.
+\newblock Wav-kan: Wavelet kolmogorov-arnold networks.
+\newblock \emph{arXiv preprint arXiv:2405.12832}, 2024.
+
+\bibitem[Bradbury et~al.(2018)Bradbury, Frostig, Hawkins, Johnson, Leary,
+  Maclaurin, Necula, Paszke, Vander{P}las, Wanderman-{M}ilne, and
+  Zhang]{jax2018github}
+James Bradbury, Roy Frostig, Peter Hawkins, Matthew~James Johnson, Chris Leary,
+  Dougal Maclaurin, George Necula, Adam Paszke, Jake Vander{P}las, Skye
+  Wanderman-{M}ilne, and Qiao Zhang.
+\newblock {JAX}: composable transformations of {P}ython+{N}um{P}y programs,
+  2018.
+\newblock URL \url{http://github.com/jax-ml/jax}.
+
+\bibitem[Kidger and Garcia(2021)]{kidger2021equinox}
+Patrick Kidger and Cristian Garcia.
+\newblock Equinox: neural networks in jax via callable pytrees and filtered
+  transformations, 2021.
+\newblock Differentiable Programming workshop at NeurIPS 2021.
+
+\bibitem[Kingma and Ba(2015)]{kingma2015adam}
+Diederik~P. Kingma and Jimmy Ba.
+\newblock Adam: A method for stochastic optimization.
+\newblock \emph{International Conference on Learning Representations}, 2015.
+
+\bibitem[Liu and Nocedal(1989)]{liu1989lbfgs}
+Dong~C. Liu and Jorge Nocedal.
+\newblock On the limited memory bfgs method for large scale optimization.
+\newblock \emph{Mathematical Programming}, 45\penalty0 (1):\penalty0 503--528,
+  1989.
+
+\bibitem[Liu et~al.(2024)Liu, Wang, Vaidya, Ruehle, Halverson,
+  Solja{\v{c}}i{\'c}, Hou, and Tegmark]{liu2024kan}
+Ziming Liu, Yixuan Wang, Sachin Vaidya, Fabian Ruehle, James Halverson, Marin
+  Solja{\v{c}}i{\'c}, Thomas~Y. Hou, and Max Tegmark.
+\newblock Kan: Kolmogorov-arnold networks.
+\newblock \emph{arXiv preprint arXiv:2404.19756}, 2024.
+
+\bibitem[Mur(1981)]{mur1981abc}
+Gerrit Mur.
+\newblock Absorbing boundary conditions for the finite-difference approximation
+  of the time-domain electromagnetic-field equations.
+\newblock \emph{IEEE Transactions on Electromagnetic Compatibility},
+  EMC-23\penalty0 (4):\penalty0 377--382, 1981.
+
+\bibitem[Raissi et~al.(2019)Raissi, Perdikaris, and
+  Karniadakis]{raissi2019pinn}
+Maziar Raissi, Paris Perdikaris, and George~E. Karniadakis.
+\newblock Physics-informed neural networks: A deep learning framework for
+  solving forward and inverse problems involving nonlinear partial differential
+  equations.
+\newblock \emph{Journal of Computational Physics}, 378:\penalty0 686--707,
+  2019.
+
+\bibitem[Shukla et~al.(2024)Shukla, Toscano, Wang, Zou, and
+  Karniadakis]{shukla2024pikan}
+Khemraj Shukla, Juan~Diego Toscano, Zhicheng Wang, Zongren Zou, and George~Em
+  Karniadakis.
+\newblock A comprehensive and fair comparison between mlp and kan
+  representations for differential equations and operator networks.
+\newblock \emph{arXiv preprint arXiv:2406.02917}, 2024.
+
+\bibitem[Tancik et~al.(2020)Tancik, Srinivasan, Mildenhall, Fridovich-Keil,
+  Raghavan, Singhal, Ramamoorthi, Barron, and Ng]{tancik2020fourier}
+Matthew Tancik, Pratul~P. Srinivasan, Ben Mildenhall, Sara Fridovich-Keil,
+  Nithin Raghavan, Utkarsh Singhal, Ravi Ramamoorthi, Jonathan~T. Barron, and
+  Ren Ng.
+\newblock Fourier features let networks learn high frequency functions in low
+  dimensional domains.
+\newblock \emph{Advances in Neural Information Processing Systems}, 33, 2020.
+
+\bibitem[Vyas et~al.(2024)Vyas, Morwani, Zhao, Shapira, Brandfonbrener, Janson,
+  and Kakade]{vyas2024soap}
+Nikhil Vyas, Depen Morwani, Rosie Zhao, Itai Shapira, David Brandfonbrener,
+  Lucas Janson, and Sham Kakade.
+\newblock Soap: Improving and stabilizing shampoo using adam.
+\newblock \emph{arXiv preprint arXiv:2409.11321}, 2024.
+
+\bibitem[Wang et~al.(2021{\natexlab{a}})Wang, Teng, and
+  Perdikaris]{wang2021gradientflow}
+Sifan Wang, Yujun Teng, and Paris Perdikaris.
+\newblock Understanding and mitigating gradient flow pathologies in
+  physics-informed neural networks.
+\newblock \emph{SIAM Journal on Scientific Computing}, 43\penalty0
+  (5):\penalty0 A3055--A3081, 2021{\natexlab{a}}.
+
+\bibitem[Wang et~al.(2021{\natexlab{b}})Wang, Wang, and
+  Perdikaris]{wang2021fourier}
+Sifan Wang, Hanwen Wang, and Paris Perdikaris.
+\newblock On the eigenvector bias of fourier feature networks: From regression
+  to solving multi-scale pdes with physics-informed neural networks.
+\newblock \emph{Computer Methods in Applied Mechanics and Engineering},
+  384:\penalty0 113938, 2021{\natexlab{b}}.
+
+\bibitem[Wang et~al.(2022)Wang, Sankaran, and Perdikaris]{wang2022causal}
+Sifan Wang, Shyam Sankaran, and Paris Perdikaris.
+\newblock Respecting causality is all you need for training physics-informed
+  neural networks.
+\newblock \emph{arXiv preprint arXiv:2203.07404}, 2022.
+
+\bibitem[Wang et~al.(2023)Wang, Sankaran, Wang, and Perdikaris]{wang2023expert}
+Sifan Wang, Shyam Sankaran, Hanwen Wang, and Paris Perdikaris.
+\newblock An expert's guide to training physics-informed neural networks.
+\newblock \emph{arXiv preprint arXiv:2308.08468}, 2023.
+
+\bibitem[Wang et~al.(2024)Wang, Li, Chen, and Perdikaris]{wang2024piratenet}
+Sifan Wang, Bowen Li, Yuhan Chen, and Paris Perdikaris.
+\newblock Piratenets: Physics-informed deep learning with residual adaptive
+  networks.
+\newblock \emph{Journal of Machine Learning Research}, 25, 2024.
+
+\bibitem[Wang et~al.(2025)Wang, Bhartari, Li, and Perdikaris]{wang2025soappinn}
+Sifan Wang, Ananyae~Kumar Bhartari, Bowen Li, and Paris Perdikaris.
+\newblock Gradient alignment in physics-informed neural networks: A second
+  order optimization perspective.
+\newblock \emph{arXiv preprint arXiv:2502.00604}, 2025.
+
+\end{thebibliography}

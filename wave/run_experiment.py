@@ -524,7 +524,7 @@ def run_single_experiment(cfg, use_ansatz, material, device, idx, total_runs,
         lr=CONFIG["lr"],
         print_every=2000,
         outdir=adam_outdir,
-        use_gradnorm=True,
+        use_gradnorm=CONFIG.get("use_gradnorm", True),
         gradnorm_update_freq=CONFIG.get("gradnorm_update_freq", 100),
         ic_gradnorm_delay=(CONFIG["ic_gradnorm_delay"] if not use_ansatz else 0),
         causal_tolerance=(CONFIG["causal_tol_start"], CONFIG["causal_tol_end"]),
@@ -535,9 +535,6 @@ def run_single_experiment(cfg, use_ansatz, material, device, idx, total_runs,
         optimizer_name=opt_name,
         use_rba=use_rba,
     )
-
-    # Load best checkpoint from Adam phase
-    model.load_state_dict(torch.load(adam_outdir, map_location=device, weights_only=True))
 
     # 3b. Causal continuation — keep running Adam until w_min >= 0.9 or budget exhausted
     continuation_budget = CONFIG.get("causal_continuation_budget", 0)
@@ -555,7 +552,7 @@ def run_single_experiment(cfg, use_ansatz, material, device, idx, total_runs,
             lr=CONFIG["lr"] * 0.3,          # lower LR for fine-grained continuation
             print_every=1000,
             outdir=adam_outdir,              # keep updating best checkpoint
-            use_gradnorm=True,
+            use_gradnorm=CONFIG.get("use_gradnorm", True),
             gradnorm_update_freq=CONFIG.get("gradnorm_update_freq", 100),
             ic_gradnorm_delay=0,             # GradNorm already warmed up
             causal_tolerance=(0.5, 1.0),     # short ramp: medium → strict
@@ -575,11 +572,16 @@ def run_single_experiment(cfg, use_ansatz, material, device, idx, total_runs,
         w_chunks_snaps += [(s[0] + adam_offset, s[1]) for s in cont[10]]
         best_val      = cont[11]
         total_continuation += steps_left
-        model.load_state_dict(torch.load(adam_outdir, map_location=device, weights_only=True))
+
+        # train_adam mutates the Torch model in place. Keep that final state so
+        # causal-frontier progress accumulates across continuation blocks; the
+        # best-loss checkpoint is restored once, after continuation finishes.
 
     if total_continuation > 0:
         print(f"\n    Causal continuation done: {total_continuation} extra steps, "
               f"final w_min={w_min_hist[-1]:.4f}", flush=True)
+
+    model.load_state_dict(torch.load(adam_outdir, map_location=device, weights_only=True))
 
     # 4. Phase 2: L-BFGS Training
     print(f"\n--- [2/2] L-BFGS Optimizer: {CONFIG['lbfgs_iterations']} Max Iterations ---")
@@ -654,6 +656,8 @@ def run_single_experiment(cfg, use_ansatz, material, device, idx, total_runs,
         "final_w_min":     final_w_min,
         "w_min_history":   w_min_hist,           # one value per Adam iteration
         "chunk_snapshots": w_chunks_snaps,        # (iter, [w_0..w_31]) at print_every steps
+        "continuation_budget": continuation_budget,
+        "continuation_handoff": "final_model_between_blocks",
     }
     with open(os.path.join(output_dir, "causal_convergence.json"), "w") as f:
         json.dump(causal_data, f, indent=2)
@@ -729,6 +733,8 @@ def run_single_experiment(cfg, use_ansatz, material, device, idx, total_runs,
         "material_type": material.name, "use_ansatz": use_ansatz,
         "extra_params": ep,
         "optimizer": opt_name, "weighting": weighting,
+        "causal_continuation_budget": continuation_budget,
+        "causal_continuation_handoff": "final_model_between_blocks",
         "relative_l2_error_best_adam_percent": rel_l2_adam,
         "relative_l2_error_best_lbfgs_percent": rel_l2_lbfgs,
         "ic_displacement_l2_error_adam_percent": disp_rel_l2_adam,
@@ -777,7 +783,7 @@ def _run_single_experiment_jax(cfg, use_ansatz, material, idx, total_runs, lbfgs
     from src.losses.wave_loss_jax import _rba_state_jax
     _rba_state_jax["weights"] = None
 
-    run_name = _resolve_run_name(cfg, use_ansatz, lbfgs_only) + "_jax"
+    run_name = _resolve_run_name(cfg, use_ansatz, lbfgs_only) + CONFIG.get("run_tag", "") + "_jax"
 
     output_dir = os.path.join(CONFIG["output_base_dir"], material.name, run_name)
     os.makedirs(output_dir, exist_ok=True)
@@ -848,7 +854,8 @@ def _run_single_experiment_jax(cfg, use_ansatz, material, idx, total_runs, lbfgs
                          w_pde=1.0, w_bc=1.0, w_ic=1.0,
                          use_ansatz=use_ansatz, material=material, sigma_g=sigma_g,
                          n_chunks=CONFIG["causal_n_chunks"])
-        model = load_model_jax(lbfgs_out, model)
+        # L-BFGS-only: if the phase never improved, keep the initial model.
+        model = load_model_jax(lbfgs_out, model, required=False)
         _save_eval_jax(model, cfg, use_ansatz, material, output_dir,
                        "lbfgs_only", {}, sigma_g, lbfgs_only=True,
                        fd_reference=fd_reference)
@@ -859,13 +866,13 @@ def _run_single_experiment_jax(cfg, use_ansatz, material, idx, total_runs, lbfgs
     (adam_total, adam_phys, adam_cond,
      final_w_pde, final_w_bc, final_w_ic,
      w_pde_hist, w_bc_hist, w_ic_hist,
-     w_min_hist, w_chunks_snaps, best_val) = train_adam_jax(
+     w_min_hist, w_chunks_snaps, best_val, model) = train_adam_jax(
         model, inputs, losses_gradnorm_jax,
         iterations=CONFIG["adam_iterations"],
         lr=CONFIG["lr"],
         print_every=2000,
         outdir=adam_outdir,
-        use_gradnorm=True,
+        use_gradnorm=CONFIG.get("use_gradnorm", True),
         gradnorm_update_freq=CONFIG.get("gradnorm_update_freq", 100),
         ic_gradnorm_delay=(CONFIG["ic_gradnorm_delay"] if not use_ansatz else 0),
         causal_tolerance=(CONFIG["causal_tol_start"], CONFIG["causal_tol_end"]),
@@ -875,8 +882,6 @@ def _run_single_experiment_jax(cfg, use_ansatz, material, idx, total_runs, lbfgs
         optimizer_name=opt_name,
         use_rba=use_rba,
     )
-    model = load_model_jax(adam_outdir, model)
-
     # Causal continuation
     continuation_budget = CONFIG.get("causal_continuation_budget", 0)
     continuation_block  = 3000
@@ -891,7 +896,7 @@ def _run_single_experiment_jax(cfg, use_ansatz, material, idx, total_runs, lbfgs
             lr=CONFIG["lr"] * 0.3,
             print_every=1000,
             outdir=adam_outdir,
-            use_gradnorm=True,
+            use_gradnorm=CONFIG.get("use_gradnorm", True),
             gradnorm_update_freq=CONFIG.get("gradnorm_update_freq", 100),
             ic_gradnorm_delay=0,
             causal_tolerance=(0.5, 1.0),
@@ -909,8 +914,15 @@ def _run_single_experiment_jax(cfg, use_ansatz, material, idx, total_runs, lbfgs
         w_min_hist  += cont[9]
         w_chunks_snaps += [(s[0] + adam_offset, s[1]) for s in cont[10]]
         best_val     = cont[11]
+        # Continue from the block's final parameters, not necessarily its
+        # best-loss checkpoint. Frontier progress can be real even when the
+        # scalar checkpoint metric does not improve.
+        model        = cont[12]
         total_continuation += steps_left
-        model = load_model_jax(adam_outdir, model)
+
+    # L-BFGS should still start from the best objective value seen over Adam
+    # and all continuation blocks.
+    model = load_model_jax(adam_outdir, model)
 
     # ── L-BFGS phase ─────────────────────────────────────────────────────────
     print(f"\n--- [2/2] L-BFGS (JAX): {CONFIG['lbfgs_iterations']} Max Iterations ---")
@@ -920,7 +932,10 @@ def _run_single_experiment_jax(cfg, use_ansatz, material, idx, total_runs, lbfgs
                      w_pde=final_w_pde, w_bc=final_w_bc, w_ic=final_w_ic,
                      use_ansatz=use_ansatz, material=material, sigma_g=sigma_g,
                      n_chunks=CONFIG["causal_n_chunks"])
-    model = load_model_jax(lbfgs_outdir, model)
+    # Keep the Adam model if L-BFGS produced no checkpoint. Evaluation records
+    # both checkpoints separately; downstream tables use the better reported
+    # error rather than assuming the second-order phase always improves it.
+    model = load_model_jax(lbfgs_outdir, model, required=False)
 
     # ── Save plots and metrics ────────────────────────────────────────────────
     _save_eval_jax(model, cfg, use_ansatz, material, output_dir,
@@ -998,6 +1013,8 @@ def _save_eval_jax(model_lbfgs, cfg, use_ansatz, material, output_dir,
                 "final_w_min":     final_w_min,
                 "w_min_history":   w_min_hist,
                 "chunk_snapshots": history["w_chunks_snaps"],
+                "continuation_budget": CONFIG.get("causal_continuation_budget", 0),
+                "continuation_handoff": "final_model_between_blocks",
             }
             with open(os.path.join(output_dir, "causal_convergence.json"), "w") as f:
                 json.dump(causal_data, f, indent=2)
@@ -1040,12 +1057,16 @@ def _save_eval_jax(model_lbfgs, cfg, use_ansatz, material, output_dir,
         "material_type": material.name, "use_ansatz": use_ansatz,
         "extra_params": cfg["extra_params"],
         "optimizer": ("lbfgs_only" if lbfgs_only else opt_name),
+        "use_gradnorm": CONFIG.get("use_gradnorm", True),
+        "causal_n_chunks": CONFIG["causal_n_chunks"],
+        "causal_continuation_budget": CONFIG.get("causal_continuation_budget", 0),
+        "causal_continuation_handoff": "final_model_between_blocks",
         "weighting": weighting,
         "backend": "jax",
     }
 
     if not lbfgs_only and adam_outdir and os.path.exists(adam_outdir):
-        model_adam = load_model_jax(adam_outdir, model_lbfgs)
+        model_adam = load_model_jax(adam_outdir, model_lbfgs, required=False)
         u_adam     = _predict_jax(model_adam)
         rel_l2_adam = float(100 * np.linalg.norm(u_fd - u_adam) / np.linalg.norm(u_fd))
         metrics["relative_l2_error_best_adam_percent"] = rel_l2_adam
@@ -1093,6 +1114,15 @@ def main():
                         choices=["pytorch", "jax"],
                         help="Compute backend: 'jax' (default; requires "
                              "pip install jax equinox optax jaxopt jaxkan) or 'pytorch'")
+    parser.add_argument("--no-gradnorm", action="store_true",
+                        help="Ablation: hold w_pde = w_bc = w_ic = 1 instead of "
+                             "rebalancing them by gradient norm")
+    parser.add_argument("--causal-chunks", type=int, default=None,
+                        help="Ablation: number of causal time slabs. 1 disables "
+                             "causal weighting (every slab weighted equally)")
+    parser.add_argument("--run-tag", type=str, default=None,
+                        help="Suffix appended to the run directory name, so an "
+                             "ablation does not overwrite the baseline")
     parser.add_argument("--list-runs", action="store_true",
                         help="Print the full run-id -> experiment mapping and exit "
                              "(use to size SLURM arrays)")
@@ -1105,6 +1135,10 @@ def main():
         CONFIG["lbfgs_iterations"] = args.lbfgs_iterations
     if args.causal_continuation_budget is not None:
         CONFIG["causal_continuation_budget"] = args.causal_continuation_budget
+    if args.causal_chunks is not None:
+        CONFIG["causal_n_chunks"] = args.causal_chunks
+    CONFIG["use_gradnorm"] = not args.no_gradnorm
+    CONFIG["run_tag"] = args.run_tag or ""
 
     # Override output directory if --output-dir was supplied (e.g. from SLURM $SCRATCH)
     if args.output_dir is not None:
@@ -1156,7 +1190,10 @@ def main():
         CONFIG["ic_warmup_iterations"]       = 5
         CONFIG["ic_gradnorm_delay"]          = 0
         CONFIG["causal_continuation_budget"] = 0   # disabled in test mode
-        CONFIG["output_base_dir"]            = "./experiment_results_test/"
+        # --output-dir is applied above; only fall back to the test default
+        # when the caller did not ask for somewhere specific.
+        if args.output_dir is None:
+            CONFIG["output_base_dir"]        = "./experiment_results_test/"
         configs_to_run = test_configs
     else:
         configs_to_run = MODEL_CONFIGS
