@@ -32,8 +32,24 @@ def save_model_jax(path: str, model):
     eqx.tree_serialise_leaves(path, model)
 
 
-def load_model_jax(path: str, model_template):
+def load_model_jax(path: str, model_template, required: bool = True):
+    """Deserialise a checkpoint, or return the template unchanged.
+
+    A phase only writes a checkpoint when it beats the best validation metric so
+    far. L-BFGS legitimately fails to do that -- a line search that gives up on
+    its first iteration leaves no file -- and in that case the right model to
+    carry forward is the one that went in, not a crash. `required=False` says
+    the caller can live without it.
+    """
+    if not required and not os.path.exists(_with_eqx_suffix(path)):
+        return model_template
     return eqx.tree_deserialise_leaves(path, model_template)
+
+
+def _with_eqx_suffix(path: str) -> str:
+    """equinox appends `.eqx` when the path has no suffix; mirror that so the
+    existence check agrees with what it actually wrote."""
+    return path if os.path.splitext(path)[1] else path + ".eqx"
 
 
 # ── JIT-compiled training step ────────────────────────────────────────────────
@@ -152,7 +168,11 @@ def train_adam_jax(model, inputs, losses_func,
                    optimizer_name="adam", use_rba=False,
                    **kwargs):
     """
-    Adam training loop.  Returns same 12-tuple as train.train_adam.
+    Adam training loop. Returns the same 12 training summaries as
+    train.train_adam, followed by the final model. The caller needs that final
+    model when several continuation blocks are chained: the best-loss
+    checkpoint may predate causal-frontier progress and must not be used as the
+    starting point of every block.
 
     inputs = [x_int, t_int, x_bc, t_bc, x_ic]  (all JAX arrays, fixed shape)
     losses_func is ignored (always uses losses_gradnorm_jax internally).
@@ -331,7 +351,7 @@ def train_adam_jax(model, inputs, losses_func,
     return (total_losses, physics_losses, conds_losses,
             w_pde, w_bc, w_ic,
             w_pde_hist, w_bc_hist, w_ic_hist,
-            w_min_hist, w_chunks_snaps, best_loss)
+            w_min_hist, w_chunks_snaps, best_loss, model)
 
 
 # ── L-BFGS training loop ──────────────────────────────────────────────────────

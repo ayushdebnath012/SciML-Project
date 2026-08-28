@@ -1,0 +1,165 @@
+\section{Reproducing every number}
+\label{app:repro}
+
+No number in this paper is typed by hand. Two scripts read the result files and
+emit the tables, the figures, and a file of \verb|\newcommand| macros that the
+abstract and body quote, so the prose cannot drift away from the tables.
+
+\subsection{Classical baselines}
+
+The three solvers are pure NumPy and run on any machine in about six minutes,
+most of it in the two spectral reference solves per material:
+
+\begin{verbatim}
+python wave/numerical/run_classical_benchmark.py \
+    --out results/classical/classical_benchmark.json
+\end{verbatim}
+
+The material profiles used by the solvers are transcribed into NumPy so that
+dataset generation does not require the torch stack;
+\verb|material_profiles.verify_against_materials()| asserts they agree with the
+project's originals to $10^{-12}$ and should be run before trusting any number
+produced here.
+
+\paragraph{Ground truth.} Chebyshev collocation at $n = 512$, with $n = 384$
+run alongside as a self-convergence check. The two differ by
+$\RefSelfConvHomogeneous\%$ on \emph{Homogeneous},
+$\RefSelfConvTwoLayer\%$ on \emph{TwoLayer} and
+$\RefSelfConvMultiLayer\%$ on \emph{MultiLayer} --- in every case far below the
+$\FDFloor\%$ floor the second-order schemes plateau at, which is what makes the
+floor measurable rather than an artefact of the reference.
+
+\paragraph{Why not a fine finite-difference reference.} The obvious choice
+would have been \texttt{fd2} at a very high resolution, and it is what the
+project used previously. It does not work: \texttt{fd2}'s error stops falling
+at $\FDFloor\%$, so scoring against a fine \texttt{fd2} solve measures
+agreement with that floor rather than with the solution. The floor is identical
+to three significant figures across three materials whose interior physics
+differs completely, which is what identifies it as the boundary condition.
+
+\subsection{Coordinate networks}
+
+Runs are enumerated by an integer id; \verb|--list-runs| prints the full
+mapping. A single run is
+
+\begin{verbatim}
+python wave/run_experiment.py --run-id 12 --output-dir results/
+\end{verbatim}
+
+and the ablation arms add \verb|--no-gradnorm| (pins
+$w_{\mathrm{pde}} = w_{\mathrm{bc}} = w_{\mathrm{ic}} = 1$),
+\verb|--causal-chunks 1| (one time slab, so every time is weighted equally),
+and \verb|--run-tag| so an ablation does not overwrite its baseline.
+
+\paragraph{Hyperparameters.} Identical across every architecture and every arm,
+because the point of the comparison is the training recipe rather than a tuned
+configuration: $100 \times 100$ collocation grid, $15\,000$ Adam steps at
+$10^{-3}$, up to $9\,000$ continuation steps while $w_{\min} < 0.9$, then
+$2\,000$ L-BFGS steps. Causal weighting uses $M = 16$ slabs with the tolerance
+annealed from $0.1$ to $1.0$; GradNorm refreshes every $100$ steps with
+smoothing $\alpha = 0.9$. Model selection is on a stationary validation metric
+(unweighted per-slab residual plus boundary and initial-condition terms), not
+the weighted training loss, which moves as the weights move.
+
+\paragraph{Architecture sizes.} One representative configuration per
+architecture, chosen so that the baseline, the SOAP/RBA arms and the ablation
+arms all use the same network: 3 hidden layers of width 64 for VanillaPINN,
+FourierFeature ($n_{\mathrm{F}} = 128$, $\sigma = 3$) and PirateNet; 2 hidden
+layers of width 16 for the Kolmogorov--Arnold family (KAN $G = 5$, $k = 3$;
+WavKAN Mexican hat; ChebyshevKAN degree 5; FourierWavKAN
+$n_{\mathrm{F}} = 32$).
+
+\paragraph{Reporting.} Each run writes \verb|l2_errors.json| (errors after the
+Adam and L-BFGS phases, plus the arm's configuration) and
+\verb|causal_convergence.json| (the per-slab weight vector sampled through
+training, which is what Figure~\ref{fig:causal} plots). Both are small; the
+network checkpoints are not needed to regenerate any number.
+
+\subsection{Rebuilding the paper}
+
+\begin{verbatim}
+python wave/server/fetch_results.py          # fetch GPU results
+python paper/neurips2026_workshop/make_tables.py
+python paper/neurips2026_workshop/make_figures.py
+pdflatex main && bibtex main && pdflatex main && pdflatex main
+\end{verbatim}
+
+\section{Implementation notes that changed a result}
+\label{app:impl}
+
+Three implementation choices were arrived at by fixing a failure, and all would
+silently corrupt the comparison if made differently.
+
+\paragraph{The spectral solver needs the first-order form.} Collocating
+$u_{tt} = \rho^{-1}\partial_x(E\,\partial_x u)$ directly is the obvious route
+and is unstable at the absorbing boundary: advancing $u$ at the end nodes from
+$u^{n-1}$ decouples them from the interior and the corner modes grow without
+bound within a few hundred steps. Splitting into velocity--stress makes the
+radiation condition an exact statement about the incoming Riemann invariant,
+which can be imposed as a projection at every Runge--Kutta stage. The
+difference is not accuracy but existence: the second-order form produced
+\texttt{NaN}, not a worse number.
+
+\paragraph{Resampling can hide spectral convergence.} Solvers choose their own
+time step from stability and their own spatial grid, so results are resampled
+onto a shared $201 \times 101$ evaluation grid. Doing that with linear
+interpolation is second-order accurate and puts a floor under the measured
+error at roughly $10^{-3}$ --- which made the spectral solver look
+\emph{algebraically} convergent and worse than finite differences. The fix is
+in two parts: round the step count up until the output times are hit exactly,
+removing time interpolation from the error budget entirely, and interpolate off
+the Chebyshev nodes barycentrically rather than linearly. After both, the
+spectral solver converges as it should. Any comparison of a spectral method
+against a low-order one on a shared output grid is exposed to this.
+
+\paragraph{Continuation must carry the final iterate.} We run continuation in
+$3\,000$-step blocks so training can stop once $w_{\min}$ reaches its target.
+Reloading the best validation checkpoint between blocks is not equivalent to
+continuing: frontier progress need not improve that scalar metric, so the next
+block can replay almost the same trajectory from the same parameters. The
+runner now passes each block's final model directly to the next block and
+restores the best-loss checkpoint only once, before L-BFGS. Result files record
+this handoff mode, and every causal result reported in the paper was regenerated
+after the fix.
+
+\paragraph{A note on the KAN implementation.} The spline KAN used here is a
+direct Equinox implementation of a B-spline edge layer with a SiLU base branch
+(grid size $G$, spline order $k$), rather than a wrapper around an external
+package. It matches the \verb|pykan| formulation but does not reproduce that
+package's adaptive grid refinement, which would change the parameter shapes
+mid-run --- neither the causal schedule nor L-BFGS tolerates that. The basis is
+verified to form a partition of unity and to admit the second derivatives the
+residual needs.
+
+\section{Supporting tables}
+\label{app:supporting}
+
+Two tables referenced from the body. Neither carries the main claim, so both sit
+here rather than against the page limit.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{figures/fig_cost_accuracy}
+\caption{What accuracy costs. Wall-clock seconds against relative $L^2$, both
+logarithmic. Connected markers are the classical refinement ladders (CPU,
+single core); hollow markers are the spectral solver agreeing with the
+reference to its own precision rather than a measured error. Diamonds are
+individual PINN runs at their measured training time on an H100. The dotted
+line at $100\%$ is the score of predicting zero. The two families are separated
+by roughly four orders of magnitude in time and two to three in error.}
+\label{fig:cost}
+\end{figure}
+
+\input{tables/reffloor}
+
+\input{tables/pinn_variants}
+
+\section{Complete results}
+\label{app:allruns}
+
+Table~\ref{tab:allruns} lists every run in the study --- \AllRunCount{} in
+total, across the main sweep and the weighting ablation. The tables in the body
+show slices chosen to make a point; this one hides nothing, so any cell of any
+other table can be checked against it.
+
+\input{tables/all_runs}

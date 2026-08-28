@@ -119,6 +119,57 @@ The script generates finite-difference training data, caches it under
 metrics plus Homogeneous/TwoLayer/MultiLayer benchmark plots to
 `operator_results/`.
 
+## OpenFWI forward benchmark
+
+`wave/openfwi/` benchmarks four neural operators — **FNO**, **PFNO**,
+**DeepONet** and a **graph neural operator (GNO)** — on the 2D OpenFWI
+datasets, learning the forward map
+
+```
+velocity model (1, 70, 70)  ->  shot gathers (5, 1000, 70)
+```
+
+on FlatVel-A and CurveVel-A. This is the *forward* direction, not OpenFWI's own
+inversion leaderboard task, so the numbers are not comparable to
+InversionNet/VelocityGAN. It is the experiment `docs/operator_simulations.md`
+flags as not attempted by the 1D pipeline.
+
+```bash
+python wave/openfwi/fetch_openfwi.py --datasets FlatVel_A CurveVel_A \
+    --train-chunks 4 --val-chunks 1 --jobs 6 --root ~/openfwi_data
+python wave/openfwi/test_openfwi.py                      # CPU, seconds
+bash wave/openfwi/runners/run_openfwi.sh 100 4           # one dataset per GPU
+python wave/openfwi/report_openfwi.py --runs results/openfwi/*  # table + figures
+```
+
+See [`wave/openfwi/README.md`](wave/openfwi/README.md) for the architecture
+choices, the representation floors each model operates under, and the scoring
+convention.
+
+## SubsurfaceGen field-scale benchmark
+
+`wave/subsurfacegen/` runs the same four operators, the same code and the same
+scoring on the field-scale dataset from **SubsurfaceGen**
+(Stitt et al., [arXiv:2605.30541](https://arxiv.org/abs/2605.30541)):
+
+```
+velocity slice (1, 309, 500)  ->  shot gathers (5, 572, 1000)
+10 km x 6.19 km                   8 s at 3-25 Hz
+```
+
+Unlike OpenFWI, this record is *critically* sampled — keeping 64 frequency bins
+costs 98 % relative L2 rather than 0.02 % — which forces PFNO to 220 branches
+and rules out the cheap subsampling that OpenFWI tolerates. Penobscot is held
+out entirely, so every model also gets an out-of-distribution score.
+
+```bash
+python wave/subsurfacegen/fetch_ssgen.py --root ~/ssgen_data \
+    --train 600 --val 100 --ood 80 --jobs 8
+bash wave/subsurfacegen/runners/run_ssgen.sh 80 FNO,PFNO,DeepONet,GNO 1
+```
+
+See [`wave/subsurfacegen/README.md`](wave/subsurfacegen/README.md).
+
 ## Configuring the sweep
 
 Edit `wave/run_experiment.py`:

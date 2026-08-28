@@ -319,41 +319,89 @@ class FourierWavKAN(eqx.Module):
         return self.kan(phi)
 
 
-# ── 5. KAN via jaxkan ─────────────────────────────────────────────────────────
-# Wraps jaxkan's KAN in the same single-sample (2,) → (1,) interface.
-# API assumed: jaxkan.KAN(layers_hidden=[...], grid_size=G, spline_order=k, key=key)
-# Adjust the import / constructor args to match your installed version.
+# ── 5. KAN: B-spline Kolmogorov-Arnold network ─────────────────────────────────
+# Same single-sample (2,) → (1,) interface as every other model here.
 
-class _JaxKANWrapper(eqx.Module):
-    """Thin equinox wrapper so jaxkan models follow our (2,)→(1,) interface."""
-    inner: object   # the raw jaxkan model
+class SplineKANLinear(eqx.Module):
+    """One B-spline KAN edge layer: a SiLU base branch plus a learned spline.
 
-    def __init__(self, inner):
-        self.inner = inner
+    Mirrors pykan's `KANLayer` (grid size `G`, spline order `k`) closely enough
+    that the JAX and PyTorch backends run the same architecture. The grid is a
+    fixed uniform extension of [-1, 1]; pykan's adaptive grid refinement is not
+    reproduced, because it would make the parameter set change shape mid-run and
+    neither the causal schedule nor L-BFGS tolerates that.
+    """
+    base_weight:   jax.Array     # (out, in)
+    spline_weight: jax.Array     # (out, in, G + k)
+    grid:          jax.Array = eqx.field(static=False)   # (G + 2k + 1,)
+    k:             int = eqx.field(static=True)
+    n_basis:       int = eqx.field(static=True)
 
-    def __call__(self, xt):           # xt: (2,)  → (1,)
-        return self.inner(xt[None])[0]   # jaxkan expects (N, 2)
+    def __init__(self, in_f: int, out_f: int, G: int = 5, k: int = 3,
+                 grid_range=(-1.0, 1.0), *, key):
+        self.k = k
+        self.n_basis = G + k
+        h = (grid_range[1] - grid_range[0]) / G
+        # k knots either side so every basis function on [-1, 1] is complete.
+        self.grid = jnp.arange(-k, G + k + 1, dtype=jnp.float32) * h + grid_range[0]
+
+        k_base, k_spline = jax.random.split(key)
+        self.base_weight = (jax.random.normal(k_base, (out_f, in_f))
+                            / math.sqrt(in_f))
+        self.spline_weight = (jax.random.normal(k_spline, (out_f, in_f, self.n_basis))
+                              * 0.1 / math.sqrt(in_f))
+
+    def _bases(self, x):
+        """Cox--de Boor recursion. x: (in,) -> (in, n_basis)."""
+        g = self.grid
+        # order 0: indicator of each knot interval
+        b = ((x[:, None] >= g[None, :-1]) & (x[:, None] < g[None, 1:])).astype(x.dtype)
+        for order in range(1, self.k + 1):
+            left_den = g[order:-1] - g[: -order - 1]
+            right_den = g[order + 1:] - g[1:-order]
+            left = (x[:, None] - g[None, : -order - 1]) / left_den[None, :] * b[:, :-1]
+            right = (g[None, order + 1:] - x[:, None]) / right_den[None, :] * b[:, 1:]
+            b = left + right
+        return b
+
+    def __call__(self, x):            # x: (in,)  -> (out,)
+        # The spline grid is finite, so squash first: an unbounded coordinate
+        # would fall outside every basis function and contribute nothing.
+        xs = jnp.tanh(x)
+        bases = self._bases(xs)                                   # (in, n_basis)
+        spline = jnp.einsum('ib,oib->o', bases, self.spline_weight)
+        base = self.base_weight @ (xs * jax.nn.sigmoid(xs))        # SiLU branch
+        return base + spline
+
+
+class SplineKAN(eqx.Module):
+    layers: list
+
+    def __init__(self, layers_hidden, G: int = 5, k: int = 3, *, key):
+        pairs = list(zip(layers_hidden[:-1], layers_hidden[1:]))
+        keys = jax.random.split(key, len(pairs))
+        self.layers = [SplineKANLinear(i, o, G=G, k=k, key=kk)
+                       for (i, o), kk in zip(pairs, keys)]
+
+    def __call__(self, xt):           # xt: (2,)  -> (1,)
+        x = xt
+        for layer in self.layers:
+            x = layer(x)
+        return x
 
 
 def build_kan_jax(n_inputs, n_outputs, n_hidden, hidden_width, G, k, *, key):
-    """
-    Build a KAN with jaxkan.  Install: pip install jaxkan
-    If your version has a different constructor, adjust here.
-    """
-    try:
-        from jaxkan.models import KAN as JaxKAN
-    except ImportError:
-        try:
-            from jaxkan import KAN as JaxKAN
-        except ImportError:
-            raise ImportError("jaxkan not installed.  Run: pip install jaxkan")
+    """Spline KAN for the JAX backend.
 
+    This used to wrap the `jaxkan` package. That package's `KAN` is a
+    `flax.nnx` module whose constructor and parameter handling do not fit the
+    equinox/optax loop the rest of this backend uses, and its signature has
+    changed across releases. The layer is ~60 lines, so it is implemented here
+    instead: one fewer dependency, and the architecture no longer silently
+    changes when the library does.
+    """
     width = [n_inputs] + [hidden_width] * n_hidden + [n_outputs]
-    try:
-        inner = JaxKAN(layers_hidden=width, grid_size=G, spline_order=k, key=key)
-    except TypeError:
-        inner = JaxKAN(width=width, grid=G, k=k, key=key)
-    return _JaxKANWrapper(inner)
+    return SplineKAN(width, G=G, k=k, key=key)
 
 
 # ── Builder helpers ───────────────────────────────────────────────────────────
