@@ -50,7 +50,6 @@ presentations/
 outputs/
 *.pptx
 papers/FNO_reading_order/
-fno paper/
 
 # LaTeX build artifacts
 *.aux
