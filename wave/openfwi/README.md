@@ -187,4 +187,25 @@ It runs unchanged on a SubsurfaceGen run — the export has the same layout.
 
 ## Results
 
-Filled in from `openfwi_summary.json` once the sweep has run.
+The reference A-family sweep uses 2,000 training samples, 500 official-split
+validation samples, 100 epochs, seed 42, and errors on physical amplitudes.
+The FNO and PFNO rows are:
+
+| dataset | model | real params | relative L2 | median relative L2 | RMSE | seconds/epoch |
+|---|---|---:|---:|---:|---:|---:|
+| FlatVel_A | FNO | 9,467,521 | **3.142 %** | 2.943 % | 0.0461 | 7.4 |
+| FlatVel_A | PFNO | 3,411,200 | **19.410 %** | 17.861 % | 0.2848 | 38.3 |
+| CurveVel_A | FNO | 9,467,521 | **9.248 %** | 8.611 % | 0.1353 | 4.5 |
+| CurveVel_A | PFNO | 3,411,200 | **20.309 %** | 18.562 % | 0.3001 | 23.0 |
+
+The source JSON, predictions, learning curves, and the four-model table are in
+`results/openfwi/`.  To extend the same protocol to the harder FlatVel_B and
+CurveVel_B families on a single notebook GPU, use
+`runners/run_bench_gpu.py`; its smoke preset exercises fetch, training,
+scoring, and export before committing to the 100-epoch run:
+
+```bash
+python wave/openfwi/runners/run_bench_gpu.py --plan
+python wave/openfwi/runners/run_bench_gpu.py --preset smoke --targets FlatVel_B
+python wave/openfwi/runners/run_bench_gpu.py
+```

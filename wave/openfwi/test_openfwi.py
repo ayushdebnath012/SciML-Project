@@ -8,6 +8,7 @@ the graph kernel aggregates the neighbourhood it says it does, and that every
 model emits the gather shape the scorer expects.
 """
 import sys
+import tempfile
 from pathlib import Path
 
 import torch
@@ -15,10 +16,12 @@ import torch.nn as nn
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from openfwi_data import DATASET_CONFIG, band_limit_oracle
+from fetch_openfwi import npy_integrity
 from openfwi_models import (DepthToTime, GraphKernelLayer, GroupedSpectralConv2d,
                             OpenFWIDeepONet, OpenFWIFNO, OpenFWIGNO, OpenFWIPFNO,
                             SpectralConv2d, ball_offsets, count_parameters,
                             count_parameters_real)
+from train_openfwi import load_training_checkpoint, save_training_checkpoint
 
 FAILURES = []
 
@@ -188,6 +191,32 @@ def test_parameter_accounting():
           "nominal %d, real %d, complex %d" % (nominal, real, n_complex))
 
 
+def test_checkpoint_roundtrip_is_atomic():
+    with tempfile.TemporaryDirectory() as tmpdir:
+        path = Path(tmpdir) / "state.pt"
+        payload = {"epoch": 7, "weights": torch.arange(5)}
+        save_training_checkpoint(path, payload)
+        restored = load_training_checkpoint(path, torch.device("cpu"))
+        ok = (restored["epoch"] == 7 and
+              torch.equal(restored["weights"], payload["weights"]) and
+              not path.with_name(path.name + ".tmp").exists())
+        check("training checkpoint round-trips via atomic replacement", ok)
+
+
+def test_npy_integrity_rejects_truncated_payload():
+    import numpy as np
+    with tempfile.TemporaryDirectory() as tmpdir:
+        path = Path(tmpdir) / "chunk.npy"
+        np.save(path, np.zeros((2, 3), dtype=np.float32))
+        complete, _, _ = npy_integrity(path, (2, 3))
+        with path.open("r+b") as fh:
+            fh.truncate(path.stat().st_size - 4)
+        truncated, reason, _ = npy_integrity(path, (2, 3))
+        check("OpenFWI fetch rejects a valid header with truncated payload",
+              complete and not truncated and "truncated payload" in reason,
+              reason)
+
+
 if __name__ == "__main__":
     print("torch", torch.__version__)
     print("\n-- kernels --")
@@ -201,5 +230,7 @@ if __name__ == "__main__":
     print("\n-- accounting --")
     test_band_limit_oracle_is_exact_at_full_band()
     test_parameter_accounting()
+    test_checkpoint_roundtrip_is_atomic()
+    test_npy_integrity_rejects_truncated_payload()
     print("\n%d failure(s)" % len(FAILURES))
     sys.exit(1 if FAILURES else 0)

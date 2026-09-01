@@ -17,6 +17,7 @@ predicts near the middle of the range.
 import argparse
 import copy
 import json
+import os
 import sys
 import time
 from pathlib import Path
@@ -147,6 +148,12 @@ def parse_args(argv=None):
     p.add_argument("--export", type=int, default=6,
                    help="validation samples to export predictions for")
     p.add_argument("--outdir", default="openfwi_results")
+    p.add_argument("--checkpoint-every", type=int, default=0,
+                   help="write a resumable training checkpoint every N epochs "
+                        "(0 disables checkpoints)")
+    p.add_argument("--resume", action="store_true",
+                   help="resume the single requested model from its checkpoint "
+                        "in --outdir; requires --checkpoint-every > 0")
 
     # shared decoder geometry (FNO and GNO)
     p.add_argument("--t-latent", type=int, default=250,
@@ -183,7 +190,35 @@ def parse_args(argv=None):
     a = p.parse_args(argv)
     if a.init_seed is None:
         a.init_seed = a.seed
+    if a.checkpoint_every < 0:
+        p.error("--checkpoint-every must be >= 0")
+    if a.resume and a.checkpoint_every == 0:
+        p.error("--resume requires --checkpoint-every > 0")
+    if a.resume and len([n for n in a.models.split(",") if n.strip()]) != 1:
+        p.error("--resume requires exactly one model; use one invocation per model")
     return a
+
+
+def checkpoint_signature(args, model_name):
+    """Configuration that must stay fixed for an exact epoch-level resume."""
+    ignored = {"checkpoint_every", "resume", "outdir", "export"}
+    return {"model": model_name,
+            "args": {k: v for k, v in vars(args).items() if k not in ignored}}
+
+
+def save_training_checkpoint(path, payload):
+    """Atomically replace a checkpoint so interruption cannot corrupt it."""
+    tmp = path.with_name(path.name + ".tmp")
+    torch.save(payload, tmp)
+    os.replace(tmp, path)
+
+
+def load_training_checkpoint(path, device):
+    """Load trusted, locally-created trainer state across torch versions."""
+    try:
+        return torch.load(path, map_location=device, weights_only=False)
+    except TypeError:  # torch < 2.6 has no weights_only keyword
+        return torch.load(path, map_location=device)
 
 
 def make_scorer(norm):
@@ -299,12 +334,15 @@ def main(argv=None):
           % (a.dataset, len(train_set), len(val_set), train_model.sample_shape,
              cfg["ns"], nt, cfg["ng"]), flush=True)
 
+    # Keep this generator reachable: its state determines the shuffled order
+    # and must be restored for an exact epoch-level resume.
+    batch_gen = torch.Generator().manual_seed(a.init_seed + 23)
     cache_device = device if a.cache == "gpu" else (None if a.cache == "ram" else False)
     if cache_device is False:
         train_loader = DataLoader(
             train_set, batch_size=a.batch_size, shuffle=True, num_workers=a.workers,
             pin_memory=(device.type == "cuda"), drop_last=False,
-            generator=torch.Generator().manual_seed(a.init_seed + 23),
+            generator=batch_gen,
             persistent_workers=a.workers > 0)
         val_loader = DataLoader(val_set, batch_size=a.batch_size, num_workers=a.workers,
                                 pin_memory=(device.type == "cuda"),
@@ -324,7 +362,6 @@ def main(argv=None):
         print("cached %.1f GB on %s in %.0f s"
               % (gb, a.cache, time.perf_counter() - t_cache), flush=True)
         n_steps = (len(train_set) + a.batch_size - 1) // a.batch_size
-        batch_gen = torch.Generator().manual_seed(a.init_seed + 23)
 
         def train_batches():
             return iterate(Xtr, Ytr, a.batch_size, device, shuffle=True,
@@ -360,6 +397,7 @@ def main(argv=None):
 
     denorm, per_sample = make_scorer(norm)
     results, histories, trained = {}, {}, {}
+    checkpoint_paths = []
 
     for mid, name in enumerate(n.strip() for n in a.models.split(",") if n.strip()):
         torch.manual_seed(a.init_seed + 100 * mid)
@@ -373,8 +411,41 @@ def main(argv=None):
             opt, max_lr=a.lr, total_steps=a.epochs * max(1, n_steps),
             pct_start=0.15)
         best, best_state, hist = float("inf"), None, []
+        start_epoch, elapsed_before = 1, 0.0
+        checkpoint = outdir / ("%s_train_checkpoint.pt" % name)
+        if a.checkpoint_every:
+            checkpoint_paths.append(checkpoint)
+        if a.resume:
+            if not checkpoint.exists():
+                raise FileNotFoundError("resume checkpoint not found: %s" % checkpoint)
+            state = load_training_checkpoint(checkpoint, device)
+            expected = checkpoint_signature(a, name)
+            if state.get("signature") != expected:
+                raise RuntimeError(
+                    "checkpoint configuration does not match this run; "
+                    "use the original arguments or a new --outdir")
+            model.load_state_dict(state["model_state"])
+            opt.load_state_dict(state["optimizer_state"])
+            sched.load_state_dict(state["scheduler_state"])
+            best = state["best"]
+            best_state = state["best_state"]
+            hist = state["history"]
+            start_epoch = int(state["epoch"]) + 1
+            elapsed_before = float(state.get("elapsed_training_s", 0.0))
+            batch_gen.set_state(state["batch_generator_state"])
+            torch.set_rng_state(state["torch_rng_state"].cpu())
+            if device.type == "cuda" and state.get("cuda_rng_states") is not None:
+                torch.cuda.set_rng_state_all(
+                    [rng_state.cpu() for rng_state in state["cuda_rng_states"]])
+            if state.get("numpy_rng_state") is not None:
+                np.random.set_state(state["numpy_rng_state"])
+            print("  resumed %s after epoch %d/%d (best %.3f%%)"
+                  % (name, start_epoch - 1, a.epochs, best), flush=True)
+        elif checkpoint.exists() and a.checkpoint_every:
+            print("  existing checkpoint ignored (pass --resume to use it): %s"
+                  % checkpoint, flush=True)
         t0 = time.perf_counter()
-        for epoch in range(1, a.epochs + 1):
+        for epoch in range(start_epoch, a.epochs + 1):
             model.train()
             running, nb = 0.0, 0
             for xb, yb in train_batches():
@@ -398,7 +469,28 @@ def main(argv=None):
                 print("  %-9s ep %4d/%d  train_mse=%.4e  val_relL2=%7.3f%%"
                       % (name, epoch, a.epochs, running / max(1, nb),
                          metrics["rel_l2_pct"]), flush=True)
-        secs = time.perf_counter() - t0
+            if (a.checkpoint_every and
+                    (epoch % a.checkpoint_every == 0 or epoch == a.epochs)):
+                save_training_checkpoint(checkpoint, {
+                    "format_version": 1,
+                    "signature": checkpoint_signature(a, name),
+                    "epoch": epoch,
+                    "model_state": model.state_dict(),
+                    "optimizer_state": opt.state_dict(),
+                    "scheduler_state": sched.state_dict(),
+                    "best": best,
+                    "best_state": best_state,
+                    "history": hist,
+                    "elapsed_training_s": (elapsed_before +
+                                             time.perf_counter() - t0),
+                    "batch_generator_state": batch_gen.get_state(),
+                    "torch_rng_state": torch.get_rng_state(),
+                    "cuda_rng_states": (torch.cuda.get_rng_state_all()
+                                        if device.type == "cuda" else None),
+                    "numpy_rng_state": np.random.get_state(),
+                })
+                print("     checkpoint -> %s" % checkpoint, flush=True)
+        secs = elapsed_before + time.perf_counter() - t0
         model.load_state_dict(best_state)
         metrics = evaluate(model, val_batches, per_sample, device)
         trained[name] = model
@@ -455,6 +547,10 @@ def main(argv=None):
     }
     (outdir / "openfwi_summary.json").write_text(json.dumps(summary, indent=2))
     (outdir / "openfwi_histories.json").write_text(json.dumps(histories))
+    # A summary is the completion marker used by the outer runner. Remove the
+    # larger transient checkpoint only after all final artifacts are durable.
+    for checkpoint in checkpoint_paths:
+        checkpoint.unlink(missing_ok=True)
     print("\n" + json.dumps(
         {k: {kk: vv for kk, vv in v.items() if kk != "per_sample_rel_l2"}
          for k, v in results.items()}, indent=2))

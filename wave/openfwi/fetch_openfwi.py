@@ -37,15 +37,40 @@ def chunk_ids(n_train, n_val):
         raise SystemExit(str(exc))
 
 
-def npy_header_shape(path):
-    """Read shape+dtype from a .npy header without loading the array."""
+def npy_file_info(path):
+    """Read shape, dtype and payload boundary without loading the array."""
     with open(path, "rb") as fh:
         version = np.lib.format.read_magic(fh)
         if version == (1, 0):
             shape, _, dtype = np.lib.format.read_array_header_1_0(fh)
         else:
             shape, _, dtype = np.lib.format.read_array_header_2_0(fh)
-    return shape, dtype
+        header_bytes = fh.tell()
+    expected_bytes = header_bytes + int(np.prod(shape)) * dtype.itemsize
+    return shape, dtype, expected_bytes
+
+
+def npy_integrity(path, expected_shape):
+    """Validate header declarations *and* the complete on-disk payload.
+
+    A truncated download can retain a perfectly valid header, so checking only
+    shape and dtype accepts a file that later fails in ``numpy.memmap``.  The
+    exact .npy size is header bytes plus shape product times dtype size.
+    """
+    try:
+        shape, dtype, expected_bytes = npy_file_info(path)
+    except (EOFError, OSError, ValueError) as exc:
+        return False, "unreadable header: %s" % exc, None
+    if tuple(shape) != tuple(expected_shape):
+        return False, "shape %s, expected %s" % (shape, expected_shape), expected_bytes
+    if dtype != np.dtype("float32"):
+        return False, "dtype %s, expected float32" % dtype, expected_bytes
+    actual_bytes = Path(path).stat().st_size
+    if actual_bytes != expected_bytes:
+        label = "truncated" if actual_bytes < expected_bytes else "oversized"
+        return (False, "%s payload: %d of %d bytes"
+                % (label, actual_bytes, expected_bytes), expected_bytes)
+    return True, "complete", expected_bytes
 
 
 def download(url, dest, label="", retries=4):
@@ -107,24 +132,50 @@ def fetch_one(dataset, kind, index, root, expected, force):
     name = f"{kind}{index}.npy"
     label = f"{dataset}/{kind}/{name}"
     dest = Path(root) / dataset / kind / name
+    part = dest.with_suffix(dest.suffix + ".part")
     url = f"{MIRROR}/{dataset}/{kind}/{name}"
-    if dest.exists() and not force:
-        shape, _ = npy_header_shape(dest)
-        if tuple(shape) == expected:
+    if force:
+        dest.unlink(missing_ok=True)
+        part.unlink(missing_ok=True)
+    elif dest.exists():
+        ok, reason, expected_bytes = npy_integrity(dest, expected)
+        if ok:
             return label, "cached", 0.0
-        print(f"  {label} has shape {shape}, expected {expected} -- refetching",
+        print(f"  {label} is invalid ({reason}) -- resuming/refetching", flush=True)
+        # A valid header plus a short payload is useful: turn it back into the
+        # downloader's .part file so the next request resumes at that byte.
+        if (expected_bytes is not None and
+                dest.stat().st_size < expected_bytes):
+            if not part.exists() or dest.stat().st_size > part.stat().st_size:
+                part.unlink(missing_ok=True)
+                dest.replace(part)
+            else:
+                dest.unlink()
+        else:
+            dest.unlink()
+            part.unlink(missing_ok=True)
+
+    total_secs = 0.0
+    for integrity_attempt in range(1, 5):
+        secs = download(url, dest, label=label)
+        total_secs += secs
+        ok, reason, expected_bytes = npy_integrity(dest, expected)
+        if ok:
+            mb = dest.stat().st_size / 1e6
+            return (label,
+                    f"{mb:.0f} MB in {total_secs:.0f}s "
+                    f"({mb/max(total_secs,1e-9):.1f} MB/s)", total_secs)
+        print(f"    {label} integrity attempt {integrity_attempt}/4: {reason}",
               flush=True)
-    secs = download(url, dest, label=label)
-    shape, dtype = npy_header_shape(dest)
-    if tuple(shape) != expected:
-        dest.unlink()
-        raise RuntimeError(
-            f"{label}: mirror returned shape {shape}, config declares {expected}. "
-            "Deleted; the mirror does not match OpenFWI and must not be used.")
-    if dtype != np.dtype("float32"):
-        raise RuntimeError(f"{label}: dtype {dtype}, expected float32")
-    mb = dest.stat().st_size / 1e6
-    return label, f"{mb:.0f} MB in {secs:.0f}s ({mb/max(secs,1e-9):.1f} MB/s)", secs
+        if integrity_attempt == 4:
+            raise RuntimeError(f"{label}: {reason} after 4 integrity attempts")
+        if (expected_bytes is not None and
+                dest.stat().st_size < expected_bytes):
+            part.unlink(missing_ok=True)
+            dest.replace(part)
+        else:
+            dest.unlink(missing_ok=True)
+            part.unlink(missing_ok=True)
 
 
 def main():
@@ -177,7 +228,8 @@ def main():
             print(f"  [{done:2d}/{len(tasks)}] {label}  {note}", flush=True)
 
     elapsed = time.perf_counter() - t0
-    print(f"\nverified all {len(tasks)} headers against dataset_config.json "
+    print(f"\nverified all {len(tasks)} files (shape, dtype, payload size) "
+          f"against dataset_config.json "
           f"in {elapsed/60:.1f} min")
     for k, v in manifest.items():
         print(f"  {k}: chunks {v}")
