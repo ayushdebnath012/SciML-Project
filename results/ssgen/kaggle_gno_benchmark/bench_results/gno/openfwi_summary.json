@@ -45,7 +45,7 @@
     "val": 100,
     "train_chunks": 0,
     "val_chunks": 0,
-    "note": "official OpenFWI chunk split: 1-48 train, 49-60 val"
+    "note": "manifest-defined cache split: train, validation and optional out-of-distribution boundaries come from ssgen_meta.json"
   },
   "oracles": {
     "samples": 32,

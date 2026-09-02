@@ -537,7 +537,10 @@ def main(argv=None):
                  "n_sources": cfg["ns"], "time_stride": a.time_stride},
         "split": {"train": len(train_set), "val": len(val_set),
                   "train_chunks": a.train_chunks, "val_chunks": a.val_chunks,
-                  "note": "official OpenFWI chunk split: 1-48 train, 49-60 val"},
+                  "note": ("manifest-defined cache split: train, validation "
+                           "and optional out-of-distribution boundaries come "
+                           "from ssgen_meta.json" if a.meta else
+                           "official OpenFWI chunk split: 1-48 train, 49-60 val")},
         "oracles": oracles,
         "device": str(device),
         "gpu": torch.cuda.get_device_name(0) if device.type == "cuda" else None,

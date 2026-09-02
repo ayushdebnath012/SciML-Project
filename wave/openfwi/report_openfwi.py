@@ -93,6 +93,21 @@ def figure_curves(runs, outdir):
             ax.annotate(" %s  %.1f%%" % (name, val[-1]), xy=(ep[-1], val[-1]),
                         xytext=(4, 0), textcoords="offset points",
                         color=INK_2, fontsize=8, va="center")
+        if not lo:
+            # Merged result bundles can contain a complete summary and
+            # prediction export without duplicating the source histories.
+            # Keep the rest of the report usable and make the omission
+            # explicit instead of calling min([]) below.
+            ax.text(0.5, 0.5, "training history\nnot included in this bundle",
+                    transform=ax.transAxes, ha="center", va="center",
+                    color=MUTED, fontsize=10)
+            ax.set_title(run["label"], color=INK, fontsize=11, loc="left", pad=10)
+            ax.grid(False)
+            ax.set_xticks([])
+            ax.set_yticks([])
+            for spine in ax.spines.values():
+                spine.set_visible(False)
+            continue
         floor = run["summary"]["oracles"]["pfno_band_limit"]
         ax.axhline(100, color=MUTED, linewidth=1, linestyle=(0, (4, 3)))
         ax.annotate("predicting zero", xy=(0.02, 100), xycoords=("axes fraction", "data"),

@@ -26,9 +26,29 @@ function Wait-Kernel([string]$slug) {
         $status = Get-KernelStatus $slug
         Write-ScheduleLog $status | Out-Null
         if ($status -match 'KernelWorkerStatus\.COMPLETE') { return $true }
-        if ($status -match 'KernelWorkerStatus\.(ERROR|CANCELLED)') { return $false }
+        if ($status -match 'KernelWorkerStatus\.(ERROR|CANCELLED|CANCELED)') { return $false }
+        if ($status -match '(?i)Cannot access kernel|Permission .* denied|not found|unauthorized|forbidden') {
+            Write-ScheduleLog "cannot monitor $slug; stopping this job instead of polling forever" | Out-Null
+            return $false
+        }
         Start-Sleep -Seconds 60
     }
+}
+
+function Resolve-PushedKernelSlug([object[]]$pushOutput, [string]$fallback) {
+    # Kaggle always publishes the authoritative owner/slug in the success URL.
+    # The authenticated account can differ from the owner written into the
+    # generated metadata, so polling the metadata slug can target a notebook
+    # that was never created.
+    $pushText = (($pushOutput | ForEach-Object { [string]$_ }) -join "`n")
+    $match = [regex]::Match(
+        $pushText,
+        'https://www\.kaggle\.com/code/([A-Za-z0-9_-]+)/([A-Za-z0-9_-]+)'
+    )
+    if ($match.Success) {
+        return '{0}/{1}' -f $match.Groups[1].Value,$match.Groups[2].Value
+    }
+    return $fallback
 }
 
 function Get-GpuQuota {
@@ -132,14 +152,28 @@ foreach ($job in $jobs) {
     Wait-ForQuota $required
     $package = New-ModelPackage $job
     Write-ScheduleLog "pushing $($job.Name) kernel from $package"
-    & kaggle kernels push -p $package --accelerator GPU 2>&1 |
-        ForEach-Object { Write-ScheduleLog ([string]$_) }
-    if ($LASTEXITCODE -ne 0) {
-        Write-ScheduleLog "$($job.Name) push failed with rc=$LASTEXITCODE"
+    $pushOutput = @(& kaggle kernels push -p $package --accelerator GPU 2>&1)
+    $pushExitCode = $LASTEXITCODE
+    $pushOutput | ForEach-Object { Write-ScheduleLog ([string]$_) }
+    if ($pushExitCode -ne 0) {
+        Write-ScheduleLog "$($job.Name) push failed with rc=$pushExitCode"
         continue
     }
-    if (-not (Wait-Kernel $job.Slug)) {
-        & kaggle kernels logs $job.Slug 2>&1 |
+
+    $pushText = (($pushOutput | ForEach-Object { [string]$_ }) -join "`n")
+    $kernelSlug = Resolve-PushedKernelSlug $pushOutput $job.Slug
+    if ($kernelSlug -ne $job.Slug) {
+        Write-ScheduleLog "Kaggle created $kernelSlug (metadata requested $($job.Slug)); using the created slug"
+    }
+    if ($pushText -match '(?i)not valid kernel sources') {
+        Write-ScheduleLog "$($job.Name) was pushed without a required notebook source; stopping before more GPU jobs are launched"
+        & kaggle kernels logs $kernelSlug 2>&1 |
+            Set-Content -LiteralPath (Join-Path $resultRoot ("kaggle_{0}_kernel_logs.json" -f $job.Name.ToLower()))
+        exit 1
+    }
+
+    if (-not (Wait-Kernel $kernelSlug)) {
+        & kaggle kernels logs $kernelSlug 2>&1 |
             Set-Content -LiteralPath (Join-Path $resultRoot ("kaggle_{0}_kernel_logs.json" -f $job.Name.ToLower()))
         Write-ScheduleLog "$($job.Name) kernel failed"
         continue
@@ -147,11 +181,11 @@ foreach ($job in $jobs) {
 
     $outputDir = Join-Path $resultRoot ("kaggle_{0}" -f $job.Name.ToLower())
     New-Item -ItemType Directory -Force -Path $outputDir | Out-Null
-    & kaggle kernels output $job.Slug -p $outputDir --page-size 200 --force 2>&1 |
+    & kaggle kernels output $kernelSlug -p $outputDir --page-size 200 --force 2>&1 |
         ForEach-Object { Write-ScheduleLog ([string]$_) }
-    & kaggle kernels logs $job.Slug 2>&1 |
+    & kaggle kernels logs $kernelSlug 2>&1 |
         Set-Content -LiteralPath (Join-Path $resultRoot ("kaggle_{0}_kernel_logs.json" -f $job.Name.ToLower()))
-    Write-ScheduleLog "$($job.Name) complete and downloaded to $outputDir"
+    Write-ScheduleLog "$($job.Name) complete from $kernelSlug and downloaded to $outputDir"
 }
 
 Write-ScheduleLog 'SubsurfaceGen full-model schedule finished'
