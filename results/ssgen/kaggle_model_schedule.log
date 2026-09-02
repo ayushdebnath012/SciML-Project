@@ -1681,3 +1681,64 @@ At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_ka
 2026-09-02T20:12:10.7193936+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
 2026-09-02T20:13:14.5804472+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
 2026-09-02T20:14:18.3796256+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T20:15:24.7513033+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T20:16:28.0105112+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T20:17:31.3969754+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T20:18:38.5708654+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T20:19:42.4802500+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T20:20:45.3113022+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T20:21:48.9378427+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T20:22:53.1022241+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T20:23:55.2872133+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T20:24:59.7727567+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T20:26:04.8485771+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T20:27:10.6565756+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T20:28:14.9341509+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T20:29:19.1340631+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T20:30:23.6693969+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T20:31:27.9099556+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T20:32:32.0900754+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T20:33:33.7767233+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T20:34:36.6455412+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T20:35:38.5733233+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T20:36:41.2281558+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T20:37:43.0268627+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T20:38:44.6872408+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T21:23:02.8166867+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T22:40:51.5861450+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.COMPLETE"
+2026-09-02T22:42:03.8346030+05:30  Output file downloaded to C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_gno\bench_results/gno/GNO_state.pt
+2026-09-02T22:42:03.8748866+05:30  Output file downloaded to C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_gno\bench_results/gno/openfwi_histories.json
+2026-09-02T22:42:03.8748866+05:30  Output file downloaded to C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_gno\bench_results/gno/openfwi_predictions.npz
+2026-09-02T22:42:03.8822331+05:30  Output file downloaded to C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_gno\bench_results/gno/openfwi_summary.json
+2026-09-02T22:42:03.8891288+05:30  Output file downloaded to C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_gno\benchmark_status.json
+2026-09-02T22:42:03.8953586+05:30  Output file downloaded to C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_gno\subsurfacegen_gno.zip
+2026-09-02T22:42:03.8980836+05:30  Kernel log downloaded to C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_gno\subsurfacegen-gno-benchmark.log 
+2026-09-02T22:42:06.3771054+05:30  GNO complete and downloaded to C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_gno
+2026-09-02T22:42:06.4056641+05:30  PFNO projects to 12.89 h, above safe 12 h session capacity; not launching
+2026-09-02T22:42:10.4902366+05:30  waiting for quota refresh at 2026-09-05T00:00:00.0000000+05:30: 1.57 h remaining, 4.66 h required
+2026-09-02T22:52:59.7318864+05:30  waiting for quota refresh at 2026-09-05T00:00:00.0000000+05:30: 1.57 h remaining, 4.66 h required
+2026-09-02T23:04:13.2861029+05:30  waiting for quota refresh at 2026-09-05T00:00:00.0000000+05:30: 1.57 h remaining, 4.66 h required
+2026-09-02T23:15:13.5282208+05:30  waiting for quota refresh at 2026-09-05T00:00:00.0000000+05:30: 1.57 h remaining, 4.66 h required
+2026-09-02T23:26:04.1679176+05:30  waiting for quota refresh at 2026-09-05T00:00:00.0000000+05:30: 1.57 h remaining, 4.66 h required
+2026-09-02T23:31:18.7039199+05:30  quota ready: 30.00 h remaining, 4.66 h required
+2026-09-02T23:31:18.8890514+05:30  pushing DeepONet kernel from C:\Users\USER_HP\Desktop\SciML Project\tmp\kaggle_ssgen_generated_20260902_133204\deeponet
+2026-09-02T23:31:22.2065026+05:30  The following are not valid kernel sources and could not be added to the kernel: ['ayushdebnath0123/subsurfacegen-cache-600-100-80']
+2026-09-02T23:31:22.2216844+05:30  Kernel version 1 successfully pushed.  Please check progress at https://www.kaggle.com/code/ayushdebnath1/subsurfacegen-deeponet-benchmark
+2026-09-02T23:31:25.3034928+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-deeponet-benchmark' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug GÇö use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:21 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T23:32:28.3599071+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-deeponet-benchmark' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug GÇö use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:21 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
