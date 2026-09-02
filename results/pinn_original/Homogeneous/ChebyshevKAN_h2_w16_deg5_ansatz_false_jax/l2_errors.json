@@ -1,0 +1,17 @@
+{
+    "model_type": "ChebyshevKAN",
+    "n_hidden": 2,
+    "hidden_width": 16,
+    "material_type": "Homogeneous",
+    "use_ansatz": false,
+    "extra_params": {
+        "degree": 5
+    },
+    "optimizer": "adam",
+    "use_gradnorm": true,
+    "causal_n_chunks": 16,
+    "weighting": "causal_gradnorm",
+    "backend": "jax",
+    "relative_l2_error_best_adam_percent": 140.77154693906678,
+    "relative_l2_error_best_lbfgs_percent": 140.79822952580966
+}

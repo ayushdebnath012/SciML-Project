@@ -1,0 +1,18 @@
+{
+    "model_type": "PirateNet",
+    "n_hidden": 3,
+    "hidden_width": 64,
+    "material_type": "Homogeneous",
+    "use_ansatz": true,
+    "extra_params": {
+        "n_fourier": 128,
+        "sigma": 3.0
+    },
+    "optimizer": "adam",
+    "use_gradnorm": false,
+    "causal_n_chunks": 1,
+    "weighting": "causal_gradnorm",
+    "backend": "jax",
+    "relative_l2_error_best_adam_percent": 3.4653856466654314,
+    "relative_l2_error_best_lbfgs_percent": 3.451445063244276
+}

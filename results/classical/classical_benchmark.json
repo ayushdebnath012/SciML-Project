@@ -1,0 +1,636 @@
+{
+  "meta": {
+    "machine": "Ayush",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.10",
+    "numpy": "2.5.1",
+    "reference": {
+      "method": "cheb",
+      "n": 512,
+      "self_check_n": 384
+    },
+    "eval_grid": {
+      "nx": 201,
+      "nt": 101,
+      "t_max": 1.0
+    }
+  },
+  "reference_self_convergence": [
+    {
+      "material": "Homogeneous",
+      "n": 512,
+      "check_n": 384,
+      "rel_l2_percent": 1.2650505293987402e-12,
+      "seconds": 79.22399200000018
+    },
+    {
+      "material": "TwoLayer",
+      "n": 512,
+      "check_n": 384,
+      "rel_l2_percent": 1.8969163801372173e-05,
+      "seconds": 97.66444709999996
+    },
+    {
+      "material": "MultiLayer",
+      "n": 512,
+      "check_n": 384,
+      "rel_l2_percent": 0.00013652490592281434,
+      "seconds": 110.62295590000008
+    }
+  ],
+  "pinn_reference_error": [
+    {
+      "material": "Homogeneous",
+      "nx": 250,
+      "rel_l2_percent": 0.3513483938097445,
+      "seconds": 0.0035969000000477536
+    },
+    {
+      "material": "Homogeneous",
+      "nx": 500,
+      "rel_l2_percent": 0.07121958807595721,
+      "seconds": 0.009621599999945829
+    },
+    {
+      "material": "Homogeneous",
+      "nx": 1000,
+      "rel_l2_percent": 0.040394458895983025,
+      "seconds": 0.017710799999804294
+    },
+    {
+      "material": "Homogeneous",
+      "nx": 2000,
+      "rel_l2_percent": 0.03952094279897216,
+      "seconds": 0.018143000000009124
+    },
+    {
+      "material": "Homogeneous",
+      "nx": 4000,
+      "rel_l2_percent": 0.03954901945057267,
+      "seconds": 0.06021399999985988
+    },
+    {
+      "material": "Homogeneous",
+      "nx": 8000,
+      "rel_l2_percent": 0.03956748601742351,
+      "seconds": 0.12186820000010812
+    },
+    {
+      "material": "TwoLayer",
+      "nx": 250,
+      "rel_l2_percent": 0.5023323286346757,
+      "seconds": 0.00230239999996229
+    },
+    {
+      "material": "TwoLayer",
+      "nx": 500,
+      "rel_l2_percent": 0.13819910659355275,
+      "seconds": 0.004554500000040207
+    },
+    {
+      "material": "TwoLayer",
+      "nx": 1000,
+      "rel_l2_percent": 0.04587099970627264,
+      "seconds": 0.008739500000046974
+    },
+    {
+      "material": "TwoLayer",
+      "nx": 2000,
+      "rel_l2_percent": 0.03985392775790123,
+      "seconds": 0.021136200000000827
+    },
+    {
+      "material": "TwoLayer",
+      "nx": 4000,
+      "rel_l2_percent": 0.03955516354862825,
+      "seconds": 0.06366260000004331
+    },
+    {
+      "material": "TwoLayer",
+      "nx": 8000,
+      "rel_l2_percent": 0.03956393050948463,
+      "seconds": 0.16879519999997683
+    },
+    {
+      "material": "MultiLayer",
+      "nx": 250,
+      "rel_l2_percent": 0.621803834216711,
+      "seconds": 0.0034891999998762913
+    },
+    {
+      "material": "MultiLayer",
+      "nx": 500,
+      "rel_l2_percent": 0.1459763781159923,
+      "seconds": 0.005526200000076642
+    },
+    {
+      "material": "MultiLayer",
+      "nx": 1000,
+      "rel_l2_percent": 0.04785045521738871,
+      "seconds": 0.011391200000161916
+    },
+    {
+      "material": "MultiLayer",
+      "nx": 2000,
+      "rel_l2_percent": 0.039709481574106295,
+      "seconds": 0.027435400000058507
+    },
+    {
+      "material": "MultiLayer",
+      "nx": 4000,
+      "rel_l2_percent": 0.039477744251425445,
+      "seconds": 0.07732749999991029
+    },
+    {
+      "material": "MultiLayer",
+      "nx": 8000,
+      "rel_l2_percent": 0.039541950218960197,
+      "seconds": 0.2247628000000077
+    }
+  ],
+  "convergence": [
+    {
+      "material": "Homogeneous",
+      "method": "fd2",
+      "n": 50,
+      "rel_l2_percent": 13.156396693749823,
+      "seconds": 0.0012868000001162727
+    },
+    {
+      "material": "Homogeneous",
+      "method": "fd2",
+      "n": 100,
+      "rel_l2_percent": 2.6566213222404036,
+      "seconds": 0.0011406999999508116
+    },
+    {
+      "material": "Homogeneous",
+      "method": "fd2",
+      "n": 200,
+      "rel_l2_percent": 0.6426988062561215,
+      "seconds": 0.001997999999957756
+    },
+    {
+      "material": "Homogeneous",
+      "method": "fd2",
+      "n": 400,
+      "rel_l2_percent": 0.12343707083753094,
+      "seconds": 0.003166899999996531
+    },
+    {
+      "material": "Homogeneous",
+      "method": "fd2",
+      "n": 800,
+      "rel_l2_percent": 0.04308934065864602,
+      "seconds": 0.006179299999985233
+    },
+    {
+      "material": "Homogeneous",
+      "method": "fd2",
+      "n": 1600,
+      "rel_l2_percent": 0.03952391956319411,
+      "seconds": 0.013196000000107233
+    },
+    {
+      "material": "Homogeneous",
+      "method": "fd2",
+      "n": 3200,
+      "rel_l2_percent": 0.039542247364140914,
+      "seconds": 0.038080999999920095
+    },
+    {
+      "material": "Homogeneous",
+      "method": "fd2",
+      "n": 6400,
+      "rel_l2_percent": 0.039564361960775764,
+      "seconds": 0.09205500000007305
+    },
+    {
+      "material": "Homogeneous",
+      "method": "fem_p1",
+      "n": 50,
+      "rel_l2_percent": 13.022952548374569,
+      "seconds": 0.0011976000000686327
+    },
+    {
+      "material": "Homogeneous",
+      "method": "fem_p1",
+      "n": 100,
+      "rel_l2_percent": 2.625599083768435,
+      "seconds": 0.0012425999998413317
+    },
+    {
+      "material": "Homogeneous",
+      "method": "fem_p1",
+      "n": 200,
+      "rel_l2_percent": 0.6343927418655545,
+      "seconds": 0.0020621000001028733
+    },
+    {
+      "material": "Homogeneous",
+      "method": "fem_p1",
+      "n": 400,
+      "rel_l2_percent": 0.12193708209877333,
+      "seconds": 0.003429800000048999
+    },
+    {
+      "material": "Homogeneous",
+      "method": "fem_p1",
+      "n": 800,
+      "rel_l2_percent": 0.04297656480463814,
+      "seconds": 0.006971000000021377
+    },
+    {
+      "material": "Homogeneous",
+      "method": "fem_p1",
+      "n": 1600,
+      "rel_l2_percent": 0.03952130556059566,
+      "seconds": 0.01527699999996912
+    },
+    {
+      "material": "Homogeneous",
+      "method": "fem_p1",
+      "n": 3200,
+      "rel_l2_percent": 0.039542083904203836,
+      "seconds": 0.04130880000002435
+    },
+    {
+      "material": "Homogeneous",
+      "method": "fem_p1",
+      "n": 6400,
+      "rel_l2_percent": 0.03956435174539811,
+      "seconds": 0.11816399999997884
+    },
+    {
+      "material": "Homogeneous",
+      "method": "cheb",
+      "n": 32,
+      "rel_l2_percent": 5.720941096731656,
+      "seconds": 0.03828139999995983
+    },
+    {
+      "material": "Homogeneous",
+      "method": "cheb",
+      "n": 48,
+      "rel_l2_percent": 8.8777885118773,
+      "seconds": 0.06542609999996785
+    },
+    {
+      "material": "Homogeneous",
+      "method": "cheb",
+      "n": 64,
+      "rel_l2_percent": 3.561213052196686e-05,
+      "seconds": 0.13032879999991565
+    },
+    {
+      "material": "Homogeneous",
+      "method": "cheb",
+      "n": 96,
+      "rel_l2_percent": 8.066627896842785e-09,
+      "seconds": 0.29903490000015154
+    },
+    {
+      "material": "Homogeneous",
+      "method": "cheb",
+      "n": 128,
+      "rel_l2_percent": 8.599551254928828e-10,
+      "seconds": 0.5932554999999411
+    },
+    {
+      "material": "Homogeneous",
+      "method": "cheb",
+      "n": 192,
+      "rel_l2_percent": 3.4535988643606495e-11,
+      "seconds": 1.948156299999937
+    },
+    {
+      "material": "Homogeneous",
+      "method": "cheb",
+      "n": 256,
+      "rel_l2_percent": 3.783968129777611e-12,
+      "seconds": 4.349841599999991
+    },
+    {
+      "material": "TwoLayer",
+      "method": "fd2",
+      "n": 50,
+      "rel_l2_percent": 15.711150862393907,
+      "seconds": 0.0013937999999598105
+    },
+    {
+      "material": "TwoLayer",
+      "method": "fd2",
+      "n": 100,
+      "rel_l2_percent": 3.5295921332101825,
+      "seconds": 0.0012559000001601817
+    },
+    {
+      "material": "TwoLayer",
+      "method": "fd2",
+      "n": 200,
+      "rel_l2_percent": 0.9434253679867453,
+      "seconds": 0.0022252000001117267
+    },
+    {
+      "material": "TwoLayer",
+      "method": "fd2",
+      "n": 400,
+      "rel_l2_percent": 0.17872425021135682,
+      "seconds": 0.0038014000001567183
+    },
+    {
+      "material": "TwoLayer",
+      "method": "fd2",
+      "n": 800,
+      "rel_l2_percent": 0.058293651002433965,
+      "seconds": 0.007621599999993123
+    },
+    {
+      "material": "TwoLayer",
+      "method": "fd2",
+      "n": 1600,
+      "rel_l2_percent": 0.0403439704048204,
+      "seconds": 0.01627979999989293
+    },
+    {
+      "material": "TwoLayer",
+      "method": "fd2",
+      "n": 3200,
+      "rel_l2_percent": 0.039570138503793276,
+      "seconds": 0.043784700000060184
+    },
+    {
+      "material": "TwoLayer",
+      "method": "fd2",
+      "n": 6400,
+      "rel_l2_percent": 0.03956015033315622,
+      "seconds": 0.11794719999988956
+    },
+    {
+      "material": "TwoLayer",
+      "method": "fem_p1",
+      "n": 50,
+      "rel_l2_percent": 15.730082595459049,
+      "seconds": 0.0013748999999734224
+    },
+    {
+      "material": "TwoLayer",
+      "method": "fem_p1",
+      "n": 100,
+      "rel_l2_percent": 3.4948709959490682,
+      "seconds": 0.0013433999999961088
+    },
+    {
+      "material": "TwoLayer",
+      "method": "fem_p1",
+      "n": 200,
+      "rel_l2_percent": 0.9339047391094287,
+      "seconds": 0.0022705999999743653
+    },
+    {
+      "material": "TwoLayer",
+      "method": "fem_p1",
+      "n": 400,
+      "rel_l2_percent": 0.17603007666594553,
+      "seconds": 0.0037836999999854015
+    },
+    {
+      "material": "TwoLayer",
+      "method": "fem_p1",
+      "n": 800,
+      "rel_l2_percent": 0.05768016224071982,
+      "seconds": 0.00814130000003388
+    },
+    {
+      "material": "TwoLayer",
+      "method": "fem_p1",
+      "n": 1600,
+      "rel_l2_percent": 0.04028696803110461,
+      "seconds": 0.01878790000000663
+    },
+    {
+      "material": "TwoLayer",
+      "method": "fem_p1",
+      "n": 3200,
+      "rel_l2_percent": 0.03956292061177188,
+      "seconds": 0.05055010000000948
+    },
+    {
+      "material": "TwoLayer",
+      "method": "fem_p1",
+      "n": 6400,
+      "rel_l2_percent": 0.03955880487540304,
+      "seconds": 0.14610590000006596
+    },
+    {
+      "material": "TwoLayer",
+      "method": "cheb",
+      "n": 32,
+      "rel_l2_percent": 10.506446155983305,
+      "seconds": 0.04109539999990375
+    },
+    {
+      "material": "TwoLayer",
+      "method": "cheb",
+      "n": 48,
+      "rel_l2_percent": 9.255847463951246,
+      "seconds": 0.07664899999986119
+    },
+    {
+      "material": "TwoLayer",
+      "method": "cheb",
+      "n": 64,
+      "rel_l2_percent": 1.1435091203762504,
+      "seconds": 0.12959879999993973
+    },
+    {
+      "material": "TwoLayer",
+      "method": "cheb",
+      "n": 96,
+      "rel_l2_percent": 0.25224914791395125,
+      "seconds": 0.31540880000011384
+    },
+    {
+      "material": "TwoLayer",
+      "method": "cheb",
+      "n": 128,
+      "rel_l2_percent": 0.06745853726102866,
+      "seconds": 0.6468806000000313
+    },
+    {
+      "material": "TwoLayer",
+      "method": "cheb",
+      "n": 192,
+      "rel_l2_percent": 0.007079695923449845,
+      "seconds": 2.04591819999996
+    },
+    {
+      "material": "TwoLayer",
+      "method": "cheb",
+      "n": 256,
+      "rel_l2_percent": 0.0009483222800676626,
+      "seconds": 5.063625300000012
+    },
+    {
+      "material": "MultiLayer",
+      "method": "fd2",
+      "n": 50,
+      "rel_l2_percent": 17.209920264124786,
+      "seconds": 0.0013109000001350068
+    },
+    {
+      "material": "MultiLayer",
+      "method": "fd2",
+      "n": 100,
+      "rel_l2_percent": 3.2065348013794863,
+      "seconds": 0.0013973000000078173
+    },
+    {
+      "material": "MultiLayer",
+      "method": "fd2",
+      "n": 200,
+      "rel_l2_percent": 0.8064058166550344,
+      "seconds": 0.0021842999999535095
+    },
+    {
+      "material": "MultiLayer",
+      "method": "fd2",
+      "n": 400,
+      "rel_l2_percent": 0.21053841685548047,
+      "seconds": 0.004524599999967904
+    },
+    {
+      "material": "MultiLayer",
+      "method": "fd2",
+      "n": 800,
+      "rel_l2_percent": 0.06419802746474632,
+      "seconds": 0.010113499999988562
+    },
+    {
+      "material": "MultiLayer",
+      "method": "fd2",
+      "n": 1600,
+      "rel_l2_percent": 0.04054621732227278,
+      "seconds": 0.02283569999985957
+    },
+    {
+      "material": "MultiLayer",
+      "method": "fd2",
+      "n": 3200,
+      "rel_l2_percent": 0.0394614358067084,
+      "seconds": 0.05839449999984936
+    },
+    {
+      "material": "MultiLayer",
+      "method": "fd2",
+      "n": 6400,
+      "rel_l2_percent": 0.0395264157923396,
+      "seconds": 0.15426019999995333
+    },
+    {
+      "material": "MultiLayer",
+      "method": "fem_p1",
+      "n": 50,
+      "rel_l2_percent": 16.99479764094349,
+      "seconds": 0.001459500000009939
+    },
+    {
+      "material": "MultiLayer",
+      "method": "fem_p1",
+      "n": 100,
+      "rel_l2_percent": 3.1405359871085428,
+      "seconds": 0.0014195000001109292
+    },
+    {
+      "material": "MultiLayer",
+      "method": "fem_p1",
+      "n": 200,
+      "rel_l2_percent": 0.7894739089426445,
+      "seconds": 0.002346399999851201
+    },
+    {
+      "material": "MultiLayer",
+      "method": "fem_p1",
+      "n": 400,
+      "rel_l2_percent": 0.2061729580667204,
+      "seconds": 0.004777599999897575
+    },
+    {
+      "material": "MultiLayer",
+      "method": "fem_p1",
+      "n": 800,
+      "rel_l2_percent": 0.06323281094184177,
+      "seconds": 0.010603199999877688
+    },
+    {
+      "material": "MultiLayer",
+      "method": "fem_p1",
+      "n": 1600,
+      "rel_l2_percent": 0.040449446242762976,
+      "seconds": 0.02397740000014892
+    },
+    {
+      "material": "MultiLayer",
+      "method": "fem_p1",
+      "n": 3200,
+      "rel_l2_percent": 0.039453383181095265,
+      "seconds": 0.06569650000005822
+    },
+    {
+      "material": "MultiLayer",
+      "method": "fem_p1",
+      "n": 6400,
+      "rel_l2_percent": 0.03952535569455894,
+      "seconds": 0.19035149999990608
+    },
+    {
+      "material": "MultiLayer",
+      "method": "cheb",
+      "n": 32,
+      "rel_l2_percent": 10.76370481768694,
+      "seconds": 0.05074659999991127
+    },
+    {
+      "material": "MultiLayer",
+      "method": "cheb",
+      "n": 48,
+      "rel_l2_percent": 9.229648989811555,
+      "seconds": 0.1071027000000413
+    },
+    {
+      "material": "MultiLayer",
+      "method": "cheb",
+      "n": 64,
+      "rel_l2_percent": 0.9151628001145545,
+      "seconds": 0.21673099999998158
+    },
+    {
+      "material": "MultiLayer",
+      "method": "cheb",
+      "n": 96,
+      "rel_l2_percent": 0.2785204995200195,
+      "seconds": 0.45230160000005526
+    },
+    {
+      "material": "MultiLayer",
+      "method": "cheb",
+      "n": 128,
+      "rel_l2_percent": 0.08540701664196713,
+      "seconds": 0.9383154999998169
+    },
+    {
+      "material": "MultiLayer",
+      "method": "cheb",
+      "n": 192,
+      "rel_l2_percent": 0.013042430070903454,
+      "seconds": 2.580415900000162
+    },
+    {
+      "material": "MultiLayer",
+      "method": "cheb",
+      "n": 256,
+      "rel_l2_percent": 0.002723812375346533,
+      "seconds": 6.836232699999982
+    }
+  ]
+}

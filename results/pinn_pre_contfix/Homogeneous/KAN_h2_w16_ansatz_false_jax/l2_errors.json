@@ -1,0 +1,16 @@
+{
+    "model_type": "KAN",
+    "n_hidden": 2,
+    "hidden_width": 16,
+    "material_type": "Homogeneous",
+    "use_ansatz": false,
+    "extra_params": {
+        "G": 5,
+        "k": 3
+    },
+    "optimizer": "adam",
+    "weighting": "causal_gradnorm",
+    "backend": "jax",
+    "relative_l2_error_best_adam_percent": 128.6050783702828,
+    "relative_l2_error_best_lbfgs_percent": 128.63249712134788
+}

@@ -1,0 +1,256 @@
+[{"stream_name":"stdout","time":1.871154308,"data":"\n"}
+,{"stream_name":"stdout","time":1.8713863590000002,"data":"$ /usr/bin/python3 -m pip install --quiet --no-deps torch==2.7.1 --index-url https://download.pytorch.org/whl/cu126\n"}
+,{"stream_name":"stdout","time":15.738483254,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 822.0/822.0 MB 2.2 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":75.828155867,"data":"\n"}
+,{"stream_name":"stdout","time":75.828232531,"data":"$ /usr/bin/python3 -m pip install --quiet nvidia-cusparselt-cu12==0.6.3\n"}
+,{"stream_name":"stdout","time":79.504764925,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 156.8/156.8 MB 11.9 MB/s eta 0:00:00\n"}
+,{"stream_name":"stderr","time":89.065417761,"data":"ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.\n"}
+,{"stream_name":"stderr","time":89.065460306,"data":"torch 2.7.1+cu126 requires nvidia-cublas-cu12==12.6.4.1; platform_system == \"Linux\" and platform_machine == \"x86_64\", but you have nvidia-cublas-cu12 12.8.4.1 which is incompatible.\n"}
+,{"stream_name":"stderr","time":89.06546643,"data":"torch 2.7.1+cu126 requires nvidia-cuda-cupti-cu12==12.6.80; platform_system == \"Linux\" and platform_machine == \"x86_64\", but you have nvidia-cuda-cupti-cu12 12.8.90 which is incompatible.\n"}
+,{"stream_name":"stderr","time":89.065474121,"data":"torch 2.7.1+cu126 requires nvidia-cuda-nvrtc-cu12==12.6.77; platform_system == \"Linux\" and platform_machine == \"x86_64\", but you have nvidia-cuda-nvrtc-cu12 12.8.93 which is incompatible.\n"}
+,{"stream_name":"stderr","time":89.065479082,"data":"torch 2.7.1+cu126 requires nvidia-cuda-runtime-cu12==12.6.77; platform_system == \"Linux\" and platform_machine == \"x86_64\", but you have nvidia-cuda-runtime-cu12 12.8.90 which is incompatible.\n"}
+,{"stream_name":"stderr","time":89.065484044,"data":"torch 2.7.1+cu126 requires nvidia-cudnn-cu12==9.5.1.17; platform_system == \"Linux\" and platform_machine == \"x86_64\", but you have nvidia-cudnn-cu12 9.10.2.21 which is incompatible.\n"}
+,{"stream_name":"stderr","time":89.065488608,"data":"torch 2.7.1+cu126 requires nvidia-cufft-cu12==11.3.0.4; platform_system == \"Linux\" and platform_machine == \"x86_64\", but you have nvidia-cufft-cu12 11.3.3.83 which is incompatible.\n"}
+,{"stream_name":"stderr","time":89.065493834,"data":"torch 2.7.1+cu126 requires nvidia-cufile-cu12==1.11.1.6; platform_system == \"Linux\" and platform_machine == \"x86_64\", but you have nvidia-cufile-cu12 1.13.1.3 which is incompatible.\n"}
+,{"stream_name":"stderr","time":89.06549888,"data":"torch 2.7.1+cu126 requires nvidia-curand-cu12==10.3.7.77; platform_system == \"Linux\" and platform_machine == \"x86_64\", but you have nvidia-curand-cu12 10.3.9.90 which is incompatible.\n"}
+,{"stream_name":"stderr","time":89.065503845,"data":"torch 2.7.1+cu126 requires nvidia-cusolver-cu12==11.7.1.2; platform_system == \"Linux\" and platform_machine == \"x86_64\", but you have nvidia-cusolver-cu12 11.7.3.90 which is incompatible.\n"}
+,{"stream_name":"stderr","time":89.065508614,"data":"torch 2.7.1+cu126 requires nvidia-cusparse-cu12==12.5.4.2; platform_system == \"Linux\" and platform_machine == \"x86_64\", but you have nvidia-cusparse-cu12 12.5.8.93 which is incompatible.\n"}
+,{"stream_name":"stderr","time":89.065514514,"data":"torch 2.7.1+cu126 requires nvidia-nccl-cu12==2.26.2; platform_system == \"Linux\" and platform_machine == \"x86_64\", but you have nvidia-nccl-cu12 2.27.5 which is incompatible.\n"}
+,{"stream_name":"stderr","time":89.065519084,"data":"torch 2.7.1+cu126 requires nvidia-nvjitlink-cu12==12.6.85; platform_system == \"Linux\" and platform_machine == \"x86_64\", but you have nvidia-nvjitlink-cu12 12.8.93 which is incompatible.\n"}
+,{"stream_name":"stderr","time":89.065534673,"data":"torch 2.7.1+cu126 requires nvidia-nvtx-cu12==12.6.77; platform_system == \"Linux\" and platform_machine == \"x86_64\", but you have nvidia-nvtx-cu12 12.8.90 which is incompatible.\n"}
+,{"stream_name":"stderr","time":89.065538558,"data":"torch 2.7.1+cu126 requires triton==3.3.1; platform_system == \"Linux\" and platform_machine == \"x86_64\", but you have triton 3.6.0 which is incompatible.\n"}
+,{"stream_name":"stderr","time":89.065542406,"data":"torchaudio 2.10.0+cu128 requires torch==2.10.0, but you have torch 2.7.1+cu126 which is incompatible.\n"}
+,{"stream_name":"stderr","time":89.065546244,"data":"torchvision 0.25.0+cu128 requires torch==2.10.0, but you have torch 2.7.1+cu126 which is incompatible.\n"}
+,{"stream_name":"stdout","time":89.162994892,"data":"\n"}
+,{"stream_name":"stdout","time":89.163025678,"data":"$ git clone --quiet --filter=blob:none --no-checkout https://github.com/ayushdebnath012/SciML-Project.git /kaggle/temp/sciml-source\n"}
+,{"stream_name":"stdout","time":90.575019019,"data":"\n"}
+,{"stream_name":"stdout","time":90.575044784,"data":"$ git -C /kaggle/temp/sciml-source sparse-checkout set wave/openfwi\n"}
+,{"stream_name":"stdout","time":90.579526981,"data":"\n"}
+,{"stream_name":"stdout","time":90.579543544,"data":"$ git -C /kaggle/temp/sciml-source checkout --quiet c4fb05fff4f61821db443eec2a7bdf8407db47ea\n"}
+,{"stream_name":"stdout","time":95.40406127,"data":"\n"}
+,{"stream_name":"stdout","time":95.404105719,"data":"gpu: Tesla P100-PCIE-16GB (17.1 GB), torch 2.7.1+cu126\n"}
+,{"stream_name":"stdout","time":95.404111094,"data":"\n"}
+,{"stream_name":"stdout","time":95.404114766,"data":"$ /usr/bin/python3 /kaggle/temp/sciml-source/wave/openfwi/test_openfwi.py\n"}
+,{"stream_name":"stdout","time":100.502741964,"data":"torch 2.7.1+cu126\n"}
+,{"stream_name":"stdout","time":100.502779738,"data":"\n"}
+,{"stream_name":"stdout","time":100.502785606,"data":"-- kernels --\n"}
+,{"stream_name":"stdout","time":100.502792224,"data":"  PASS  grouped spectral conv == loop of independent convs   max abs diff 0.00e+00\n"}
+,{"stream_name":"stdout","time":100.502800762,"data":"  PASS  DepthToTime initialises to linear interpolation   rows sum to 1: True, \u003c=2 nonzero: 2, ramp err 1.19e-07\n"}
+,{"stream_name":"stdout","time":100.502804876,"data":"  PASS  graph kernel aggregates the L2 ball, boundary included   stencil 13 offsets, 13 nodes see a lone spike, uniform err 0.00e+00\n"}
+,{"stream_name":"stdout","time":100.50280839,"data":"  PASS  graph kernel is input-dependent (varies with velocity)   max abs diff 4.25e-01\n"}
+,{"stream_name":"stdout","time":100.50281189,"data":"\n"}
+,{"stream_name":"stdout","time":100.502815019,"data":"-- models --\n"}
+,{"stream_name":"stdout","time":100.502818222,"data":"  PASS  FNO       shape (2, 5, 200, 70), finite, all params get gradient   got (2, 5, 200, 70)\n"}
+,{"stream_name":"stdout","time":100.502821525,"data":"  PASS  GNO       shape (2, 5, 200, 70), finite, all params get gradient   got (2, 5, 200, 70)\n"}
+,{"stream_name":"stdout","time":100.50282534,"data":"  PASS  DeepONet  shape (2, 5, 200, 70), finite, all params get gradient   got (2, 5, 200, 70)\n"}
+,{"stream_name":"stdout","time":100.502828774,"data":"  PASS  PFNO      shape (2, 5, 200, 70), finite, all params get gradient   got (2, 5, 200, 70)\n"}
+,{"stream_name":"stdout","time":100.50283206,"data":"  PASS  PFNO output is real, band-limited, real-valued DC   |spec| above band 4.21e-08, inside 3.02e-01, DC imag 0.00e+00\n"}
+,{"stream_name":"stdout","time":100.502835506,"data":"\n"}
+,{"stream_name":"stdout","time":100.502868808,"data":"-- accounting --\n"}
+,{"stream_name":"stdout","time":100.502873998,"data":"  PASS  band-limit oracle is lossless at the full band and lossy below it   full 1.98e-14%, 8 bins 87.00%\n"}
+,{"stream_name":"stdout","time":100.502878012,"data":"  PASS  real parameter count charges complex weights twice   nominal 6467, real 10563, complex 4096\n"}
+,{"stream_name":"stdout","time":100.502881698,"data":"\n"}
+,{"stream_name":"stdout","time":100.502885032,"data":"0 failure(s)\n"}
+,{"stream_name":"stdout","time":102.581171932,"data":"\n"}
+,{"stream_name":"stdout","time":102.581247293,"data":"$ /usr/bin/python3 -u /kaggle/temp/sciml-source/wave/openfwi/fetch_openfwi.py --datasets FlatVel_B --train-chunks 4 --val-chunks 1 --root /kaggle/temp/openfwi_data --jobs 6\n"}
+,{"stream_name":"stdout","time":102.75410907,"data":"1 datasets x 4 train + 1 val chunks = 10 files, ~3.5 GB -\u003e /kaggle/temp/openfwi_data\n"}
+,{"stream_name":"stdout","time":102.75413854,"data":"train chunks [1, 2, 3, 4]\n"}
+,{"stream_name":"stdout","time":102.754143518,"data":"val chunks   [49]\n"}
+,{"stream_name":"stdout","time":102.754148321,"data":"=== FlatVel_B  data(500, 5, 1000, 70)  model(500, 1, 70, 70) ===\n"}
+,{"stream_name":"stdout","time":104.251758864,"data":"  [ 1/10] FlatVel_B/model/model2.npy  10 MB in 1s (8.2 MB/s)\n"}
+,{"stream_name":"stdout","time":104.275712966,"data":"  [ 2/10] FlatVel_B/model/model1.npy  10 MB in 1s (8.3 MB/s)\n"}
+,{"stream_name":"stdout","time":104.434253996,"data":"  [ 3/10] FlatVel_B/model/model3.npy  10 MB in 1s (7.1 MB/s)\n"}
+,{"stream_name":"stdout","time":105.700950273,"data":"  [ 4/10] FlatVel_B/model/model4.npy  10 MB in 1s (8.2 MB/s)\n"}
+,{"stream_name":"stdout","time":107.039184274,"data":"  [ 5/10] FlatVel_B/model/model49.npy  10 MB in 1s (9.2 MB/s)\n"}
+,{"stream_name":"stdout","time":132.04494712,"data":"  [ 6/10] FlatVel_B/data/data2.npy  700 MB in 29s (24.2 MB/s)\n"}
+,{"stream_name":"stdout","time":133.051691709,"data":"    FlatVel_B/data/data1.npy  89.3%   20.8 MB/s\n"}
+,{"stream_name":"stdout","time":133.066639017,"data":"    FlatVel_B/data/data3.npy  99.8%   23.3 MB/s\n"}
+,{"stream_name":"stdout","time":133.073024824,"data":"  [ 7/10] FlatVel_B/data/data3.npy  700 MB in 30s (23.3 MB/s)\n"}
+,{"stream_name":"stdout","time":134.532128314,"data":"    FlatVel_B/data/data4.npy  99.2%   23.1 MB/s\n"}
+,{"stream_name":"stdout","time":134.632776161,"data":"  [ 8/10] FlatVel_B/data/data4.npy  700 MB in 30s (23.2 MB/s)\n"}
+,{"stream_name":"stdout","time":134.765617895,"data":"    FlatVel_B/data/data49.npy  94.7%   22.1 MB/s\n"}
+,{"stream_name":"stdout","time":135.76211737,"data":"  [ 9/10] FlatVel_B/data/data1.npy  700 MB in 33s (21.4 MB/s)\n"}
+,{"stream_name":"stdout","time":136.728038971,"data":"  [10/10] FlatVel_B/data/data49.npy  700 MB in 32s (21.9 MB/s)\n"}
+,{"stream_name":"stdout","time":136.72882983,"data":"\n"}
+,{"stream_name":"stdout","time":136.728853127,"data":"verified all 10 headers against dataset_config.json in 0.6 min\n"}
+,{"stream_name":"stdout","time":136.728859179,"data":"  FlatVel_B/train: chunks [1, 2, 3, 4]\n"}
+,{"stream_name":"stdout","time":136.728864119,"data":"  FlatVel_B/val: chunks [49]\n"}
+,{"stream_name":"stdout","time":136.758843619,"data":"verified complete payloads for FlatVel_B\n"}
+,{"stream_name":"stdout","time":136.758890512,"data":"\n"}
+,{"stream_name":"stdout","time":136.758915267,"data":"$ /usr/bin/python3 -u /kaggle/temp/sciml-source/wave/openfwi/train_openfwi.py --root /kaggle/temp/openfwi_data --dataset FlatVel_B --train-chunks 4 --val-chunks 1 --models FNO,PFNO --epochs 100 --batch-size 8 --lr 0.002 --weight-decay 0.0001 --seed 42 --init-seed 42 --cache gpu --outdir /kaggle/working/bench_results/flatvel_b\n"}
+,{"stream_name":"stdout","time":139.062178279,"data":"device: cuda (Tesla P100-PCIE-16GB)\n"}
+,{"stream_name":"stdout","time":139.065770932,"data":"FlatVel_B: train 2000 / val 500   velocity (1, 70, 70) -\u003e gather (5, 1000, 70)\n"}
+,{"stream_name":"stdout","time":148.301617797,"data":"cached 3.5 GB on gpu in 9 s\n"}
+,{"stream_name":"stdout","time":149.540380047,"data":"representation scales:\n"}
+,{"stream_name":"stdout","time":149.540420101,"data":"  PFNO band limit    64 bins :  0.066 %  \u003c- hard floor, bins above the band are zeroed\n"}
+,{"stream_name":"stdout","time":149.540425439,"data":"  FNO  time latent  250 pts  :  1.747 %  (single-channel resample; the latent is multi-channel, so this is a reference, not a bound)\n"}
+,{"stream_name":"stdout","time":149.54042909,"data":"  GNO  time latent  250 pts  :  1.747 %  (same)\n"}
+,{"stream_name":"stdout","time":149.622572482,"data":"\n"}
+,{"stream_name":"stdout","time":149.622628764,"data":"=== FNO: 4,748,929 params (9,467,521 real) ===\n"}
+,{"stream_name":"stdout","time":163.826440605,"data":"  FNO       ep    1/100  train_mse=4.4098e-02  val_relL2=102.210%\n"}
+,{"stream_name":"stdout","time":228.804156565,"data":"  FNO       ep    8/100  train_mse=1.2121e-04  val_relL2= 25.039%\n"}
+,{"stream_name":"stdout","time":303.005135361,"data":"  FNO       ep   16/100  train_mse=5.8397e-05  val_relL2= 18.357%\n"}
+,{"stream_name":"stdout","time":377.049988933,"data":"  FNO       ep   24/100  train_mse=4.0935e-05  val_relL2= 14.473%\n"}
+,{"stream_name":"stdout","time":451.34214987,"data":"  FNO       ep   32/100  train_mse=2.6548e-05  val_relL2= 12.298%\n"}
+,{"stream_name":"stdout","time":525.631091566,"data":"  FNO       ep   40/100  train_mse=1.5626e-05  val_relL2=  9.637%\n"}
+,{"stream_name":"stdout","time":600.08635276,"data":"  FNO       ep   48/100  train_mse=1.1361e-05  val_relL2=  9.111%\n"}
+,{"stream_name":"stdout","time":674.425081026,"data":"  FNO       ep   56/100  train_mse=9.2565e-06  val_relL2=  7.631%\n"}
+,{"stream_name":"stdout","time":748.808836769,"data":"  FNO       ep   64/100  train_mse=5.3269e-06  val_relL2=  7.095%\n"}
+,{"stream_name":"stdout","time":823.050068616,"data":"  FNO       ep   72/100  train_mse=4.5877e-06  val_relL2=  6.235%\n"}
+,{"stream_name":"stdout","time":897.229091633,"data":"  FNO       ep   80/100  train_mse=3.3965e-06  val_relL2=  6.011%\n"}
+,{"stream_name":"stdout","time":971.670140802,"data":"  FNO       ep   88/100  train_mse=3.1148e-06  val_relL2=  5.840%\n"}
+,{"stream_name":"stdout","time":1046.180530201,"data":"  FNO       ep   96/100  train_mse=2.9999e-06  val_relL2=  5.799%\n"}
+,{"stream_name":"stdout","time":1083.381267231,"data":"  FNO       ep  100/100  train_mse=2.9854e-06  val_relL2=  5.795%\n"}
+,{"stream_name":"stdout","time":1084.016290005,"data":"  -\u003e FNO: rel L2 = 5.795% (median 4.842%), RMSE 0.1017, 931 s\n"}
+,{"stream_name":"stdout","time":1084.050103133,"data":"\n"}
+,{"stream_name":"stdout","time":1084.050135222,"data":"=== PFNO: 1,772,800 params (3,411,200 real) ===\n"}
+,{"stream_name":"stdout","time":1131.969657282,"data":"  PFNO      ep    1/100  train_mse=1.2221e-01  val_relL2=837.146%\n"}
+,{"stream_name":"stdout","time":1466.08805018,"data":"  PFNO      ep    8/100  train_mse=5.0818e-04  val_relL2= 52.563%\n"}
+,{"stream_name":"stdout","time":1847.91282209,"data":"  PFNO      ep   16/100  train_mse=2.1541e-04  val_relL2= 35.290%\n"}
+,{"stream_name":"stdout","time":2230.315579306,"data":"  PFNO      ep   24/100  train_mse=1.6053e-04  val_relL2= 30.727%\n"}
+,{"stream_name":"stdout","time":2612.999745748,"data":"  PFNO      ep   32/100  train_mse=1.3822e-04  val_relL2= 28.588%\n"}
+,{"stream_name":"stdout","time":2995.603052512,"data":"  PFNO      ep   40/100  train_mse=1.2408e-04  val_relL2= 26.925%\n"}
+,{"stream_name":"stdout","time":3378.237144521,"data":"  PFNO      ep   48/100  train_mse=1.1393e-04  val_relL2= 25.870%\n"}
+,{"stream_name":"stdout","time":3760.866322125,"data":"  PFNO      ep   56/100  train_mse=1.0755e-04  val_relL2= 25.141%\n"}
+,{"stream_name":"stdout","time":4143.102401964,"data":"  PFNO      ep   64/100  train_mse=1.0233e-04  val_relL2= 24.440%\n"}
+,{"stream_name":"stdout","time":4524.405872349,"data":"  PFNO      ep   72/100  train_mse=9.8557e-05  val_relL2= 24.079%\n"}
+,{"stream_name":"stdout","time":4906.041867002,"data":"  PFNO      ep   80/100  train_mse=9.5744e-05  val_relL2= 23.684%\n"}
+,{"stream_name":"stdout","time":5287.527007005,"data":"  PFNO      ep   88/100  train_mse=9.4019e-05  val_relL2= 23.487%\n"}
+,{"stream_name":"stdout","time":5668.890371376,"data":"  PFNO      ep   96/100  train_mse=9.3159e-05  val_relL2= 23.410%\n"}
+,{"stream_name":"stdout","time":5859.558614807,"data":"  PFNO      ep  100/100  train_mse=9.3007e-05  val_relL2= 23.402%\n"}
+,{"stream_name":"stdout","time":5863.762688319,"data":"  -\u003e PFNO: rel L2 = 23.402% (median 20.778%), RMSE 0.3998, 4776 s\n"}
+,{"stream_name":"stdout","time":5866.575253187,"data":"\n"}
+,{"stream_name":"stdout","time":5866.575320802,"data":"{\n"}
+,{"stream_name":"stdout","time":5866.575328555,"data":"  \"FNO\": {\n"}
+,{"stream_name":"stdout","time":5866.57533411,"data":"    \"parameters\": 4748929,\n"}
+,{"stream_name":"stdout","time":5866.575339845,"data":"    \"parameters_real\": 9467521,\n"}
+,{"stream_name":"stdout","time":5866.575344907,"data":"    \"training_time_s\": 930.523117859,\n"}
+,{"stream_name":"stdout","time":5866.575349377,"data":"    \"seconds_per_epoch\": 9.305231178589999,\n"}
+,{"stream_name":"stdout","time":5866.575353855,"data":"    \"rel_l2_pct\": 5.794612407684326,\n"}
+,{"stream_name":"stdout","time":5866.575358191,"data":"    \"rel_l2_pct_median\": 4.841742515563965,\n"}
+,{"stream_name":"stdout","time":5866.575362847,"data":"    \"mae\": 0.0611555278301239,\n"}
+,{"stream_name":"stdout","time":5866.5753691,"data":"    \"rmse\": 0.10174961388111115\n"}
+,{"stream_name":"stdout","time":5866.575376948,"data":"  },\n"}
+,{"stream_name":"stdout","time":5866.575379925,"data":"  \"PFNO\": {\n"}
+,{"stream_name":"stdout","time":5866.575382839,"data":"    \"parameters\": 1772800,\n"}
+,{"stream_name":"stdout","time":5866.575385894,"data":"    \"parameters_real\": 3411200,\n"}
+,{"stream_name":"stdout","time":5866.575388845,"data":"    \"training_time_s\": 4775.507853242,\n"}
+,{"stream_name":"stdout","time":5866.575391817,"data":"    \"seconds_per_epoch\": 47.75507853242,\n"}
+,{"stream_name":"stdout","time":5866.575394812,"data":"    \"rel_l2_pct\": 23.40241813659668,\n"}
+,{"stream_name":"stdout","time":5866.575397767,"data":"    \"rel_l2_pct_median\": 20.778114318847656,\n"}
+,{"stream_name":"stdout","time":5866.575400843,"data":"    \"mae\": 0.24833999574184418,\n"}
+,{"stream_name":"stdout","time":5866.575403785,"data":"    \"rmse\": 0.3997657001018524\n"}
+,{"stream_name":"stdout","time":5866.575407394,"data":"  }\n"}
+,{"stream_name":"stdout","time":5866.575423232,"data":"}\n"}
+,{"stream_name":"stdout","time":5866.57542795,"data":"wrote /kaggle/working/bench_results/flatvel_b\n"}
+,{"stream_name":"stdout","time":5867.848785889,"data":"\n"}
+,{"stream_name":"stdout","time":5867.848817598,"data":"== FlatVel_B benchmark\n"}
+,{"stream_name":"stdout","time":5867.848823299,"data":"  FNO   rel L2 5.795%  median 4.842%  RMSE 0.10175\n"}
+,{"stream_name":"stdout","time":5867.84882813,"data":"  PFNO  rel L2 23.402%  median 20.778%  RMSE 0.399766\n"}
+,{"stream_name":"stdout","time":5871.534677264,"data":"\n"}
+,{"stream_name":"stdout","time":5871.534710827,"data":"$ /usr/bin/python3 -u /kaggle/temp/sciml-source/wave/openfwi/fetch_openfwi.py --datasets CurveVel_B --train-chunks 4 --val-chunks 1 --root /kaggle/temp/openfwi_data --jobs 6\n"}
+,{"stream_name":"stdout","time":5871.705919217,"data":"1 datasets x 4 train + 1 val chunks = 10 files, ~3.5 GB -\u003e /kaggle/temp/openfwi_data\n"}
+,{"stream_name":"stdout","time":5871.706041538,"data":"train chunks [1, 2, 3, 4]\n"}
+,{"stream_name":"stdout","time":5871.70656059,"data":"val chunks   [49]\n"}
+,{"stream_name":"stdout","time":5871.706577171,"data":"=== CurveVel_B  data(500, 5, 1000, 70)  model(500, 1, 70, 70) ===\n"}
+,{"stream_name":"stdout","time":5873.396034659,"data":"  [ 1/10] CurveVel_B/model/model1.npy  10 MB in 1s (7.4 MB/s)\n"}
+,{"stream_name":"stdout","time":5873.485181001,"data":"  [ 2/10] CurveVel_B/model/model2.npy  10 MB in 1s (6.6 MB/s)\n"}
+,{"stream_name":"stdout","time":5873.492331639,"data":"  [ 3/10] CurveVel_B/model/model3.npy  10 MB in 1s (7.1 MB/s)\n"}
+,{"stream_name":"stdout","time":5875.236243877,"data":"  [ 4/10] CurveVel_B/model/model4.npy  10 MB in 2s (6.5 MB/s)\n"}
+,{"stream_name":"stdout","time":5876.366528291,"data":"  [ 5/10] CurveVel_B/model/model49.npy  10 MB in 1s (10.9 MB/s)\n"}
+,{"stream_name":"stdout","time":5902.006255306,"data":"    CurveVel_B/data/data1.npy  74.9%   17.5 MB/s\n"}
+,{"stream_name":"stdout","time":5902.570046075,"data":"    CurveVel_B/data/data3.npy  80.0%   18.4 MB/s\n"}
+,{"stream_name":"stdout","time":5902.832798398,"data":"    CurveVel_B/data/data2.npy  67.1%   15.3 MB/s\n"}
+,{"stream_name":"stdout","time":5903.515297437,"data":"  [ 6/10] CurveVel_B/data/data4.npy  700 MB in 30s (23.4 MB/s)\n"}
+,{"stream_name":"stdout","time":5904.098492014,"data":"    CurveVel_B/data/data49.npy  57.5%   13.3 MB/s\n"}
+,{"stream_name":"stdout","time":5907.042141573,"data":"  [ 7/10] CurveVel_B/data/data3.npy  700 MB in 35s (20.0 MB/s)\n"}
+,{"stream_name":"stdout","time":5909.320033422,"data":"  [ 8/10] CurveVel_B/data/data1.npy  700 MB in 37s (18.8 MB/s)\n"}
+,{"stream_name":"stdout","time":5911.60059151,"data":"  [ 9/10] CurveVel_B/data/data2.npy  700 MB in 39s (17.7 MB/s)\n"}
+,{"stream_name":"stdout","time":5923.39670928,"data":"  [10/10] CurveVel_B/data/data49.npy  700 MB in 50s (14.1 MB/s)\n"}
+,{"stream_name":"stdout","time":5923.397419799,"data":"\n"}
+,{"stream_name":"stdout","time":5923.397455092,"data":"verified all 10 headers against dataset_config.json in 0.9 min\n"}
+,{"stream_name":"stdout","time":5923.397459542,"data":"  CurveVel_B/train: chunks [1, 2, 3, 4]\n"}
+,{"stream_name":"stdout","time":5923.397462979,"data":"  CurveVel_B/val: chunks [49]\n"}
+,{"stream_name":"stdout","time":5923.424876237,"data":"verified complete payloads for CurveVel_B\n"}
+,{"stream_name":"stdout","time":5923.424899402,"data":"\n"}
+,{"stream_name":"stdout","time":5923.424905994,"data":"$ /usr/bin/python3 -u /kaggle/temp/sciml-source/wave/openfwi/train_openfwi.py --root /kaggle/temp/openfwi_data --dataset CurveVel_B --train-chunks 4 --val-chunks 1 --models FNO,PFNO --epochs 100 --batch-size 8 --lr 0.002 --weight-decay 0.0001 --seed 42 --init-seed 42 --cache gpu --outdir /kaggle/working/bench_results/curvevel_b\n"}
+,{"stream_name":"stdout","time":5925.684867837,"data":"device: cuda (Tesla P100-PCIE-16GB)\n"}
+,{"stream_name":"stdout","time":5925.688205397,"data":"CurveVel_B: train 2000 / val 500   velocity (1, 70, 70) -\u003e gather (5, 1000, 70)\n"}
+,{"stream_name":"stdout","time":5935.012922856,"data":"cached 3.5 GB on gpu in 9 s\n"}
+,{"stream_name":"stdout","time":5936.267285801,"data":"representation scales:\n"}
+,{"stream_name":"stdout","time":5936.267343235,"data":"  PFNO band limit    64 bins :  0.098 %  \u003c- hard floor, bins above the band are zeroed\n"}
+,{"stream_name":"stdout","time":5936.267347867,"data":"  FNO  time latent  250 pts  :  1.748 %  (single-channel resample; the latent is multi-channel, so this is a reference, not a bound)\n"}
+,{"stream_name":"stdout","time":5936.267350756,"data":"  GNO  time latent  250 pts  :  1.748 %  (same)\n"}
+,{"stream_name":"stdout","time":5936.354641328,"data":"\n"}
+,{"stream_name":"stdout","time":5936.354678327,"data":"=== FNO: 4,748,929 params (9,467,521 real) ===\n"}
+,{"stream_name":"stdout","time":5947.107534092,"data":"  FNO       ep    1/100  train_mse=3.7899e-02  val_relL2=102.117%\n"}
+,{"stream_name":"stdout","time":6011.966295963,"data":"  FNO       ep    8/100  train_mse=1.2512e-04  val_relL2= 28.678%\n"}
+,{"stream_name":"stdout","time":6085.976155297,"data":"  FNO       ep   16/100  train_mse=6.5509e-05  val_relL2= 18.014%\n"}
+,{"stream_name":"stdout","time":6160.050390561,"data":"  FNO       ep   24/100  train_mse=5.5016e-05  val_relL2= 18.137%\n"}
+,{"stream_name":"stdout","time":6233.963717043,"data":"  FNO       ep   32/100  train_mse=4.7473e-05  val_relL2= 16.001%\n"}
+,{"stream_name":"stdout","time":6307.974985255,"data":"  FNO       ep   40/100  train_mse=3.9057e-05  val_relL2= 15.546%\n"}
+,{"stream_name":"stdout","time":6382.010919379,"data":"  FNO       ep   48/100  train_mse=3.1666e-05  val_relL2= 15.168%\n"}
+,{"stream_name":"stdout","time":6456.153279937,"data":"  FNO       ep   56/100  train_mse=2.5912e-05  val_relL2= 15.030%\n"}
+,{"stream_name":"stdout","time":6530.686951977,"data":"  FNO       ep   64/100  train_mse=2.1892e-05  val_relL2= 14.990%\n"}
+,{"stream_name":"stdout","time":6604.952200551,"data":"  FNO       ep   72/100  train_mse=1.8994e-05  val_relL2= 14.928%\n"}
+,{"stream_name":"stdout","time":6679.383244668,"data":"  FNO       ep   80/100  train_mse=1.7207e-05  val_relL2= 14.972%\n"}
+,{"stream_name":"stdout","time":6753.738811243,"data":"  FNO       ep   88/100  train_mse=1.6246e-05  val_relL2= 14.942%\n"}
+,{"stream_name":"stdout","time":6827.885668196,"data":"  FNO       ep   96/100  train_mse=1.5867e-05  val_relL2= 14.982%\n"}
+,{"stream_name":"stdout","time":6864.960900869,"data":"  FNO       ep  100/100  train_mse=1.5823e-05  val_relL2= 14.986%\n"}
+,{"stream_name":"stdout","time":6865.61504773,"data":"  -\u003e FNO: rel L2 = 14.838% (median 13.966%), RMSE 0.2538, 928 s\n"}
+,{"stream_name":"stdout","time":6865.646172139,"data":"\n"}
+,{"stream_name":"stdout","time":6865.646232544,"data":"=== PFNO: 1,772,800 params (3,411,200 real) ===\n"}
+,{"stream_name":"stdout","time":6913.373954851,"data":"  PFNO      ep    1/100  train_mse=1.0740e-01  val_relL2=816.149%\n"}
+,{"stream_name":"stdout","time":7247.449392013,"data":"  PFNO      ep    8/100  train_mse=4.5463e-04  val_relL2= 50.627%\n"}
+,{"stream_name":"stdout","time":7628.871760525,"data":"  PFNO      ep   16/100  train_mse=2.0136e-04  val_relL2= 34.116%\n"}
+,{"stream_name":"stdout","time":8010.212986846,"data":"  PFNO      ep   24/100  train_mse=1.5454e-04  val_relL2= 29.810%\n"}
+,{"stream_name":"stdout","time":8391.721007987,"data":"  PFNO      ep   32/100  train_mse=1.3488e-04  val_relL2= 27.618%\n"}
+,{"stream_name":"stdout","time":8773.088536111,"data":"  PFNO      ep   40/100  train_mse=1.2230e-04  val_relL2= 26.531%\n"}
+,{"stream_name":"stdout","time":9154.55888452,"data":"  PFNO      ep   48/100  train_mse=1.1440e-04  val_relL2= 25.609%\n"}
+,{"stream_name":"stdout","time":9535.874676843,"data":"  PFNO      ep   56/100  train_mse=1.0884e-04  val_relL2= 24.860%\n"}
+,{"stream_name":"stdout","time":9917.318141599,"data":"  PFNO      ep   64/100  train_mse=1.0403e-04  val_relL2= 24.551%\n"}
+,{"stream_name":"stdout","time":10298.660231364,"data":"  PFNO      ep   72/100  train_mse=1.0060e-04  val_relL2= 24.051%\n"}
+,{"stream_name":"stdout","time":10680.046296191,"data":"  PFNO      ep   80/100  train_mse=9.8108e-05  val_relL2= 23.767%\n"}
+,{"stream_name":"stdout","time":11061.540921206,"data":"  PFNO      ep   88/100  train_mse=9.6533e-05  val_relL2= 23.589%\n"}
+,{"stream_name":"stdout","time":11443.080732655,"data":"  PFNO      ep   96/100  train_mse=9.5737e-05  val_relL2= 23.500%\n"}
+,{"stream_name":"stdout","time":11633.902651479,"data":"  PFNO      ep  100/100  train_mse=9.5603e-05  val_relL2= 23.496%\n"}
+,{"stream_name":"stdout","time":11638.098003284,"data":"  -\u003e PFNO: rel L2 = 23.496% (median 21.709%), RMSE 0.3981, 4768 s\n"}
+,{"stream_name":"stdout","time":11640.998971366,"data":"\n"}
+,{"stream_name":"stdout","time":11640.999002323,"data":"{\n"}
+,{"stream_name":"stdout","time":11640.999008007,"data":"  \"FNO\": {\n"}
+,{"stream_name":"stdout","time":11640.99901306,"data":"    \"parameters\": 4748929,\n"}
+,{"stream_name":"stdout","time":11640.999018387,"data":"    \"parameters_real\": 9467521,\n"}
+,{"stream_name":"stdout","time":11640.999027372,"data":"    \"training_time_s\": 927.6456812340002,\n"}
+,{"stream_name":"stdout","time":11640.999032364,"data":"    \"seconds_per_epoch\": 9.276456812340003,\n"}
+,{"stream_name":"stdout","time":11640.999037336,"data":"    \"rel_l2_pct\": 14.838458061218262,\n"}
+,{"stream_name":"stdout","time":11640.999042374,"data":"    \"rel_l2_pct_median\": 13.965773582458496,\n"}
+,{"stream_name":"stdout","time":11640.999047496,"data":"    \"mae\": 0.14723235368728638,\n"}
+,{"stream_name":"stdout","time":11640.999052525,"data":"    \"rmse\": 0.2538483440876007\n"}
+,{"stream_name":"stdout","time":11640.999057503,"data":"  },\n"}
+,{"stream_name":"stdout","time":11640.999062324,"data":"  \"PFNO\": {\n"}
+,{"stream_name":"stdout","time":11640.999067132,"data":"    \"parameters\": 1772800,\n"}
+,{"stream_name":"stdout","time":11640.99907233,"data":"    \"parameters_real\": 3411200,\n"}
+,{"stream_name":"stdout","time":11640.999077337,"data":"    \"training_time_s\": 4768.256039008999,\n"}
+,{"stream_name":"stdout","time":11640.999082699,"data":"    \"seconds_per_epoch\": 47.682560390089996,\n"}
+,{"stream_name":"stdout","time":11640.999087826,"data":"    \"rel_l2_pct\": 23.495616912841797,\n"}
+,{"stream_name":"stdout","time":11640.999092782,"data":"    \"rel_l2_pct_median\": 21.70924186706543,\n"}
+,{"stream_name":"stdout","time":11640.999097671,"data":"    \"mae\": 0.25235873460769653,\n"}
+,{"stream_name":"stdout","time":11640.99910267,"data":"    \"rmse\": 0.39814671874046326\n"}
+,{"stream_name":"stdout","time":11640.99910748,"data":"  }\n"}
+,{"stream_name":"stdout","time":11640.999112061,"data":"}\n"}
+,{"stream_name":"stdout","time":11640.999116755,"data":"wrote /kaggle/working/bench_results/curvevel_b\n"}
+,{"stream_name":"stdout","time":11641.792110749,"data":"\n"}
+,{"stream_name":"stdout","time":11641.792147056,"data":"== CurveVel_B benchmark\n"}
+,{"stream_name":"stdout","time":11641.792155849,"data":"  FNO   rel L2 14.838%  median 13.966%  RMSE 0.253848\n"}
+,{"stream_name":"stdout","time":11641.792159839,"data":"  PFNO  rel L2 23.496%  median 21.709%  RMSE 0.398147\n"}
+,{"stream_name":"stdout","time":11652.002168956,"data":"\n"}
+,{"stream_name":"stdout","time":11652.002234008,"data":"finished benchmark driver in 3.21 h\n"}
+,{"stream_name":"stdout","time":11652.002241741,"data":"failures: {}\n"}
+,{"stream_name":"stdout","time":11652.002246391,"data":"archive: /kaggle/working/openfwi_fno_pfno_benchmark.zip\n"}
+,{"stream_name":"stderr","time":11655.120667311,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":11655.120721039,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":11655.602399271,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":11655.60242657,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":11656.367926546,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":11658.016418876,"data":"[NbConvertApp] Writing 301387 bytes to __results__.html\n"}
+]

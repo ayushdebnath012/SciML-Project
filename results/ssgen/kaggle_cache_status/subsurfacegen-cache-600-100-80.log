@@ -1,0 +1,85 @@
+[{"stream_name":"stdout","time":0.871302758,"data":"\n"}
+,{"stream_name":"stdout","time":0.871428378,"data":"$ /usr/bin/python3 -m pip install --quiet hdf5plugin\n"}
+,{"stream_name":"stdout","time":5.9953111660000005,"data":"   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 46.4/46.4 MB 17.3 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":8.629378366,"data":"\n"}
+,{"stream_name":"stdout","time":8.629415986,"data":"$ git clone --quiet --filter=blob:none --no-checkout https://github.com/ayushdebnath012/SciML-Project.git /kaggle/temp/sciml-source\n"}
+,{"stream_name":"stdout","time":9.901941029,"data":"\n"}
+,{"stream_name":"stdout","time":9.901972329,"data":"$ git -C /kaggle/temp/sciml-source sparse-checkout set wave/subsurfacegen\n"}
+,{"stream_name":"stdout","time":9.905249779,"data":"\n"}
+,{"stream_name":"stdout","time":9.905270428,"data":"$ git -C /kaggle/temp/sciml-source checkout --quiet c4fb05fff4f61821db443eec2a7bdf8407db47ea\n"}
+,{"stream_name":"stdout","time":10.520585771,"data":"\n"}
+,{"stream_name":"stdout","time":10.520614921,"data":"$ /usr/bin/python3 -u /kaggle/temp/sciml-source/wave/subsurfacegen/fetch_ssgen.py --root /kaggle/working/ssgen_data --train 600 --val 100 --ood 80 --sources 5 --shard-size 25 --jobs 8 --seed 42\n"}
+,{"stream_name":"stdout","time":10.665291371,"data":"sources kept: [np.int64(0), np.int64(15), np.int64(31), np.int64(47), np.int64(63)] of 64\n"}
+,{"stream_name":"stdout","time":11.800530794,"data":"  fetching index https://huggingface.co/datasets/subsurfacegen/field-scale-dataset/resolve/main/data/train.parquet\n"}
+,{"stream_name":"stdout","time":15.169951429,"data":"=== train: 600 samples, geologies ['f3', 'fault', 'gom', 'salt_canopy', 'seam'] ===\n"}
+,{"stream_name":"stdout","time":92.472829574,"data":"  shard 1: 25 samples  velocity(1, 309, 500) gathers(5, 572, 1000)  dl 76s total 77s\n"}
+,{"stream_name":"stdout","time":162.160157999,"data":"  shard 2: 25 samples  velocity(1, 309, 500) gathers(5, 572, 1000)  dl 68s total 70s\n"}
+,{"stream_name":"stdout","time":231.27679174,"data":"  shard 3: 25 samples  velocity(1, 309, 500) gathers(5, 572, 1000)  dl 67s total 69s\n"}
+,{"stream_name":"stdout","time":300.925996269,"data":"  shard 4: 25 samples  velocity(1, 309, 500) gathers(5, 572, 1000)  dl 68s total 70s\n"}
+,{"stream_name":"stdout","time":369.889305578,"data":"  shard 5: 25 samples  velocity(1, 309, 500) gathers(5, 572, 1000)  dl 68s total 69s\n"}
+,{"stream_name":"stdout","time":440.946788057,"data":"  shard 6: 25 samples  velocity(1, 309, 500) gathers(5, 572, 1000)  dl 70s total 71s\n"}
+,{"stream_name":"stdout","time":512.458045309,"data":"  shard 7: 25 samples  velocity(1, 309, 500) gathers(5, 572, 1000)  dl 70s total 72s\n"}
+,{"stream_name":"stdout","time":582.493912798,"data":"  shard 8: 25 samples  velocity(1, 309, 500) gathers(5, 572, 1000)  dl 69s total 70s\n"}
+,{"stream_name":"stdout","time":658.241802038,"data":"  shard 9: 25 samples  velocity(1, 309, 500) gathers(5, 572, 1000)  dl 74s total 76s\n"}
+,{"stream_name":"stdout","time":927.365166223,"data":"  shard 10: 25 samples  velocity(1, 309, 500) gathers(5, 572, 1000)  dl 267s total 269s\n"}
+,{"stream_name":"stdout","time":992.831808826,"data":"  shard 11: 25 samples  velocity(1, 309, 500) gathers(5, 572, 1000)  dl 64s total 65s\n"}
+,{"stream_name":"stdout","time":1060.59225905,"data":"  shard 12: 25 samples  velocity(1, 309, 500) gathers(5, 572, 1000)  dl 66s total 68s\n"}
+,{"stream_name":"stdout","time":1126.521796876,"data":"  shard 13: 25 samples  velocity(1, 309, 500) gathers(5, 572, 1000)  dl 64s total 66s\n"}
+,{"stream_name":"stdout","time":1187.206290952,"data":"  shard 14: 25 samples  velocity(1, 309, 500) gathers(5, 572, 1000)  dl 59s total 61s\n"}
+,{"stream_name":"stdout","time":1261.748546311,"data":"  shard 15: 25 samples  velocity(1, 309, 500) gathers(5, 572, 1000)  dl 73s total 75s\n"}
+,{"stream_name":"stdout","time":1347.463080511,"data":"  shard 16: 25 samples  velocity(1, 309, 500) gathers(5, 572, 1000)  dl 84s total 86s\n"}
+,{"stream_name":"stdout","time":1429.405667881,"data":"  shard 17: 25 samples  velocity(1, 309, 500) gathers(5, 572, 1000)  dl 81s total 82s\n"}
+,{"stream_name":"stdout","time":1510.996780529,"data":"  shard 18: 25 samples  velocity(1, 309, 500) gathers(5, 572, 1000)  dl 80s total 82s\n"}
+,{"stream_name":"stdout","time":1585.44948746,"data":"  shard 19: 25 samples  velocity(1, 309, 500) gathers(5, 572, 1000)  dl 73s total 74s\n"}
+,{"stream_name":"stdout","time":1740.225546556,"data":"  shard 20: 25 samples  velocity(1, 309, 500) gathers(5, 572, 1000)  dl 153s total 155s\n"}
+,{"stream_name":"stdout","time":1885.795988641,"data":"  shard 21: 25 samples  velocity(1, 309, 500) gathers(5, 572, 1000)  dl 144s total 146s\n"}
+,{"stream_name":"stdout","time":1990.456660259,"data":"  shard 22: 25 samples  velocity(1, 309, 500) gathers(5, 572, 1000)  dl 103s total 105s\n"}
+,{"stream_name":"stdout","time":2184.309108876,"data":"  shard 23: 25 samples  velocity(1, 309, 500) gathers(5, 572, 1000)  dl 192s total 194s\n"}
+,{"stream_name":"stdout","time":2296.45320571,"data":"  shard 24: 25 samples  velocity(1, 309, 500) gathers(5, 572, 1000)  dl 111s total 112s\n"}
+,{"stream_name":"stdout","time":2296.45510862,"data":"  fetching index https://huggingface.co/datasets/subsurfacegen/field-scale-dataset/resolve/main/data/test_in_dist.parquet\n"}
+,{"stream_name":"stdout","time":2297.668618871,"data":"=== val: 100 samples, geologies ['f3', 'fault', 'gom', 'salt_canopy', 'seam'] ===\n"}
+,{"stream_name":"stdout","time":2363.44773398,"data":"  shard 25: 25 samples  velocity(1, 309, 500) gathers(5, 572, 1000)  dl 64s total 66s\n"}
+,{"stream_name":"stdout","time":2424.073746577,"data":"  shard 26: 25 samples  velocity(1, 309, 500) gathers(5, 572, 1000)  dl 59s total 61s\n"}
+,{"stream_name":"stdout","time":2493.704907935,"data":"  shard 27: 25 samples  velocity(1, 309, 500) gathers(5, 572, 1000)  dl 68s total 70s\n"}
+,{"stream_name":"stdout","time":2588.6752258,"data":"  shard 28: 25 samples  velocity(1, 309, 500) gathers(5, 572, 1000)  dl 94s total 95s\n"}
+,{"stream_name":"stdout","time":2588.67652219,"data":"  fetching index https://huggingface.co/datasets/subsurfacegen/field-scale-dataset/resolve/main/data/test_out_dist.parquet\n"}
+,{"stream_name":"stdout","time":2589.77318875,"data":"=== ood: 80 samples, geologies ['penobscot'] ===\n"}
+,{"stream_name":"stdout","time":2655.539158906,"data":"  shard 29: 25 samples  velocity(1, 309, 500) gathers(5, 572, 1000)  dl 64s total 66s\n"}
+,{"stream_name":"stdout","time":2720.468288766,"data":"  shard 30: 25 samples  velocity(1, 309, 500) gathers(5, 572, 1000)  dl 63s total 65s\n"}
+,{"stream_name":"stdout","time":2777.193729015,"data":"  shard 31: 25 samples  velocity(1, 309, 500) gathers(5, 572, 1000)  dl 55s total 57s\n"}
+,{"stream_name":"stdout","time":2793.478731359,"data":"  shard 32: 5 samples  velocity(1, 309, 500) gathers(5, 572, 1000)  dl 16s total 16s\n"}
+,{"stream_name":"stdout","time":2793.479884599,"data":"\n"}
+,{"stream_name":"stdout","time":2793.479899489,"data":"stats: {\n"}
+,{"stream_name":"stdout","time":2793.479904719,"data":"  \"gather_min\": -3.4804470539093018,\n"}
+,{"stream_name":"stdout","time":2793.479909679,"data":"  \"gather_max\": 6.067325115203857,\n"}
+,{"stream_name":"stdout","time":2793.479914659,"data":"  \"velocity_min\": 1500.0,\n"}
+,{"stream_name":"stdout","time":2793.479919509,"data":"  \"velocity_max\": 4733.806640625\n"}
+,{"stream_name":"stdout","time":2793.479924439,"data":"}\n"}
+,{"stream_name":"stdout","time":2793.479946429,"data":"wrote /kaggle/working/ssgen_data/ssgen_meta.json\n"}
+,{"stream_name":"stdout","time":2793.87277815,"data":"\n"}
+,{"stream_name":"stdout","time":2793.87281692,"data":"validated cache:\n"}
+,{"stream_name":"stdout","time":2793.8728216,"data":"{\n"}
+,{"stream_name":"stdout","time":2793.87282483,"data":"  \"revision\": \"c4fb05fff4f61821db443eec2a7bdf8407db47ea\",\n"}
+,{"stream_name":"stdout","time":2793.8728282,"data":"  \"split_samples\": {\n"}
+,{"stream_name":"stdout","time":2793.87283103,"data":"    \"train\": 600,\n"}
+,{"stream_name":"stdout","time":2793.87283389,"data":"    \"val\": 100,\n"}
+,{"stream_name":"stdout","time":2793.87283718,"data":"    \"ood\": 80\n"}
+,{"stream_name":"stdout","time":2793.87284019,"data":"  },\n"}
+,{"stream_name":"stdout","time":2793.8728436,"data":"  \"source_indices\": [\n"}
+,{"stream_name":"stdout","time":2793.87284766,"data":"    0,\n"}
+,{"stream_name":"stdout","time":2793.87285095,"data":"    15,\n"}
+,{"stream_name":"stdout","time":2793.8728542,"data":"    31,\n"}
+,{"stream_name":"stdout","time":2793.87285802,"data":"    47,\n"}
+,{"stream_name":"stdout","time":2793.87286114,"data":"    63\n"}
+,{"stream_name":"stdout","time":2793.87286417,"data":"  ],\n"}
+,{"stream_name":"stdout","time":2793.87286692,"data":"  \"n_npy_files\": 64,\n"}
+,{"stream_name":"stdout","time":2793.87286965,"data":"  \"cache_bytes\": 9405248192,\n"}
+,{"stream_name":"stdout","time":2793.87287272,"data":"  \"elapsed_hours\": 0.7731531754302778\n"}
+,{"stream_name":"stdout","time":2793.87287599,"data":"}\n"}
+,{"stream_name":"stderr","time":2796.010958416,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":2796.011082696,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":2796.313865197,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":2796.313895397,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":2797.078841249,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":2798.251585102,"data":"[NbConvertApp] Writing 290424 bytes to __results__.html\n"}
+]

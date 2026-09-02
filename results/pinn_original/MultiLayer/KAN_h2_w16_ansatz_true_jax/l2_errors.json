@@ -1,0 +1,18 @@
+{
+    "model_type": "KAN",
+    "n_hidden": 2,
+    "hidden_width": 16,
+    "material_type": "MultiLayer",
+    "use_ansatz": true,
+    "extra_params": {
+        "G": 5,
+        "k": 3
+    },
+    "optimizer": "adam",
+    "use_gradnorm": true,
+    "causal_n_chunks": 16,
+    "weighting": "causal_gradnorm",
+    "backend": "jax",
+    "relative_l2_error_best_adam_percent": 136.9198710610949,
+    "relative_l2_error_best_lbfgs_percent": 135.2318243746361
+}

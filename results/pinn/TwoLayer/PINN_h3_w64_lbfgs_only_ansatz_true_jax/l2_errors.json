@@ -1,0 +1,14 @@
+{
+    "model_type": "PINN",
+    "n_hidden": 3,
+    "hidden_width": 64,
+    "material_type": "TwoLayer",
+    "use_ansatz": true,
+    "extra_params": {},
+    "optimizer": "lbfgs_only",
+    "use_gradnorm": true,
+    "causal_n_chunks": 16,
+    "weighting": "causal_gradnorm",
+    "backend": "jax",
+    "relative_l2_error_best_lbfgs_only_percent": 93.29552449137941
+}

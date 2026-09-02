@@ -1,0 +1,18 @@
+{
+  "revision": "c4fb05fff4f61821db443eec2a7bdf8407db47ea",
+  "split_samples": {
+    "train": 600,
+    "val": 100,
+    "ood": 80
+  },
+  "source_indices": [
+    0,
+    15,
+    31,
+    47,
+    63
+  ],
+  "n_npy_files": 64,
+  "cache_bytes": 9405248192,
+  "elapsed_hours": 0.7731531754302778
+}

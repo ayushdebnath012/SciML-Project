@@ -1,0 +1,13 @@
+{
+    "model_type": "PINN",
+    "n_hidden": 3,
+    "hidden_width": 64,
+    "material_type": "Homogeneous",
+    "use_ansatz": true,
+    "extra_params": {},
+    "optimizer": "adam",
+    "weighting": "causal_gradnorm",
+    "backend": "jax",
+    "relative_l2_error_best_adam_percent": 112.79924993908767,
+    "relative_l2_error_best_lbfgs_percent": 29.547274546195112
+}

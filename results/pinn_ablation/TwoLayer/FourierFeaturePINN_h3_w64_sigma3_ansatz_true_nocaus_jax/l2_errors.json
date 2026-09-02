@@ -1,0 +1,18 @@
+{
+    "model_type": "FourierFeaturePINN",
+    "n_hidden": 3,
+    "hidden_width": 64,
+    "material_type": "TwoLayer",
+    "use_ansatz": true,
+    "extra_params": {
+        "n_fourier": 128,
+        "sigma": 3.0
+    },
+    "optimizer": "adam",
+    "use_gradnorm": true,
+    "causal_n_chunks": 1,
+    "weighting": "causal_gradnorm",
+    "backend": "jax",
+    "relative_l2_error_best_adam_percent": 1.015556558017722,
+    "relative_l2_error_best_lbfgs_percent": 1.005484169968903
+}

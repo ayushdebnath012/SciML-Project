@@ -1,0 +1,119 @@
+device: cuda (NVIDIA H100 NVL)
+CurveVel_A: train 2000 / val 500   velocity (1, 70, 70) -> gather (5, 1000, 70)
+cached 3.5 GB on gpu in 35 s
+representation scales:
+  PFNO band limit    64 bins :  0.053 %  <- hard floor, bins above the band are zeroed
+  FNO  time latent  250 pts  :  1.741 %  (single-channel resample; the latent is multi-channel, so this is a reference, not a bound)
+  GNO  time latent  250 pts  :  1.741 %  (same)
+
+=== FNO: 4,748,929 params (9,467,521 real) ===
+  FNO       ep    1/100  train_mse=4.1719e-02  val_relL2=102.958%
+  FNO       ep    8/100  train_mse=9.5297e-05  val_relL2= 23.413%
+  FNO       ep   16/100  train_mse=3.7157e-05  val_relL2= 14.662%
+  FNO       ep   24/100  train_mse=2.8321e-05  val_relL2= 13.360%
+  FNO       ep   32/100  train_mse=2.0888e-05  val_relL2= 11.270%
+  FNO       ep   40/100  train_mse=1.7361e-05  val_relL2= 11.084%
+  FNO       ep   48/100  train_mse=1.5742e-05  val_relL2= 10.703%
+  FNO       ep   56/100  train_mse=1.3134e-05  val_relL2=  9.957%
+  FNO       ep   64/100  train_mse=1.1586e-05  val_relL2=  9.782%
+  FNO       ep   72/100  train_mse=1.0699e-05  val_relL2=  9.555%
+  FNO       ep   80/100  train_mse=9.9849e-06  val_relL2=  9.368%
+  FNO       ep   88/100  train_mse=9.6230e-06  val_relL2=  9.273%
+  FNO       ep   96/100  train_mse=9.4852e-06  val_relL2=  9.250%
+  FNO       ep  100/100  train_mse=9.4668e-06  val_relL2=  9.248%
+  -> FNO: rel L2 = 9.248% (median 8.611%), RMSE 0.1353, 450 s
+
+=== PFNO: 1,772,800 params (3,411,200 real) ===
+  PFNO      ep    1/100  train_mse=1.1718e-01  val_relL2=954.725%
+  PFNO      ep    8/100  train_mse=4.2938e-04  val_relL2= 54.751%
+  PFNO      ep   16/100  train_mse=1.9281e-04  val_relL2= 37.578%
+  PFNO      ep   24/100  train_mse=1.2649e-04  val_relL2= 30.273%
+  PFNO      ep   32/100  train_mse=9.8979e-05  val_relL2= 26.741%
+  PFNO      ep   40/100  train_mse=8.3950e-05  val_relL2= 24.611%
+  PFNO      ep   48/100  train_mse=7.4119e-05  val_relL2= 23.215%
+  PFNO      ep   56/100  train_mse=6.8382e-05  val_relL2= 22.259%
+  PFNO      ep   64/100  train_mse=6.3655e-05  val_relL2= 21.511%
+  PFNO      ep   72/100  train_mse=6.0583e-05  val_relL2= 20.975%
+  PFNO      ep   80/100  train_mse=5.8502e-05  val_relL2= 20.604%
+  PFNO      ep   88/100  train_mse=5.7242e-05  val_relL2= 20.407%
+  PFNO      ep   96/100  train_mse=5.6636e-05  val_relL2= 20.316%
+  PFNO      ep  100/100  train_mse=5.6544e-05  val_relL2= 20.309%
+  -> PFNO: rel L2 = 20.309% (median 18.562%), RMSE 0.3001, 2299 s
+
+=== DeepONet: 1,468,673 params (1,468,673 real) ===
+  DeepONet  ep    1/100  train_mse=4.6573e-03  val_relL2=102.403%
+  DeepONet  ep    8/100  train_mse=7.3047e-04  val_relL2= 74.880%
+  DeepONet  ep   16/100  train_mse=1.6696e-03  val_relL2=107.835%
+  DeepONet  ep   24/100  train_mse=1.2842e-03  val_relL2=116.354%
+  DeepONet  ep   32/100  train_mse=1.1858e-03  val_relL2= 92.382%
+  DeepONet  ep   40/100  train_mse=9.2474e-04  val_relL2= 85.719%
+  DeepONet  ep   48/100  train_mse=7.2952e-04  val_relL2= 72.840%
+  DeepONet  ep   56/100  train_mse=5.9221e-04  val_relL2= 72.055%
+  DeepONet  ep   64/100  train_mse=5.1429e-04  val_relL2= 61.313%
+  DeepONet  ep   72/100  train_mse=4.5599e-04  val_relL2= 58.630%
+  DeepONet  ep   80/100  train_mse=4.2633e-04  val_relL2= 56.374%
+  DeepONet  ep   88/100  train_mse=3.9921e-04  val_relL2= 55.010%
+  DeepONet  ep   96/100  train_mse=3.8591e-04  val_relL2= 54.382%
+  DeepONet  ep  100/100  train_mse=3.8465e-04  val_relL2= 54.262%
+  -> DeepONet: rel L2 = 54.262% (median 53.963%), RMSE 0.8063, 334 s
+
+=== GNO: 174,113 params (174,113 real) ===
+  GNO       ep    1/100  train_mse=1.1885e-02  val_relL2=100.257%
+  GNO       ep    8/100  train_mse=6.6279e-04  val_relL2= 64.112%
+  GNO       ep   16/100  train_mse=1.6243e-04  val_relL2= 33.706%
+  GNO       ep   24/100  train_mse=7.6140e-05  val_relL2= 22.166%
+  GNO       ep   32/100  train_mse=6.1270e-05  val_relL2= 21.008%
+  GNO       ep   40/100  train_mse=5.2946e-05  val_relL2= 18.732%
+  GNO       ep   48/100  train_mse=4.7997e-05  val_relL2= 17.743%
+  GNO       ep   56/100  train_mse=4.3749e-05  val_relL2= 16.652%
+  GNO       ep   64/100  train_mse=4.2202e-05  val_relL2= 16.039%
+  GNO       ep   72/100  train_mse=3.9529e-05  val_relL2= 15.620%
+  GNO       ep   80/100  train_mse=3.7795e-05  val_relL2= 15.454%
+  GNO       ep   88/100  train_mse=3.6773e-05  val_relL2= 14.971%
+  GNO       ep   96/100  train_mse=3.6066e-05  val_relL2= 14.873%
+  GNO       ep  100/100  train_mse=3.5955e-05  val_relL2= 14.817%
+  -> GNO: rel L2 = 14.813% (median 12.773%), RMSE 0.2177, 9372 s
+
+{
+  "FNO": {
+    "parameters": 4748929,
+    "parameters_real": 9467521,
+    "training_time_s": 449.535001820419,
+    "seconds_per_epoch": 4.4953500182041894,
+    "rel_l2_pct": 9.248473167419434,
+    "rel_l2_pct_median": 8.610910415649414,
+    "mae": 0.07197441905736923,
+    "rmse": 0.1353084295988083
+  },
+  "PFNO": {
+    "parameters": 1772800,
+    "parameters_real": 3411200,
+    "training_time_s": 2299.3831834238954,
+    "seconds_per_epoch": 22.993831834238954,
+    "rel_l2_pct": 20.30864906311035,
+    "rel_l2_pct_median": 18.561887741088867,
+    "mae": 0.19108536839485168,
+    "rmse": 0.3000589609146118
+  },
+  "DeepONet": {
+    "parameters": 1468673,
+    "parameters_real": 1468673,
+    "training_time_s": 333.98457712773234,
+    "seconds_per_epoch": 3.3398457712773233,
+    "rel_l2_pct": 54.26171112060547,
+    "rel_l2_pct_median": 53.96299743652344,
+    "mae": 0.3940689265727997,
+    "rmse": 0.8062596321105957
+  },
+  "GNO": {
+    "parameters": 174113,
+    "parameters_real": 174113,
+    "training_time_s": 9371.964949284215,
+    "seconds_per_epoch": 93.71964949284215,
+    "rel_l2_pct": 14.813193321228027,
+    "rel_l2_pct_median": 12.772668838500977,
+    "mae": 0.09483056515455246,
+    "rmse": 0.21767161786556244
+  }
+}
+wrote /home/trishita/openfwi_results/curvevel_a

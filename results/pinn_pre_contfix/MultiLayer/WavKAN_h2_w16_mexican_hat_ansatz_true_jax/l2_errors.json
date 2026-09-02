@@ -1,0 +1,17 @@
+{
+    "model_type": "WavKAN",
+    "n_hidden": 2,
+    "hidden_width": 16,
+    "material_type": "MultiLayer",
+    "use_ansatz": true,
+    "extra_params": {
+        "wavelet_type": "mexican_hat"
+    },
+    "optimizer": "adam",
+    "use_gradnorm": true,
+    "causal_n_chunks": 16,
+    "weighting": "causal_gradnorm",
+    "backend": "jax",
+    "relative_l2_error_best_adam_percent": 112.46591192035427,
+    "relative_l2_error_best_lbfgs_percent": 159.16142420260024
+}

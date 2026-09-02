@@ -1,0 +1,11 @@
+device: cpu (cpu)
+FlatVel_B: train 2000 / val 500   velocity (1, 70, 70) -> gather (5, 1000, 70)
+representation scales:
+  PFNO band limit    64 bins :  0.066 %  <- hard floor, bins above the band are zeroed
+  FNO  time latent  250 pts  :  1.747 %  (single-channel resample; the latent is multi-channel, so this is a reference, not a bound)
+  GNO  time latent  250 pts  :  1.747 %  (same)
+
+=== FNO: 4,748,929 params (9,467,521 real) ===
+  FNO       ep    1/100  train_mse=4.4099e-02  val_relL2=102.262%
+     checkpoint -> results\openfwi\flatvel_b__fno\FNO_train_checkpoint.pt
+     checkpoint -> results\openfwi\flatvel_b__fno\FNO_train_checkpoint.pt

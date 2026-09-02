@@ -1,0 +1,7 @@
+/home/trishita/sciml_pinn_neurips2026/results -> results/pinn
+  510 files
+/home/trishita/sciml_pinn_neurips2026/results_ablation -> results/pinn_ablation
+  264 files
+/home/trishita/sciml_pinn_neurips2026/results_corrected -> results/pinn
+  342 files
+  timings: n=99 median=962s range 71-6160s

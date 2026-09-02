@@ -1,0 +1,18 @@
+{
+    "model_type": "KAN",
+    "n_hidden": 2,
+    "hidden_width": 16,
+    "material_type": "TwoLayer",
+    "use_ansatz": true,
+    "extra_params": {
+        "G": 5,
+        "k": 3
+    },
+    "optimizer": "adam",
+    "use_gradnorm": true,
+    "causal_n_chunks": 1,
+    "weighting": "causal_gradnorm",
+    "backend": "jax",
+    "relative_l2_error_best_adam_percent": 111.7497011166082,
+    "relative_l2_error_best_lbfgs_percent": 111.76095159541497
+}

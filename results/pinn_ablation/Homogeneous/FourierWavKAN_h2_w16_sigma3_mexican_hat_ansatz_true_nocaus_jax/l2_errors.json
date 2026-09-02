@@ -1,0 +1,21 @@
+{
+    "model_type": "FourierWavKAN",
+    "n_hidden": 2,
+    "hidden_width": 16,
+    "material_type": "Homogeneous",
+    "use_ansatz": true,
+    "extra_params": {
+        "n_fourier": 32,
+        "sigma": 3.0,
+        "wavelet_type": "mexican_hat"
+    },
+    "optimizer": "adam",
+    "use_gradnorm": true,
+    "causal_n_chunks": 1,
+    "causal_continuation_budget": 9000,
+    "causal_continuation_handoff": "final_model_between_blocks",
+    "weighting": "causal_gradnorm",
+    "backend": "jax",
+    "relative_l2_error_best_adam_percent": 2.3415427727236344,
+    "relative_l2_error_best_lbfgs_percent": 2.3148004915562668
+}

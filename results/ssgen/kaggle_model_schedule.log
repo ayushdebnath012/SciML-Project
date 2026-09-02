@@ -1,0 +1,1683 @@
+2026-09-02T00:10:38.0040049+05:30  waiting for the SubsurfaceGen four-model GPU probe
+2026-09-02T00:10:39.1209069+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T00:10:39.1209069+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T00:11:30.6146469+05:30  waiting for the SubsurfaceGen four-model GPU probe
+2026-09-02T00:11:32.5750892+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T00:12:34.4426784+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T00:13:36.2668749+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T00:14:37.2359073+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T00:15:38.1961291+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T00:16:40.0481644+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T00:17:41.0194750+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T00:18:42.0271269+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T00:19:43.0431825+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T00:20:44.1408938+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T00:21:45.1652001+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T00:22:46.2570561+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T00:23:47.4245117+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T00:24:48.8620085+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T00:25:50.8732874+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T00:26:52.2014939+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T00:27:53.4825929+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T00:28:54.8051175+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T00:29:56.9236959+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T00:30:58.4096552+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T00:32:00.8479990+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T00:33:02.8052394+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T00:34:03.8963349+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T00:35:05.8774337+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T00:36:07.7640713+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T00:37:08.8720153+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T00:38:09.9897742+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T00:39:11.0241931+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T00:40:12.0063001+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T00:41:13.9054729+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T00:42:14.9872857+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T00:43:16.8618291+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T00:44:17.9283253+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T00:45:19.8013798+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T00:46:21.7576557+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T00:47:22.9028558+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T00:48:23.9380104+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T00:49:24.9325264+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T00:50:25.9270607+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T00:51:26.9512881+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T00:52:28.0162886+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T00:53:29.0683359+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T00:54:30.1616288+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T00:55:31.4347094+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T00:56:33.0139688+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T00:57:34.9342945+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T00:58:36.0105352+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T00:59:37.0704526+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:00:38.8965448+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:01:39.9418579+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:02:40.9995772+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:03:42.0226757+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:04:43.8394095+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:05:45.7216195+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:06:46.7660753+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:07:47.8118139+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:08:48.8925407+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:09:50.0167474+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:10:51.1313950+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:11:53.3165294+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:12:55.2900116+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:13:56.3772651+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:14:58.3684418+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:15:59.3941099+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:17:00.5058354+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:18:01.6116807+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:19:02.7073583+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:20:03.8001418+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:21:04.9076160+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:22:06.2421344+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:23:08.1450163+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:24:10.0647579+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:25:11.1197173+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:26:12.2084140+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:27:13.3347370+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:28:14.4579164+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:29:15.5514875+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:30:17.4677254+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:31:18.5055116+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:32:20.6552413+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:33:22.4889675+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:34:24.3823375+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:35:25.3901048+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:36:26.4014919+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:37:28.2193875+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:38:30.1118313+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:39:31.9460688+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:40:33.7831050+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:41:34.7706399+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:42:36.1491609+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:43:38.0646211+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:44:39.0988461+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:45:40.1532367+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:46:41.9990118+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:47:43.2280431+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:48:44.5638037+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:49:45.8858530+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:50:46.9107244+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:51:47.9082127+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:52:49.1010696+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:53:50.1200681+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:54:51.1375336+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:57:29.6804422+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:58:31.9493353+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T01:59:33.0048274+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T02:00:34.0400556+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T02:01:35.0180464+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T02:02:36.0605742+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T02:03:38.6167085+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T02:04:39.8689902+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T02:05:41.9094346+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T02:06:43.1497184+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T02:07:45.0339168+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T02:08:46.0557147+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T02:09:47.0703260+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T02:10:48.1963132+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T02:11:49.3352330+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T02:12:50.4246449+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T02:13:51.7702425+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T02:14:53.0867635+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T02:15:54.1078672+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T02:16:55.1989939+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T02:17:57.0311555+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T02:18:59.1694266+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T02:20:01.0261029+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T02:21:02.0603143+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T02:22:03.9452097+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T02:23:05.8339564+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T02:24:07.7137033+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T02:25:08.7332881+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T02:26:10.6138049+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T02:27:12.4761365+05:30  kaggle.exe : Cannot access kernel 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe' (Permission 'kernels.get' was 
+denied). The most likely cause is a wrong kernel slug. The benchmark_task_slug returned by get_benchmark_leaderboard 
+differs from the actual kernel slug G현 use the slug from the notebook URL (kaggle.com/code/owner/KERNEL-SLUG), not 
+from the leaderboard. It can also occur if the notebook is private.
+At C:\Users\USER_HP\Desktop\SciML Project\wave\subsurfacegen\runners\schedule_kaggle_models.ps1:20 char:13
++     return (& kaggle kernels status $slug 2>&1 | Out-String).Trim()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Cannot access k...ook is private.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+2026-09-02T02:28:14.4478990+05:30  ayushdebnath0123/subsurfacegen-four-model-gpu-probe has status "KernelWorkerStatus.RUNNING"
+2026-09-02T02:29:16.5499167+05:30  ayushdebnath0123/subsurfacegen-four-model-gpu-probe has status "KernelWorkerStatus.RUNNING"
+2026-09-02T02:30:18.3884154+05:30  ayushdebnath0123/subsurfacegen-four-model-gpu-probe has status "KernelWorkerStatus.ERROR"
+2026-09-02T02:30:18.4598505+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T02:31:18.4628042+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T02:32:18.4786344+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T02:33:18.4869966+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T02:34:18.4902737+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T02:35:18.5027941+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T02:36:18.5134079+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T02:37:18.5234746+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T02:38:18.6007190+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T02:39:18.6151447+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T02:40:18.6392613+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T02:41:18.6495579+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T02:42:18.6682196+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T02:43:18.6808174+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T02:44:18.6828402+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T02:45:18.6942897+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T02:46:18.7242434+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T02:47:18.7456042+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T02:48:18.7571379+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T02:49:18.7834319+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T02:50:18.7903951+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T02:51:18.8067945+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T02:52:18.8194818+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T02:53:18.8229008+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T02:54:18.8305805+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T02:55:18.8386150+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T02:56:18.8548756+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T02:57:18.8698476+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T02:58:18.8823827+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T02:59:18.8827744+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:00:18.8945153+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:01:18.9029331+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:02:18.9148618+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:06:47.6397211+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:07:47.6492846+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:08:47.6591473+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:09:47.6735014+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:10:47.6840369+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:11:47.6932402+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:12:47.6998467+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:13:47.7086976+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:14:47.7094646+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:15:47.7166698+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:16:47.7322288+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:17:47.7342197+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:18:47.7438315+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:19:47.7456989+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:20:47.7597144+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:21:47.7735741+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:22:47.7742095+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:23:47.7905265+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:24:47.8008891+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:25:47.8025231+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:26:47.8148173+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:27:47.8174509+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:28:47.8283464+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:29:47.8436724+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:30:47.8437335+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:31:47.8555859+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:32:47.8756364+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:33:47.8805601+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:34:47.8874820+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:35:47.9033758+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:36:47.9120887+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:37:47.9549856+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:38:47.9648857+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:39:47.9794249+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:40:47.9863908+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:41:47.9949256+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:42:48.0046851+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:43:48.0115125+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:44:48.0292849+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:45:48.0388720+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:46:48.0575534+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:47:48.0650341+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:48:48.0743791+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:49:48.0937644+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:50:48.1011593+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:51:48.1166213+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:52:48.1173080+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:53:48.1231111+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:54:48.1477787+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:55:48.1615766+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:56:48.1764088+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:57:48.1867395+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:58:48.1963503+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T03:59:48.2159958+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T04:00:48.2175095+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T04:01:48.2184048+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T04:02:48.2305752+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T04:03:48.2379134+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T04:04:48.2438011+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T04:05:48.2660060+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T05:29:54.6624553+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T05:30:54.7087773+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T05:31:54.7436363+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T05:32:54.7641207+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T05:33:54.7835441+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T05:34:54.8034274+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T05:35:54.8167356+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T05:36:54.8364049+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T05:37:54.8486597+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T05:38:54.8610815+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T05:39:54.8715826+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T05:40:54.8968681+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T05:41:54.9163345+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T05:42:54.9347336+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T05:43:54.9617836+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T05:44:53.8740397+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T05:45:53.8917392+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T05:46:53.9040307+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T05:47:53.9057991+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T05:48:53.9060353+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T05:49:53.9156359+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T05:50:53.9277017+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T05:51:53.9353586+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T05:52:53.9426768+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T05:53:53.9448825+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T05:54:53.9470232+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T05:55:53.9669874+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T05:56:53.9776552+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T05:57:53.9852185+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T05:58:53.9948744+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T05:59:54.0185821+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T06:00:54.0358607+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T06:01:54.0541522+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T06:02:54.0601817+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T06:03:54.0751388+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T06:04:54.0888137+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T06:05:54.1022253+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T06:06:54.1139673+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T06:07:54.1404438+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T06:08:54.1559732+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T06:09:54.1836672+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T06:10:54.1998755+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T06:11:54.2221998+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T06:12:54.2222573+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T06:13:54.2265362+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T06:14:54.2344888+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T06:15:54.2450209+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T06:16:54.2540926+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T06:17:54.2684885+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T06:18:54.2810157+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T06:19:54.2953480+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T06:20:54.3199969+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T06:21:54.3362975+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T06:22:54.3443835+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T06:23:54.3619091+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T06:24:54.3772563+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T06:25:54.3830653+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T06:26:54.3836457+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T06:27:54.4129246+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T06:28:54.4349550+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T07:38:41.2876905+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T07:39:41.3408211+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T07:40:41.3569890+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T07:41:41.3835147+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T07:42:41.3904012+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T07:43:41.4107889+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T07:44:41.4256581+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T07:45:41.4382324+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T07:46:41.4584122+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T07:47:41.4770474+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T07:48:41.5060803+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T07:49:41.5133719+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T07:50:41.5282341+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T07:51:41.5384621+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T07:52:41.5514229+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T07:53:41.5705164+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T07:54:41.6003091+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T07:55:41.6175454+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T07:56:41.6308675+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T07:57:41.6842420+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T07:58:41.7139911+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T07:59:41.7325701+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:00:41.7486722+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:01:41.7550586+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:02:41.7797766+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:03:41.8018288+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:04:41.8079336+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:05:41.8283292+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:06:41.8686705+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:07:41.8765699+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:08:41.8866834+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:09:41.9024188+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:10:41.9144570+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:11:41.9208992+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:12:41.9314947+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:13:41.9379796+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:14:41.9626100+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:15:41.9782704+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:16:41.9951477+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:17:42.0203799+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:18:42.0516833+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:19:42.0726708+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:20:42.0886198+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:21:42.1011893+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:22:42.1330487+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:23:42.1742033+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:24:42.1922047+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:25:42.2085136+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:26:42.2397329+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:27:42.2570400+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:28:42.2796027+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:29:42.3264780+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:30:42.4057722+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:31:42.4479620+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:32:42.4554567+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:33:42.4895485+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:34:42.5101983+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:35:42.5322095+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:36:42.5514111+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:37:42.5577130+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:38:42.5967134+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:39:42.6349559+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:40:42.6641985+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:41:42.6780927+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:42:42.7072722+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:43:42.7270450+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:44:42.7566326+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:45:42.7755346+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:46:42.8031412+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:47:42.8174232+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:48:42.8450580+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:49:42.8622129+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:50:42.8896630+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:51:42.9007841+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:52:42.9279502+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:53:42.9675443+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:54:43.0189033+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:55:43.0404500+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:56:43.0571969+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:57:43.0860046+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:58:43.1160221+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T08:59:43.1487342+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T09:00:43.1671567+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T09:01:43.1792509+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T09:02:43.2147940+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T09:03:43.2766441+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T09:04:43.3115022+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T09:05:43.3292874+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T09:06:43.3513879+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T09:07:43.3708106+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T09:08:43.3952235+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T09:09:43.4527187+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T09:10:43.4804513+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T09:11:43.4945331+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T09:12:43.5155842+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T09:13:43.5606614+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T09:14:43.6018523+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T09:15:43.6381212+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T09:16:43.6625475+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T09:17:43.6838370+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T09:18:43.7029615+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T09:19:44.3807304+05:30  probe complete but local summary not downloaded yet: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T13:28:02.9333270+05:30  waiting for the SubsurfaceGen four-model GPU probe
+2026-09-02T13:28:05.3149579+05:30  ayushdebnath0123/subsurfacegen-four-model-gpu-probe has status "KernelWorkerStatus.RUNNING"
+2026-09-02T13:29:07.3635227+05:30  ayushdebnath0123/subsurfacegen-four-model-gpu-probe has status "KernelWorkerStatus.RUNNING"
+2026-09-02T13:30:08.4626773+05:30  ayushdebnath0123/subsurfacegen-four-model-gpu-probe has status "KernelWorkerStatus.ERROR"
+2026-09-02T13:30:08.4906731+05:30  downloading completed probe output to C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe
+2026-09-02T13:30:10.6423118+05:30  Kernel log downloaded to C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\subsurfacegen-four-model-gpu-probe.log 
+2026-09-02T13:30:11.8672505+05:30  probe summary still unavailable: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T13:31:11.8772356+05:30  downloading completed probe output to C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe
+2026-09-02T13:31:15.2558049+05:30  probe summary still unavailable: C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe\openfwi_summary.json
+2026-09-02T13:32:04.9828182+05:30  waiting for the SubsurfaceGen four-model GPU probe
+2026-09-02T13:32:06.5651965+05:30  ayushdebnath0123/subsurfacegen-four-model-gpu-probe has status "KernelWorkerStatus.RUNNING"
+2026-09-02T13:33:07.9019286+05:30  ayushdebnath0123/subsurfacegen-four-model-gpu-probe has status "KernelWorkerStatus.RUNNING"
+2026-09-02T13:34:13.1377653+05:30  ayushdebnath0123/subsurfacegen-four-model-gpu-probe has status "KernelWorkerStatus.RUNNING"
+2026-09-02T13:35:15.3566651+05:30  ayushdebnath0123/subsurfacegen-four-model-gpu-probe has status "KernelWorkerStatus.COMPLETE"
+2026-09-02T13:35:15.3704330+05:30  downloading completed probe output to C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe
+2026-09-02T13:36:34.6820143+05:30  Output file downloaded to C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe/DeepONet_state.pt
+2026-09-02T13:36:34.6980079+05:30  Output file downloaded to C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe/FNO_state.pt
+2026-09-02T13:36:34.7010080+05:30  Output file downloaded to C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe/GNO_state.pt
+2026-09-02T13:36:34.7040086+05:30  Output file downloaded to C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe/PFNO_state.pt
+2026-09-02T13:36:34.7060075+05:30  Output file downloaded to C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe/openfwi_histories.json
+2026-09-02T13:36:34.7077379+05:30  Output file downloaded to C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe/openfwi_predictions.npz
+2026-09-02T13:36:34.7117805+05:30  Output file downloaded to C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\ssgen_probe/openfwi_summary.json
+2026-09-02T13:36:34.7147808+05:30  Kernel log downloaded to C:\Users\USER_HP\Desktop\SciML Project\results\ssgen\kaggle_four_model_probe\subsurfacegen-four-model-gpu-probe.log 
+2026-09-02T13:37:37.2892162+05:30  projected FNO: 1.77 h including safety margin
+2026-09-02T13:37:37.2922149+05:30  projected PFNO: 12.89 h including safety margin
+2026-09-02T13:37:37.2942172+05:30  projected DeepONet: 4.66 h including safety margin
+2026-09-02T13:37:37.2961028+05:30  projected GNO: 9.43 h including safety margin
+2026-09-02T13:37:39.2082482+05:30  quota ready: 10.37 h remaining, 9.43 h required
+2026-09-02T13:37:39.3177478+05:30  pushing GNO kernel from C:\Users\USER_HP\Desktop\SciML Project\tmp\kaggle_ssgen_generated_20260902_133204\gno
+2026-09-02T13:37:43.0834635+05:30  Kernel version 1 successfully pushed.  Please check progress at https://www.kaggle.com/code/ayushdebnath0123/subsurfacegen-gno-benchmark
+2026-09-02T13:37:44.3608779+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T13:38:45.7139131+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T13:39:47.2181600+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T13:40:49.6765226+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T13:41:54.2538527+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T13:42:57.7365512+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T13:43:59.3599381+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T13:45:00.7746147+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T13:46:02.5240075+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T13:47:03.9649399+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T13:48:06.1892772+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T13:49:07.6192059+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T13:50:09.9167408+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T13:51:11.9997045+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T13:52:14.5870838+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T13:53:17.0241405+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T13:54:18.6125632+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T13:55:20.1868511+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T13:56:22.0067693+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T13:57:23.5373257+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T13:58:25.8130319+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T13:59:27.3106416+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T14:00:28.7149705+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T14:01:30.3527212+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T14:02:31.8485956+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T14:03:33.6977134+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T14:04:36.1353638+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T14:05:37.6402150+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T14:06:39.5397572+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T14:07:40.9689103+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T14:08:42.6914703+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T14:09:44.1799942+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T14:10:45.7515598+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T14:11:48.6695907+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T14:12:50.1556375+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T14:13:53.3123822+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T14:14:55.9531650+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T14:15:57.5631917+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T14:16:59.6761996+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T14:18:01.3813919+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T14:19:03.5596567+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T14:20:04.9390912+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T14:21:06.4744026+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T14:22:08.4560026+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T14:23:10.5639356+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T14:24:12.0161009+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T14:25:13.5029055+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T14:26:14.9638108+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T14:27:18.1084676+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T14:28:19.8247658+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T14:29:21.3911189+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T14:30:22.7642706+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T14:31:24.0352838+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T14:32:27.2077217+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T14:33:30.2814561+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T14:34:33.5424235+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T14:35:35.3254228+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T14:36:37.7590906+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T14:37:40.2103368+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T14:38:42.7043182+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T14:39:44.3279684+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T14:40:46.3399507+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T17:53:58.1878647+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T17:55:09.0743483+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T17:56:12.4624620+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T17:57:19.7379121+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T17:58:28.1288940+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T17:59:35.8091667+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:00:50.4753593+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:01:57.6703437+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:03:00.8508874+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:04:06.5405178+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:05:13.1657666+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:06:15.6450775+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:07:27.4418939+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:08:31.8170313+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:09:33.4534542+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:10:39.1224624+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:12:00.5324877+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:13:02.3416197+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:14:03.7041083+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:15:06.0276180+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:16:07.6229505+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:17:13.4006861+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:18:26.7253024+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:19:28.2814602+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:20:39.3282724+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:21:40.7987564+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:22:42.7949614+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:23:44.2980858+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:24:45.9927551+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:25:48.3732316+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:26:50.8156621+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:27:53.4500364+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:28:55.6287070+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:29:57.3643746+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:30:59.8176074+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:32:01.7168060+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:33:03.6874069+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:34:05.1742822+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:35:06.6523536+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:36:08.0511812+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:37:10.8109865+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:38:13.5349384+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:39:15.3152981+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:40:18.2495720+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:41:20.9209055+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:42:22.6066498+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:43:38.7811329+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:44:40.5525136+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:45:42.0448909+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:46:43.5898770+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:47:46.0785546+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:48:47.9230085+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:49:50.2370810+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:50:53.6089919+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:51:56.5183121+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:52:59.7244183+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:54:04.0180875+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:55:06.6547570+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:56:16.0281928+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:57:19.2169205+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:58:21.1376484+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T18:59:23.8271168+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:00:25.7179642+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:01:27.6261698+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:02:30.6078427+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:03:32.3165435+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:04:35.6260197+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:05:37.5201107+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:06:40.3006663+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:07:43.6450105+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:08:45.8688667+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:09:47.8787723+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:10:50.1123628+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:11:51.5550118+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:12:56.6375890+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:13:59.5443757+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:15:05.7118076+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:16:12.2717515+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:17:14.6015648+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:18:16.4330175+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:19:19.1561094+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:20:21.9701176+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:21:24.5963823+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:22:26.9465784+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:23:28.6488475+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:24:30.1762006+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:25:33.1104977+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:26:36.2251483+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:27:40.3259355+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:28:47.5454083+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:29:54.1472573+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:30:58.3798310+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:32:04.6508126+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:33:08.9086083+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:34:12.4460851+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:35:18.0728705+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:36:22.2306411+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:37:25.8603175+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:38:30.0931450+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:39:36.1910600+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:40:51.1995022+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:41:59.1918464+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:43:06.4982976+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:44:09.6201732+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:45:12.0361435+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:46:14.0395534+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:47:16.5175227+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:48:18.1826155+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:49:20.3666168+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:50:23.0277272+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:51:25.1883017+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:52:27.9932400+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:53:29.5678397+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:54:32.1408979+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:55:34.5542083+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:56:36.2242885+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:57:39.2799754+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:58:41.5840464+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T19:59:44.3530682+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T20:00:46.4026086+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T20:01:48.0038212+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T20:02:49.5851188+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T20:03:51.5566646+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T20:04:54.3541103+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T20:05:56.8994604+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T20:06:58.4740802+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T20:08:00.0754903+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T20:09:01.7872617+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T20:10:03.8923529+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T20:11:08.4969816+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T20:12:10.7193936+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T20:13:14.5804472+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"
+2026-09-02T20:14:18.3796256+05:30  ayushdebnath0123/subsurfacegen-gno-benchmark has status "KernelWorkerStatus.RUNNING"

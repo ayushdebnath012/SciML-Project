@@ -1,0 +1,15 @@
+{
+    "model_type": "PINN",
+    "n_hidden": 3,
+    "hidden_width": 64,
+    "material_type": "MultiLayer",
+    "use_ansatz": true,
+    "extra_params": {},
+    "optimizer": "adam",
+    "use_gradnorm": false,
+    "causal_n_chunks": 1,
+    "weighting": "causal_gradnorm",
+    "backend": "jax",
+    "relative_l2_error_best_adam_percent": 16.26197393507344,
+    "relative_l2_error_best_lbfgs_percent": 16.170294631417573
+}

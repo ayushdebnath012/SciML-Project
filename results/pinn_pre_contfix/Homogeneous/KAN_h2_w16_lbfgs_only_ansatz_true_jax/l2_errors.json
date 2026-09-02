@@ -1,0 +1,17 @@
+{
+    "model_type": "KAN",
+    "n_hidden": 2,
+    "hidden_width": 16,
+    "material_type": "Homogeneous",
+    "use_ansatz": true,
+    "extra_params": {
+        "G": 5,
+        "k": 3
+    },
+    "optimizer": "lbfgs_only",
+    "use_gradnorm": true,
+    "causal_n_chunks": 16,
+    "weighting": "causal_gradnorm",
+    "backend": "jax",
+    "relative_l2_error_best_lbfgs_only_percent": 93.05005277978833
+}

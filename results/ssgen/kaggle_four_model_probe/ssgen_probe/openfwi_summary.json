@@ -1,0 +1,212 @@
+{
+  "dataset": "SubsurfaceGen",
+  "dataset_key": "SubsurfaceGen",
+  "config": {
+    "ns": 5,
+    "nt": 572,
+    "ng": 1000,
+    "nz": 309,
+    "nx": 500,
+    "n_grid": 309,
+    "dt": 0.013986013986013986,
+    "dx": 10.0,
+    "data_min": -3.4804470539093018,
+    "data_max": 6.067325115203857,
+    "label_min": 1500.0,
+    "label_max": 4733.806640625,
+    "band": "3-25Hz",
+    "source_indices": [
+      0,
+      15,
+      31,
+      47,
+      63
+    ],
+    "data_mean": -3.5724823383181254e-06,
+    "data_std": 0.017529617429564055
+  },
+  "normalization": {
+    "mode": "zscore",
+    "data_mean": -3.5724823383181254e-06,
+    "data_std": 0.017529617429564055,
+    "label_min": 1500.0,
+    "label_max": 4733.806640625
+  },
+  "grid": {
+    "nz": 309,
+    "nx": 500,
+    "ng": 1000,
+    "nt": 572,
+    "n_sources": 5,
+    "time_stride": 1
+  },
+  "split": {
+    "train": 8,
+    "val": 4,
+    "train_chunks": 0,
+    "val_chunks": 0,
+    "note": "official OpenFWI chunk split: 1-48 train, 49-60 val"
+  },
+  "oracles": {
+    "samples": 32,
+    "pfno_band_limit": {
+      "n_freqs": 220,
+      "rel_l2_pct": 3.434711301909653,
+      "worst": 4.0358945174565735
+    },
+    "fno_time_resample": {
+      "t_latent": 286,
+      "rel_l2_pct": 65.2362240137022,
+      "worst": 68.1118980059031
+    },
+    "gno_time_resample": {
+      "t_latent": 286,
+      "rel_l2_pct": 65.2362240137022,
+      "worst": 68.1118980059031
+    }
+  },
+  "device": "cuda",
+  "gpu": "Tesla P100-PCIE-16GB",
+  "torch_version": "2.7.1+cu126",
+  "args": {
+    "root": "/kaggle/input/notebooks/ayushdebnath0123/subsurfacegen-cache-600-100-80/ssgen_data",
+    "dataset": "SubsurfaceGen",
+    "meta": true,
+    "train_chunks": 0,
+    "val_chunks": 0,
+    "max_train": 8,
+    "max_val": 4,
+    "time_stride": 1,
+    "preload": false,
+    "cache": "ram",
+    "norm": "zscore",
+    "models": "FNO,PFNO,DeepONet,GNO",
+    "epochs": 2,
+    "batch_size": 2,
+    "lr": 0.002,
+    "weight_decay": 0.0001,
+    "workers": 4,
+    "seed": 42,
+    "init_seed": 42,
+    "ood_chunks": 0,
+    "export": 6,
+    "outdir": "/kaggle/working/ssgen_probe",
+    "t_latent": 286,
+    "fno_width": 24,
+    "fno_modes_z": 16,
+    "fno_modes_x": 16,
+    "fno_modes_t": 32,
+    "fno_enc_layers": 3,
+    "fno_dec_layers": 3,
+    "pfno_freqs": 220,
+    "pfno_width": 4,
+    "pfno_modes": 8,
+    "pfno_layers": 2,
+    "don_latent": 128,
+    "don_hidden": 256,
+    "don_fourier": 32,
+    "don_fourier_scale": 8.0,
+    "gno_width": 24,
+    "gno_kernel_hidden": 96,
+    "gno_radius": 3,
+    "gno_dec_radius": 2,
+    "gno_enc_layers": 3,
+    "gno_dec_layers": 2,
+    "gno_t_latent": 286,
+    "gno_checkpoint": true
+  },
+  "results": [
+    {
+      "model": "FNO",
+      "parameters": 2749907,
+      "parameters_real": 5404115,
+      "training_time_s": 1.753217731999996,
+      "seconds_per_epoch": 0.876608865999998,
+      "rel_l2_pct": 100.26625061035156,
+      "rel_l2_pct_median": 100.26508331298828,
+      "mae": 0.0021497434936463833,
+      "rmse": 0.01568193919956684,
+      "per_sample_rel_l2": [
+        100.26508331298828,
+        100.26774597167969,
+        100.26468658447266,
+        100.26747131347656
+      ],
+      "ood": {
+        "rel_l2_pct": 100.22404479980469,
+        "rel_l2_pct_median": 100.22395324707031,
+        "mae": 0.002719770185649395,
+        "rmse": 0.017090462148189545
+      }
+    },
+    {
+      "model": "PFNO",
+      "parameters": 1293160,
+      "parameters_real": 2194280,
+      "training_time_s": 15.47286181200002,
+      "seconds_per_epoch": 7.73643090600001,
+      "rel_l2_pct": 99.98271942138672,
+      "rel_l2_pct_median": 99.98265838623047,
+      "mae": 0.001650873338803649,
+      "rmse": 0.0156375952064991,
+      "per_sample_rel_l2": [
+        99.9829330444336,
+        99.98262023925781,
+        99.98265838623047,
+        99.98265838623047
+      ],
+      "ood": {
+        "rel_l2_pct": 99.98539733886719,
+        "rel_l2_pct_median": 99.98535919189453,
+        "mae": 0.002165679121389985,
+        "rmse": 0.017049768939614296
+      }
+    },
+    {
+      "model": "DeepONet",
+      "parameters": 39766273,
+      "parameters_real": 39766273,
+      "training_time_s": 5.321075902000018,
+      "seconds_per_epoch": 2.660537951000009,
+      "rel_l2_pct": 100.12297058105469,
+      "rel_l2_pct_median": 100.12242126464844,
+      "mae": 0.0019485799130052328,
+      "rmse": 0.015659531578421593,
+      "per_sample_rel_l2": [
+        100.12242126464844,
+        100.1236572265625,
+        100.12229919433594,
+        100.1235122680664
+      ],
+      "ood": {
+        "rel_l2_pct": 100.10342407226562,
+        "rel_l2_pct_median": 100.10338592529297,
+        "mae": 0.0024892445653676987,
+        "rmse": 0.017069894820451736
+      }
+    },
+    {
+      "model": "GNO",
+      "parameters": 109139,
+      "parameters_real": 109139,
+      "training_time_s": 11.201905142999976,
+      "seconds_per_epoch": 5.600952571499988,
+      "rel_l2_pct": 100.53365325927734,
+      "rel_l2_pct_median": 100.53145599365234,
+      "mae": 0.0025182145182043314,
+      "rmse": 0.015723763033747673,
+      "per_sample_rel_l2": [
+        100.53145599365234,
+        100.53668212890625,
+        100.5304946899414,
+        100.5359878540039
+      ],
+      "ood": {
+        "rel_l2_pct": 100.44978332519531,
+        "rel_l2_pct_median": 100.44962310791016,
+        "mae": 0.003102655755355954,
+        "rmse": 0.01712895557284355
+      }
+    }
+  ]
+}
