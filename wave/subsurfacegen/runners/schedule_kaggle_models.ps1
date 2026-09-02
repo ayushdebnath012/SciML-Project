@@ -1,12 +1,23 @@
+param(
+    [string]$KaggleOwner = '',
+    [string]$CacheSlug = ''
+)
+
 $ErrorActionPreference = 'Continue'
 $env:PYTHONUTF8 = '1'
+
+. (Join-Path $PSScriptRoot 'kaggle_scheduler_common.ps1')
 
 $repoRoot = (Resolve-Path (Join-Path $PSScriptRoot '..\..\..')).Path
 $resultRoot = Join-Path $repoRoot 'results\ssgen'
 $scheduleLog = Join-Path $resultRoot 'kaggle_model_schedule.log'
 $templatePackage = Join-Path $repoRoot 'tmp\kaggle_ssgen_model'
 $generatedRoot = Join-Path $repoRoot ('tmp\kaggle_ssgen_generated_' + (Get-Date -Format 'yyyyMMdd_HHmmss'))
-$probeSlug = 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe'
+$KaggleOwner = Resolve-KaggleOwner $KaggleOwner
+$probeSlug = "$KaggleOwner/subsurfacegen-four-model-gpu-probe"
+if ([string]::IsNullOrWhiteSpace($CacheSlug)) {
+    $CacheSlug = "$KaggleOwner/subsurfacegen-cache-600-100-80"
+}
 $probeOutput = Join-Path $resultRoot 'kaggle_four_model_probe'
 $probeSummary = Join-Path $probeOutput 'ssgen_probe\openfwi_summary.json'
 New-Item -ItemType Directory -Force -Path $resultRoot,$generatedRoot | Out-Null
@@ -33,22 +44,6 @@ function Wait-Kernel([string]$slug) {
         }
         Start-Sleep -Seconds 60
     }
-}
-
-function Resolve-PushedKernelSlug([object[]]$pushOutput, [string]$fallback) {
-    # Kaggle always publishes the authoritative owner/slug in the success URL.
-    # The authenticated account can differ from the owner written into the
-    # generated metadata, so polling the metadata slug can target a notebook
-    # that was never created.
-    $pushText = (($pushOutput | ForEach-Object { [string]$_ }) -join "`n")
-    $match = [regex]::Match(
-        $pushText,
-        'https://www\.kaggle\.com/code/([A-Za-z0-9_-]+)/([A-Za-z0-9_-]+)'
-    )
-    if ($match.Success) {
-        return '{0}/{1}' -f $match.Groups[1].Value,$match.Groups[2].Value
-    }
-    return $fallback
 }
 
 function Get-GpuQuota {
@@ -98,21 +93,21 @@ function New-ModelPackage($job) {
     $script = $script.Replace('INIT_SEED = 42', ('INIT_SEED = ' + $job.Seed))
     [IO.File]::WriteAllText($scriptPath, $script, (New-Object Text.UTF8Encoding($false)))
 
-    $metadataPath = Join-Path $jobDir 'kernel-metadata.json'
-    $metadata = Get-Content -Raw -LiteralPath $metadataPath | ConvertFrom-Json
-    $metadata.id = $job.Slug
-    $metadata.title = 'SubsurfaceGen ' + $job.Name + ' Benchmark'
-    $metadataJson = $metadata | ConvertTo-Json -Depth 10
-    [IO.File]::WriteAllText($metadataPath, $metadataJson, (New-Object Text.UTF8Encoding($false)))
+    Set-KaggleKernelMetadata `
+        -Package $jobDir `
+        -KernelSlug $job.Slug `
+        -Title ('SubsurfaceGen ' + $job.Name + ' Benchmark') `
+        -KernelSources @($CacheSlug)
     return $jobDir
 }
 
-Write-ScheduleLog 'waiting for the SubsurfaceGen four-model GPU probe'
-if (-not (Wait-Kernel $probeSlug)) {
-    Write-ScheduleLog 'probe failed; full models will not be launched blindly'
-    exit 1
-}
+Write-ScheduleLog "using authenticated Kaggle owner $KaggleOwner and cache source $CacheSlug"
 while (-not (Test-Path -LiteralPath $probeSummary)) {
+    Write-ScheduleLog 'waiting for the SubsurfaceGen four-model GPU probe'
+    if (-not (Wait-Kernel $probeSlug)) {
+        Write-ScheduleLog 'probe failed; full models will not be launched blindly'
+        exit 1
+    }
     Write-ScheduleLog "downloading completed probe output to $probeOutput"
     New-Item -ItemType Directory -Force -Path $probeOutput | Out-Null
     & kaggle kernels output $probeSlug -p $probeOutput --page-size 200 --force 2>&1 |
@@ -137,16 +132,33 @@ foreach ($result in $summary.results) {
 }
 
 $jobs = @(
-    [pscustomobject]@{Name='GNO'; Seed=342; Slug='ayushdebnath0123/subsurfacegen-gno-benchmark'},
-    [pscustomobject]@{Name='PFNO'; Seed=142; Slug='ayushdebnath0123/subsurfacegen-pfno-benchmark'},
-    [pscustomobject]@{Name='DeepONet'; Seed=242; Slug='ayushdebnath0123/subsurfacegen-deeponet-benchmark'},
-    [pscustomobject]@{Name='FNO'; Seed=42; Slug='ayushdebnath0123/subsurfacegen-fno-benchmark'}
+    [pscustomobject]@{Name='GNO'; Seed=342; Slug="$KaggleOwner/subsurfacegen-gno-benchmark"},
+    [pscustomobject]@{Name='PFNO'; Seed=142; Slug="$KaggleOwner/subsurfacegen-pfno-benchmark"},
+    [pscustomobject]@{Name='DeepONet'; Seed=242; Slug="$KaggleOwner/subsurfacegen-deeponet-benchmark"},
+    [pscustomobject]@{Name='FNO'; Seed=42; Slug="$KaggleOwner/subsurfacegen-fno-benchmark"}
 )
+
+$cacheStatus = Get-KernelStatus $CacheSlug
+Write-ScheduleLog $cacheStatus | Out-Null
+if ($cacheStatus -notmatch 'KernelWorkerStatus\.COMPLETE') {
+    Write-ScheduleLog "required cache $CacheSlug is not complete or accessible; run schedule_kaggle_cache_probe.ps1 first"
+    exit 1
+}
 
 foreach ($job in $jobs) {
     $required = [double]$projected[$job.Name]
     if ($required -gt 11.5) {
         Write-ScheduleLog ("{0} projects to {1:N2} h, above safe 12 h session capacity; not launching" -f $job.Name,$required)
+        continue
+    }
+    $modelName = $job.Name.ToLower()
+    $existingSummaries = @(
+        (Join-Path $resultRoot ("kaggle_{0}\bench_results\{0}\openfwi_summary.json" -f $modelName)),
+        (Join-Path $resultRoot ("kaggle_{0}_benchmark\bench_results\{0}\openfwi_summary.json" -f $modelName))
+    )
+    $existingSummary = $existingSummaries | Where-Object { Test-Path -LiteralPath $_ } | Select-Object -First 1
+    if ($null -ne $existingSummary) {
+        Write-ScheduleLog "$($job.Name) already has a completed local summary at $existingSummary; skipping"
         continue
     }
     Wait-ForQuota $required
