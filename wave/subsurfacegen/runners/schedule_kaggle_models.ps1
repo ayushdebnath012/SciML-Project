@@ -7,7 +7,8 @@ $scheduleLog = Join-Path $resultRoot 'kaggle_model_schedule.log'
 $templatePackage = Join-Path $repoRoot 'tmp\kaggle_ssgen_model'
 $generatedRoot = Join-Path $repoRoot ('tmp\kaggle_ssgen_generated_' + (Get-Date -Format 'yyyyMMdd_HHmmss'))
 $probeSlug = 'ayushdebnath0123/subsurfacegen-four-model-gpu-probe'
-$probeSummary = Join-Path $resultRoot 'kaggle_four_model_probe\ssgen_probe\openfwi_summary.json'
+$probeOutput = Join-Path $resultRoot 'kaggle_four_model_probe'
+$probeSummary = Join-Path $probeOutput 'ssgen_probe\openfwi_summary.json'
 New-Item -ItemType Directory -Force -Path $resultRoot,$generatedRoot | Out-Null
 
 function Write-ScheduleLog([string]$message) {
@@ -23,7 +24,7 @@ function Get-KernelStatus([string]$slug) {
 function Wait-Kernel([string]$slug) {
     while ($true) {
         $status = Get-KernelStatus $slug
-        Write-ScheduleLog $status
+        Write-ScheduleLog $status | Out-Null
         if ($status -match 'KernelWorkerStatus\.COMPLETE') { return $true }
         if ($status -match 'KernelWorkerStatus\.(ERROR|CANCELLED)') { return $false }
         Start-Sleep -Seconds 60
@@ -92,7 +93,15 @@ if (-not (Wait-Kernel $probeSlug)) {
     exit 1
 }
 while (-not (Test-Path -LiteralPath $probeSummary)) {
-    Write-ScheduleLog "probe complete but local summary not downloaded yet: $probeSummary"
+    Write-ScheduleLog "downloading completed probe output to $probeOutput"
+    New-Item -ItemType Directory -Force -Path $probeOutput | Out-Null
+    & kaggle kernels output $probeSlug -p $probeOutput --page-size 200 --force 2>&1 |
+        ForEach-Object { Write-ScheduleLog ([string]$_) }
+    & kaggle kernels logs $probeSlug 2>&1 |
+        Set-Content -LiteralPath (Join-Path $resultRoot 'kaggle_probe_kernel_logs.json')
+    if (-not (Test-Path -LiteralPath $probeSummary)) {
+        Write-ScheduleLog "probe summary still unavailable: $probeSummary"
+    }
     Start-Sleep -Seconds 60
 }
 

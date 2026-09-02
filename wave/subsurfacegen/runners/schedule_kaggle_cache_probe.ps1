@@ -27,7 +27,7 @@ function Get-KernelStatus([string]$slug) {
 function Wait-Kernel([string]$slug) {
     while ($true) {
         $status = Get-KernelStatus $slug
-        Write-ScheduleLog $status
+        Write-ScheduleLog $status | Out-Null
         if ($status -match 'KernelWorkerStatus\.COMPLETE') { return $true }
         if ($status -match 'KernelWorkerStatus\.(ERROR|CANCELLED)') { return $false }
         Start-Sleep -Seconds 60
