@@ -64,6 +64,7 @@ ppt/*.log
 # Experiment artifacts and scratch (large; regenerate or fetch from server)
 results/
 tmp/
+.tmp/
 dataset/
 output/
 
