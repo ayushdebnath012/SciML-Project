@@ -1,0 +1,298 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage[hidelinks]{hyperref}
+
+\definecolor{ink}{HTML}{222222}
+\definecolor{muted}{HTML}{5B5B5B}
+\definecolor{rule}{HTML}{D8D8D8}
+\definecolor{boxbg}{HTML}{F7F7F5}
+\definecolor{seismic}{HTML}{3573B9}
+\definecolor{electric}{HTML}{C98A00}
+\definecolor{magnet}{HTML}{B03A5B}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\small\color{muted}SciML Project --- the multi-physics idea, explained simply}
+\rhead{\small\color{muted}\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\setlength{\parskip}{4pt}
+\setlength{\parindent}{0pt}
+\emergencystretch=3em
+
+% A soft grey box for little stories and for the "grown-up corner".
+\newsavebox{\storyboxsave}
+\newenvironment{storybox}[1]
+  {\par\medskip\noindent
+   \begin{lrbox}{\storyboxsave}
+   \begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
+   \textbf{#1}\par\smallskip}
+  {\end{minipage}\end{lrbox}%
+   \fcolorbox{rule}{boxbg}{\usebox{\storyboxsave}}\par\medskip}
+
+\title{\textbf{Looking Inside the Earth Without Digging}\\[4pt]
+\large The ``multi-physics dataset'' idea, explained like you are five}
+\author{SciML Project}
+\date{September 2026}
+
+\begin{document}
+\maketitle
+
+\section*{The problem: a cake you are not allowed to cut}
+
+Imagine the ground under your feet is a giant layered cake.
+There is a layer of mud, then a layer of sand, then a layer of hard rock,
+then maybe a layer of wet, salty sponge, and so on, all the way down.
+
+We really want to know what the layers are and where they are.
+People who look for water, oil, metals, or safe places to build all need this.
+But the cake is \emph{enormous} and we are not allowed to cut it.
+Digging is slow, expensive, and only tells you about one tiny spot.
+
+So instead of cutting the cake, we \textbf{poke it and listen}.
+Every way of poking the cake tells us something different.
+This whole project is about three ways of poking, and about teaching a computer
+to turn the ``listening'' back into a picture of the cake.
+
+\section*{Three ways to poke the ground}
+
+\subsection*{1. \textcolor{seismic}{Thump it} (sound)}
+
+Stomp on the ground. A wobble travels down into the cake.
+When the wobble hits the edge between two layers (say, soft sand on top of hard rock),
+part of it bounces back up. We put little ``ears'' (called geophones) on the surface
+and record the bounces coming back.
+
+The wobble travels \emph{fast} through hard rock and \emph{slow} through soft mud.
+So if we know how fast the wobble goes everywhere, we know what kind of stuff is where.
+
+\begin{itemize}[leftmargin=2em]
+  \item \textbf{What the ground \emph{is}:} a map of \textbf{how fast sound goes} in every spot.
+        Grown-ups call it \textbf{velocity}, letter \textbf{v}.
+  \item \textbf{What we \emph{hear}:} the wiggles recorded by the ears over time.
+        Grown-ups call it the \textbf{pressure} record or seismogram, letter \textbf{p}.
+\end{itemize}
+
+\begin{storybox}{Picture it as: a bouncing ball}
+You throw a ball down a staircase. It bounces off every step. From the timing of the
+bounces you can work out where the steps are. The ball keeps its ``shape'' as it
+bounces --- this is a \emph{wave}.
+\end{storybox}
+
+\subsection*{2. \textcolor{electric}{Push electricity into it} (current)}
+
+Stick two metal rods into the ground and push electricity in through one rod and
+out through the other. Some parts of the cake let electricity flow easily
+(wet clay, salty water). Some parts fight it (dry rock, sand, ice).
+We stick more rods around and measure how much electricity arrives where.
+
+\begin{itemize}[leftmargin=2em]
+  \item \textbf{What the ground \emph{is}:} a map of \textbf{how hard it is to push electricity through} each spot.
+        Grown-ups call it \textbf{resistivity}, letter \textbf{r}.
+  \item \textbf{What we \emph{measure}:} how much \textbf{current} flows and what voltage shows up at the rods,
+        letter \textbf{i}.
+\end{itemize}
+
+\begin{storybox}{Picture it as: water finding its level in a pond}
+Pour water into one corner of a pond full of rocks and sponges.
+It spreads out and settles. Nothing bounces, nothing wobbles; it just finds a
+resting shape. Where the water sits tells you where the sponges are.
+This is a \emph{steady} problem: time does not matter, only the final shape.
+\end{storybox}
+
+\subsection*{3. \textcolor{magnet}{Wiggle a magnet over it} (magnetism)}
+
+Hold a big magnet (or a big coil of wire) above the ground and wiggle it back and forth.
+A wiggling magnet makes electricity swirl around inside anything that can conduct ---
+like little whirlpools of electricity in the wet, salty layers.
+Those whirlpools make \emph{their own} tiny magnet field, which comes back up
+and we can feel it at the surface with a sensor.
+
+Layers that conduct electricity well make big whirlpools and a strong answer.
+Layers that do not conduct stay quiet.
+
+\begin{itemize}[leftmargin=2em]
+  \item \textbf{What the ground \emph{is}:} a map of \textbf{how easily electricity flows} in each spot.
+        Grown-ups call it \textbf{conductivity}, letter \textbf{c}.
+  \item \textbf{What we \emph{feel}:} the \textbf{magnetic} field that comes back, letter \textbf{m}.
+\end{itemize}
+
+\begin{storybox}{Picture it as: a drop of ink in water}
+Drop ink into a glass of water. It does not bounce; it slowly smears outward
+and fades. The wiggling-magnet signal behaves like that inside the ground:
+it \emph{spreads and fades} instead of bouncing. This is a \emph{diffusion} problem.
+The rules for it are called \textbf{Maxwell's equations}, and ``in the geophysical
+perspective'' just means ``the slow, smeary version that works inside the earth''.
+\end{storybox}
+
+\begin{storybox}{Wait --- are r and c the same thing?}
+Yes! ``Hard to push electricity through'' and ``easy to push electricity through''
+are the same fact said two ways, like ``heavy'' and ``light''.
+Grown-ups write $r = 1/c$.
+So why list both? Because they belong to two \emph{different games}:
+the push-electricity game (steady, like the pond) and the wiggle-magnet game
+(smeary, like the ink). The map is the same; the poking is different,
+so what we measure is different.
+\end{storybox}
+
+\section*{Pairs: ``what the cake is'' and ``what we heard''}
+
+Every game gives us a \textbf{pair}: a picture of the cake, and the recording we got by poking it.
+
+\begin{center}
+\begin{tabular}{@{}lllll@{}}
+\toprule
+Game & Poke & What the cake is & What we record & The pair \\
+\midrule
+\textcolor{seismic}{Thump}        & stomp        & velocity (v)     & wiggles / pressure (p) & (v, p) \\
+\textcolor{magnet}{Wiggle magnet} & shake a coil & conductivity (c) & magnetic field (m)     & (c, m) \\
+\textcolor{electric}{Push current}& metal rods   & resistivity (r)  & current / voltage (i)  & (r, i) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+When the message said ``\emph{v,p pair --- I want c,m and r,i}'' it meant exactly this:
+\emph{we already have the thump pair; now make the magnet pair and the electricity pair too.}
+
+\subsection*{The game the computer plays}
+
+Going \emph{forward} is the easy direction: if you know the cake, a physics program can
+work out what the ears would hear. That is the ``poke and listen'' simulation.
+
+The direction we actually care about is \emph{backwards}: we only have the recording,
+and we want to draw the cake. That is hard --- like guessing what is inside a wrapped
+present by shaking it.
+
+So we play a practice game with the computer:
+\begin{enumerate}[leftmargin=2em]
+  \item We invent thousands of pretend cakes (we know exactly what is inside each one).
+  \item We run the physics program to get the recording for each pretend cake.
+  \item We show the computer the recording and ask it to draw the cake.
+  \item We show it the real answer, it fixes its mistakes, and we repeat --- thousands of times.
+\end{enumerate}
+After enough practice, we hand it a \emph{real} recording and it draws a cake we have never seen.
+This is what all the neural networks in the project (FNO, DeepONet, PINNs, KANs) are doing.
+
+\section*{Why use all three games instead of one?}
+
+Each way of poking is good at different things:
+
+\begin{itemize}[leftmargin=2em]
+  \item \textcolor{seismic}{\textbf{Thumping}} is great at finding \emph{edges} between hard and soft layers.
+        But it cannot tell wet sand from dry sand very well.
+  \item \textcolor{electric}{\textbf{Pushing electricity}} is great at finding \emph{wet and salty} stuff.
+        But it gets blurry very quickly the deeper you go.
+  \item \textcolor{magnet}{\textbf{Wiggling a magnet}} can reach \emph{deep} conductors that the rods cannot.
+        But it is smeary and cannot see sharp edges.
+\end{itemize}
+
+\begin{storybox}{Picture it as: guessing a fruit with your eyes closed}
+Touch alone might say ``round''. Smell alone might say ``sweet''. Taste alone might say ``sour''.
+Put them together and you know it is an orange. Using all the clues together has a
+fancy name: \textbf{joint inversion}.
+\end{storybox}
+
+There is one more trick. All three games are poking the \emph{same cake}.
+So wherever the sound map has a layer edge, the electricity map should have an edge
+in the same place too. The computer is allowed to use that rule (``the pictures must agree
+on where the edges are'') to fix each picture using the others.
+
+\section*{The dataset: a big box of pretend cakes}
+
+This is the ``build a dataset with many physical parameters'' part of the message.
+Today we have a box of pretend cakes that only know their \emph{sound speed}.
+We want a box where every cake knows \textbf{all three} things at once:
+
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+\toprule
+For every pretend cake we store\ldots & \\
+\midrule
+the layers themselves (the ``recipe'') & mud here, sand there, rock below \\
+velocity map (v) $\to$ thump recording (p) & the old game \\
+conductivity map (c) $\to$ magnet recording (m) & new \\
+resistivity map (r) $\to$ current recording (i) & new \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The important rule is that the three maps must come from \emph{one} recipe.
+Real rocks link these things: a wet, spongy layer is \emph{slow} for sound \emph{and}
+\emph{easy} for electricity; hard dry rock is \emph{fast} for sound \emph{and} \emph{hard}
+for electricity. Grown-ups have little formulas for these links (with names like Archie,
+Gardner, Wyllie, Faust). We draw the recipe once, then use the formulas to paint
+v, c and r from it. That way the three pictures are honest about being the same cake.
+
+\section*{What we already have, and what is missing}
+
+\textbf{Already built:}
+\begin{itemize}[leftmargin=2em]
+  \item The \textcolor{seismic}{thump game}, in two flavours: our own 1D cake (the PINN/KAN experiments),
+        and the big public 2D cake collection called OpenFWI, plus the neural networks that learned it.
+  \item The physics programs that simulate thumping (finite differences, and friends).
+\end{itemize}
+
+\textbf{Missing:}
+\begin{itemize}[leftmargin=2em]
+  \item The recipe tool: ``draw one cake, paint v, c and r from it''.
+  \item The \textcolor{electric}{push-electricity} simulator (the pond).
+  \item The \textcolor{magnet}{wiggle-magnet} simulator (the ink).
+  \item Neural networks that play the new games, and one that plays all three together.
+\end{itemize}
+
+\textbf{What to do first:} the \textcolor{electric}{push-electricity game}.
+Its physics is the simplest of the three (no time, nothing moves --- just the pond finding its level),
+it gives us a second pair on the very same cakes right away, and it tests the whole
+pipeline --- recipe $\to$ simulator $\to$ dataset $\to$ network --- before we tackle the smeary magnet game.
+
+\section*{Grown-up corner (you can skip this)}
+
+The three games are three different \emph{kinds} of maths problem, which is a nice reason
+to have them all in one benchmark:
+
+\begin{center}
+\begin{tabular}{@{}llll@{}}
+\toprule
+Game & Kind of equation & Picture & Equation (2D) \\
+\midrule
+\textcolor{seismic}{Thump} & hyperbolic (wave) & bouncing ball &
+  $\rho\, u_{tt} = \nabla\!\cdot\!\big(E\,\nabla u\big)$ \\
+\textcolor{magnet}{Wiggle magnet} & parabolic (diffusion) & ink in water &
+  $\nabla^2 \mathbf{E} = i\omega\mu\sigma\,\mathbf{E}$ \quad (quasi-static Maxwell) \\
+\textcolor{electric}{Push current} & elliptic (steady) & pond level &
+  $\nabla\!\cdot\!\big(\sigma\,\nabla\phi\big) = -I\,\delta(\mathbf{x}-\mathbf{x}_s)$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{itemize}[leftmargin=2em]
+  \item ``Geophysical perspective'' on Maxwell means dropping the displacement current
+        (the earth is a conductor, frequencies are low), which turns Maxwell into a
+        diffusion equation. How deep the magnet game can see is set by the
+        \emph{skin depth}, roughly $\delta \approx 503\sqrt{\rho/f}$ metres.
+  \item The push-current game is the same equation with $\omega \to 0$: pure Poisson.
+  \item The ``pictures must agree on edges'' rule is the \emph{cross-gradient} constraint
+        $\nabla v \times \nabla \sigma = 0$ used in joint inversion.
+  \item Same geology, three PDE classes, one operator-learning benchmark --- that is the
+        one-sentence pitch.
+\end{itemize}
+
+\section*{The whole thing in one breath}
+
+The ground is a cake we cannot cut. We can thump it, push electricity into it, or
+wiggle a magnet over it, and each gives us a different recording. We already taught a
+computer the thump game. Now we want to build a box of pretend cakes that know all
+three properties at once, simulate all three recordings for each, and teach the
+computer to draw the cake from any of them --- or, best of all, from all three together.
+
+\end{document}

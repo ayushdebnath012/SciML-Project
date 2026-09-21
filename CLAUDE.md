@@ -26,7 +26,8 @@ Exp/
 │   ├── materials.py           # Homogeneous / TwoLayer / MultiLayer + JAX methods
 │   ├── fd_solver.py           # Leapfrog FD reference solver (conservative form)
 │   ├── run_experiment.py      # Main runner — argparse, SLURM, backend switch
-│   └── sherlock.sh            # THE Sherlock script: bash wave/sherlock.sh [NUM_GPUS] [WORKERS_PER_GPU]
+│   ├── sherlock.sh            # THE Sherlock script: bash wave/sherlock.sh [NUM_GPUS] [WORKERS_PER_GPU]
+│   └── multiphysics/          # Multi-physics dataset: geology → (v,p) seismic, (c,m) MT, (r,i) DC (NumPy+SciPy only)
 ├── requirements.txt           # All pip deps (PyTorch + JAX + KAN libraries)
 └── experiment_results/        # Output: checkpoints, loss curves, JSON metrics
 ```
@@ -147,6 +148,18 @@ Edit `wave/run_experiment.py` directly:
 - `WavKANLinear` / `WavKAN` accept `use_base=True` (default) for `wavelet_output + linear(x, weight1)`. Set `use_base=False` for wavelet-only ablations.
 - `VanillaPINN` accepts `in_dim` / `out_dim` so `build_mlp` handles non-default input dims.
 - JAX materials: `E_jax(x)`, `rho_jax(x)`, `Vp_jax(x)` on all three material classes — accept scalars or jnp arrays, used inside `jax.grad` chains.
+
+## Multi-physics Dataset (`wave/multiphysics/`)
+
+One latent layered geology per sample (OpenFWI 70×70 @ 10 m geometry) painted into velocity / density / conductivity maps via rock physics (RHG, Gardner, Archie with per-layer scatter — v and log ρ correlate ≈ 0.3, never deterministic), then three forward solvers: `seismic_solver.py` (2-D acoustic FD, OpenFWI acquisition), `mt_solver.py` (2-D MT, TE+TM, 5 Hz–1 kHz), `dc_solver.py` (2.5-D DC, pole-pole ρₐ). Output is OpenFWI-style chunked `.npy` per modality + `meta.json`.
+
+```bash
+uv run --with numpy --with scipy python wave/multiphysics/build_dataset.py --test     # 6 samples
+uv run --with numpy --with scipy python wave/multiphysics/test_multiphysics.py        # analytic checks (~30 s)
+uv run --with numpy --with scipy python wave/multiphysics/build_dataset.py --n-train 2000 --n-val 500 --jobs 8
+```
+
+Load-bearing details (all measured; see `wave/multiphysics/README.md`): the DC wavenumber quadrature must be fitted to ~30 km, not the electrode aperture (else 4.7 % error on layered earth); DC outer boundaries use the Dey–Morrison mixed BC ~110 km out; the MT bottom row is a second-order Robin condition; the seismic Cerjan sponge must be gentle (strength 0.2, not 3). Do not "simplify" any of these.
 
 ## Key Papers
 

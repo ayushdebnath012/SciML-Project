@@ -71,3 +71,6 @@ output/
 # LaTeX build logs
 *.log
 *.blg
+
+# multi-physics dataset output (wave/multiphysics/build_dataset.py)
+multiphysics_data/
